@@ -1,8 +1,8 @@
 export default async function Projects() {
 	return (
-		<main>
+		<div>
 			<h1>Projects</h1>
 			<p>Coming soon...</p>
-		</main>
+		</div>
 	);
 }

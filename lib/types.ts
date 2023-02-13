@@ -1,5 +1,6 @@
 export interface PageItem {
 	heading: string;
+	body: {};
 }
 
 export interface PostDetails {
@@ -8,27 +9,28 @@ export interface PostDetails {
 	slug: string;
 	name: string;
 	first_published_at: string;
+	tag_list: string[];
 	content: {
 		author: string;
-		excerpt: string;
+		excerpt: {};
 		mainImage: {
 			alt: string;
 			name: string;
 			title: string;
 			filename: string;
 		};
-		tags: string;
 		title: string;
 	};
 }
 
 export interface Post {
-	fist_published_at: string;
+	first_published_at: string;
+	tag_list: string[];
 	content: {
 		author: string;
 		body: {};
 		ghDisc: string;
-		excerpt: string;
+		excerpt: {};
 		mainImage: {
 			alt: string;
 			copyright: string;
@@ -36,7 +38,23 @@ export interface Post {
 			name: string;
 			title: string;
 		};
-		tags: string;
 		title: string;
 	};
+}
+
+export interface FigureBlokType {
+	alt: string;
+	image: {
+		id?: number;
+		alt?: string;
+		name?: string;
+		focus?: string;
+		title?: string;
+		filename: string;
+		copyright?: string;
+		fieldtype?: string;
+		is_external_url?: boolean;
+	};
+	credit: string;
+	caption: string;
 }

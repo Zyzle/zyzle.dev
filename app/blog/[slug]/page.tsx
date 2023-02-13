@@ -1,15 +1,31 @@
-import { render } from 'storyblok-rich-text-react-renderer';
+import Link from 'next/link';
 
 import { getBlogPostBySlug, getBlogPostsDetails } from '@zyzle-dev/lib/api';
+import RichTextBlok from '@zyzle-dev/components/RichTextBlok';
+import { formatRelativeDateString } from '@zyzle-dev/lib/formatRelativeDate';
 
 export default async function BlogSlugPage({ params }: { params: { slug: string } }) {
 	const blogPost = await getData(params.slug);
+	const firstPublished = formatRelativeDateString(blogPost.first_published_at);
 
 	return (
-		<main>
-			<h1>Blog slug page: {blogPost.content.title}</h1>
-			{render(blogPost.content.body)}
-		</main>
+		<>
+			<nav className="text-zpurple my-4">
+				<Link href="/blog">« back to blogs</Link>
+			</nav>
+			<article className="prose prose-invert prose-zyzle mx-auto">
+				<h1 className="text-zlime">{blogPost.content.title}</h1>
+				<div className=" text-zcyan">{firstPublished}</div>
+				<div className="text-zgold flex flex-wrap">
+					{blogPost.tag_list.map(tag => (
+						<span key={tag} className=" bg-zblock rounded-full px-2 whitespace-nowrap">
+							#{tag}
+						</span>
+					))}
+				</div>
+				<RichTextBlok blok={blogPost.content.body} />
+			</article>
+		</>
 	);
 }
 

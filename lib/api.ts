@@ -32,6 +32,7 @@ export async function getHomepage() {
 				id
 				content {
 					heading
+					body
 				}
 			}
 		}
@@ -51,6 +52,7 @@ export async function getBlogPostsDetails() {
 					slug
 					name
 					first_published_at
+					tag_list
 					content {
 						author
 						excerpt
@@ -60,7 +62,6 @@ export async function getBlogPostsDetails() {
 							title
 							filename
 						}
-						tags
 						title
 					}
 				}
@@ -77,6 +78,7 @@ export async function getBlogPostBySlug(slug: string) {
 		query PostBySlug($slug: ID!) {
 			PostItem(id: $slug) {
 				first_published_at
+				tag_list
 				content {
 					author
 					body
@@ -89,7 +91,6 @@ export async function getBlogPostBySlug(slug: string) {
 						name
 						title
 					}
-					tags
 					title
 				}
 			}

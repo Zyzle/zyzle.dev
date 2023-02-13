@@ -1,8 +1,8 @@
 export default async function About() {
 	return (
-		<main>
+		<div>
 			<h1>About</h1>
 			<p>Coming soon...</p>
-		</main>
+		</div>
 	);
 }
