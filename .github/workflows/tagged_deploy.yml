@@ -8,4 +8,4 @@ jobs:
  build:
   runs-on: ubuntu-latest
   steps:
-   - run: curl -X POST -d {} https://api.vercel.com/v1/integrations/deploy/prj_hndvPWi97O93c7SBfQ6xVE3Ui6I6/zTUaP4WUn6
+   - run: curl -X POST -d {} ${{TAGGED_DEPLOY_MASTER}}
