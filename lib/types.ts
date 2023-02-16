@@ -1,6 +1,7 @@
 export interface PageItem {
 	heading: string;
 	body: {};
+	blocks: {};
 }
 
 export interface PostDetails {
@@ -57,4 +58,13 @@ export interface FigureBlokType {
 	};
 	credit: string;
 	caption: string;
+}
+
+export interface HomeLinkType {
+	name: string;
+	image: string;
+	extra_text: string;
+	link: {
+		cached_url: string;
+	};
 }

@@ -1,15 +1,25 @@
+import Image from 'next/image';
+import Link from 'next/link';
+
 import RichTextBlok from '@zyzle-dev/components/RichTextBlok';
 import { getHomepage } from '@zyzle-dev/lib/api';
-import Link from 'next/link';
+import { HomeLinkType } from '@zyzle-dev/lib/types';
+import HomeLink from '@zyzle-dev/components/HomeLink';
 
 export default async function Home() {
 	const homepage = await getData();
+	const linkBlocks = homepage.blocks as unknown as HomeLinkType[];
 
 	return (
 		<>
-			<section className="prose prose-invert prose-zyzle mx-auto">
+			<section className="prose prose-invert prose-zyzle mx-auto mt-4 mb-6">
 				<RichTextBlok blok={homepage.body} />
 			</section>
+			<nav className="flex flex-1 flex-col max-w-prose mx-auto">
+				{linkBlocks.map((linkBlock, index) => (
+					<HomeLink key={index} homeLink={linkBlock} />
+				))}
+			</nav>
 		</>
 	);
 }

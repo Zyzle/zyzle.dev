@@ -33,6 +33,7 @@ export async function getHomepage() {
 				content {
 					heading
 					body
+					blocks
 				}
 			}
 		}
