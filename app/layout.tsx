@@ -1,4 +1,5 @@
 import { Pacifico, Nunito, Fira_Code } from '@next/font/google';
+import Footer from '@zyzle-dev/components/Footer';
 
 import classNames from '@zyzle-dev/lib/classNames';
 import Link from 'next/link';
@@ -52,6 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 				<main className="flex-1 relative xl:mt-20 ">
 					<div className="container px-4 mx-auto">{children}</div>
 				</main>
+				<Footer />
 			</body>
 		</html>
 	);

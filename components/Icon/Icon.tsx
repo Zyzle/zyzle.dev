@@ -1,3 +1,4 @@
+import classNames from '@zyzle-dev/lib/classNames';
 import Image from 'next/image';
 
 import AboutSVG from '../../public/about.svg';
@@ -26,6 +27,16 @@ export const IconType: { [key: string]: any } = {
 	tag: TagSVG,
 };
 
-export default function Icon({ type, alt }: { type: string; alt: string }) {
-	return <Image src={IconType[type]} alt={alt} />;
+export default function Icon({
+	type,
+	alt,
+	width,
+	height,
+}: {
+	type: string;
+	alt: string;
+	width?: number;
+	height?: number;
+}) {
+	return <Image src={IconType[type]} alt={alt} width={width} height={height} />;
 }
