@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import { getBlogPostsDetails } from '@zyzle-dev/lib/api';
 import RichTextBlok from '@zyzle-dev/components/RichTextBlok';
+import { getBlogPostsDetails } from '@zyzle-dev/lib/api';
 import { formatRelativeDateString } from '@zyzle-dev/lib/formatRelativeDate';
 
 export default async function BlogList() {

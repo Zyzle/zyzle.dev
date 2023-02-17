@@ -1,8 +1,8 @@
 import { Pacifico, Nunito, Fira_Code } from '@next/font/google';
-import Footer from '@zyzle-dev/components/Footer';
-
-import classNames from '@zyzle-dev/lib/classNames';
 import Link from 'next/link';
+
+import Footer from '@zyzle-dev/components/Footer';
+import classNames from '@zyzle-dev/lib/classNames';
 
 import './global.css';
 

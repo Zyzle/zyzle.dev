@@ -1,10 +1,7 @@
-import Image from 'next/image';
-import Link from 'next/link';
-
+import HomeLink from '@zyzle-dev/components/HomeLink';
 import RichTextBlok from '@zyzle-dev/components/RichTextBlok';
 import { getHomepage } from '@zyzle-dev/lib/api';
 import { HomeLinkType } from '@zyzle-dev/lib/types';
-import HomeLink from '@zyzle-dev/components/HomeLink';
 
 export default async function Home() {
 	const homepage = await getData();

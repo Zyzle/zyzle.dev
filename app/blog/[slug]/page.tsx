@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import { getBlogPostBySlug, getBlogPostsDetails } from '@zyzle-dev/lib/api';
 import RichTextBlok from '@zyzle-dev/components/RichTextBlok';
+import { getBlogPostBySlug, getBlogPostsDetails } from '@zyzle-dev/lib/api';
 import { formatRelativeDateString } from '@zyzle-dev/lib/formatRelativeDate';
 
 export default async function BlogSlugPage({ params }: { params: { slug: string } }) {

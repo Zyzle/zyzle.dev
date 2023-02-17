@@ -42,6 +42,30 @@ export async function getHomepage() {
 	return data.PageItem.content as PageItem;
 }
 
+export async function getPageBySlug(slug: string) {
+	const data = await fetchAPI(
+		`
+		query PageBySlug($slug: ID!) {
+			PageItem(id: $slug) {
+				id
+				content {
+					heading
+					body
+					blocks
+				}
+			}
+		}
+		`,
+		{
+			variables: {
+				slug,
+			},
+		}
+	);
+
+	return data.PageItem.content as PageItem;
+}
+
 export async function getBlogPostsDetails() {
 	const data = await fetchAPI(
 		`
