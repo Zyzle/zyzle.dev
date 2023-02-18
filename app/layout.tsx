@@ -50,8 +50,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 						<Link href="/about">About</Link>
 					</nav>
 				</header>
-				<main className="flex-1 relative xl:mt-20 ">
-					<div className="container px-4 mx-auto">{children}</div>
+				<main className="flex-1 relative xl:mt-20 px-4 ">
+					<div className="container mx-auto max-w-prose">{children}</div>
 				</main>
 				<Footer />
 			</body>

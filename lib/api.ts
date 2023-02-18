@@ -1,4 +1,4 @@
-import { PageItem, Post, PostDetails } from './types';
+import { PageItem, Post, PostDetails, Snippet } from './types';
 
 async function fetchAPI(query: string, { variables }: { variables?: any } = {}) {
 	const res = await fetch(process.env.STORYBLOK_API!, {
@@ -129,4 +129,57 @@ export async function getBlogPostBySlug(slug: string) {
 	);
 
 	return data.PostItem as Post;
+}
+
+export async function getSnippets() {
+	const data = await fetchAPI(
+		`
+		query {
+			SnippetItems {
+				items {
+					id
+					slug
+					full_slug
+					first_published_at
+					tag_list
+					name
+					content {
+						language
+						heading
+					}
+				}
+			}
+		}
+	`
+	);
+	return data.SnippetItems.items as Partial<Snippet>[];
+}
+
+export async function getSnippetBySlug(slug: string) {
+	const data = await fetchAPI(
+		`
+		query SnippetBySlug($slug: ID!) {
+			SnippetItem(id: $slug) {
+				id
+				name
+		    tag_list
+				slug
+    		full_slug
+		    first_published_at
+				content {
+					heading
+					body
+					language
+				}
+			}
+		}
+		`,
+		{
+			variables: {
+				slug: `snippets/${slug}`,
+			},
+		}
+	);
+
+	return data.SnippetItem as Snippet;
 }

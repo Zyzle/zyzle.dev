@@ -13,7 +13,7 @@ export default async function BlogSlugPage({ params }: { params: { slug: string 
 			<nav className="text-zpurple my-4">
 				<Link href="/blog">« back to blogs</Link>
 			</nav>
-			<article className="prose prose-invert prose-zyzle mx-auto">
+			<article className="prose prose-invert prose-zyzle mx-auto mb-6">
 				<h1 className="text-zlime">{blogPost.content.title}</h1>
 				<div className=" text-zcyan">{firstPublished}</div>
 				<div className="text-zgold flex flex-wrap">

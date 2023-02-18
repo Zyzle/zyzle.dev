@@ -12,7 +12,7 @@ export default async function Home() {
 			<section className="prose prose-invert prose-zyzle mx-auto mt-4 mb-6">
 				<RichTextBlok blok={homepage.body} />
 			</section>
-			<nav className="flex flex-1 flex-col max-w-prose mx-auto">
+			<nav className="flex flex-1 flex-col mb-6">
 				{linkBlocks.map((linkBlock, index) => (
 					<HomeLink key={index} homeLink={linkBlock} />
 				))}

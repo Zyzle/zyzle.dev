@@ -4,6 +4,20 @@ export interface PageItem {
 	blocks: {};
 }
 
+export interface Snippet {
+	id: string;
+	full_slug: string;
+	tag_list: string[];
+	first_published_at: string;
+	slug: string;
+	name: string;
+	content: {
+		heading: string;
+		body: {};
+		language: string;
+	};
+}
+
 export interface PostDetails {
 	id: string;
 	full_slug: string;
