@@ -5,6 +5,7 @@ import Footer from '@zyzle-dev/components/Footer';
 import classNames from '@zyzle-dev/lib/classNames';
 
 import './global.css';
+import ScrollProgress from '@zyzle-dev/components/ScrollProgress';
 
 const pacifico = Pacifico({
 	weight: '400',
@@ -50,6 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 						<Link href="/about">About</Link>
 					</nav>
 				</header>
+				<ScrollProgress />
 				<main className="flex-1 relative xl:mt-20 px-4 ">
 					<div className="container mx-auto max-w-prose">{children}</div>
 				</main>
