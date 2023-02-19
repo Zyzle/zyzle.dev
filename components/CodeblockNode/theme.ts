@@ -35,7 +35,7 @@ export const theme: PrismTheme = {
 			},
 		},
 		{
-			types: ['control-flow', 'operator'],
+			types: ['control-flow', 'operator', 'closure-punctuation', 'attr-name'],
 			style: {
 				color: '#e06c75',
 			},
@@ -44,6 +44,7 @@ export const theme: PrismTheme = {
 			types: ['parameter'],
 			style: {
 				color: '#d19a66',
+				fontStyle: 'italic',
 			},
 		},
 		{
@@ -59,13 +60,13 @@ export const theme: PrismTheme = {
 			},
 		},
 		{
-			types: ['console', 'known-class-name'],
+			types: ['console', 'known-class-name', 'class-name'],
 			style: {
 				color: '#61afef',
 			},
 		},
 		{
-			types: ['arrow', 'keyword', 'property-access'],
+			types: ['arrow', 'keyword', 'property-access', 'annotation'],
 			style: {
 				color: '#56b6c2',
 			},
@@ -74,6 +75,7 @@ export const theme: PrismTheme = {
 			types: ['comment', 'prolog', 'doctype', 'cdata'],
 			style: {
 				color: '#5c6370',
+				fontStyle: 'italic',
 			},
 		},
 		{

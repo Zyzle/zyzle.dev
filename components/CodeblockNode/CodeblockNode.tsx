@@ -1,6 +1,12 @@
 'use client';
 import { ReactNode } from 'react';
-import Highlight, { defaultProps, Language } from 'prism-react-renderer';
+import Highlight, { Language, Prism } from 'prism-react-renderer';
+// TODO: this works but feels wrong, should I try building a custom prism-react-renderer with just the langs I'll be using?
+// @ts-ignore-next-line
+(typeof global !== 'undefined' ? global : window).Prism = Prism;
+require('prismjs/components/prism-ini');
+require('prismjs/components/prism-java');
+require('prismjs/components/prism-rust');
 
 import classNames from '@zyzle-dev/lib/classNames';
 
@@ -10,12 +16,12 @@ export interface CodeblockNodeProps {
 	/**
 	 * The children of the codeblock, usually its internal text
 	 */
-	children: ReactNode;
+	children: ReactNode | string[];
 	class: string;
 }
 
 export default function CodeblockNode({ children, ...props }: CodeblockNodeProps) {
-	let code = (children! as Array<string>).join('');
+	let code = Array.isArray(children) ? (children! as string[]).join('') : children;
 	let language = 'plain';
 
 	if (props.class) {
@@ -23,25 +29,24 @@ export default function CodeblockNode({ children, ...props }: CodeblockNodeProps
 	}
 
 	return (
-		<Highlight {...defaultProps} code={code} language={language as Language} theme={theme}>
+		<Highlight Prism={Prism} code={code as string} language={language as Language} theme={theme}>
 			{({ className, style, tokens, getLineProps, getTokenProps }) => (
 				<pre
 					className={classNames(className, 'rounded-2xl overflow-auto border border-dashed border-zdefault')}
 					style={style}>
-					{tokens.map((line, i) => (
-						// eslint-disable-next-line react/jsx-key
-						<div {...getLineProps({ line, key: i })}>
-							{line.map((token, key) => (
-								// eslint-disable-next-line react/jsx-key
-								<span {...getTokenProps({ token, key })} />
-							))}
-						</div>
-					))}
+					{tokens.map((line, i) => {
+						const { key: lineKey, ...lineRest } = getLineProps({ line, key: i });
+						return (
+							<div key={lineKey} {...lineRest}>
+								{line.map((token, key) => {
+									const { key: tokenKey, ...tokenRest } = getTokenProps({ token, key });
+									return <span key={tokenKey} {...tokenRest} />;
+								})}
+							</div>
+						);
+					})}
 				</pre>
 			)}
 		</Highlight>
-		// <pre className="rounded-2xl overflow-auto border border-dashed">
-		// 	<code className={classNames(`${props.class}`)}>{children}</code>
-		// </pre>
 	);
 }
