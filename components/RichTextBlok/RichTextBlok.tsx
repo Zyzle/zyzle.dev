@@ -3,6 +3,7 @@ import { MARK_LINK, NODE_CODEBLOCK, render } from 'storyblok-rich-text-react-ren
 import LinkMark from '@zyzle-dev/components/LinkMark';
 import CodeblockNode from '@zyzle-dev/components/CodeblockNode';
 import FigureBlok from '@zyzle-dev/components/FigureBlok';
+import FormulaBlok from '@zyzle-dev/components/FormulaBlok';
 import { FigureBlokType } from '@zyzle-dev/lib/types';
 
 export default function RichTextBlok({ blok }: { blok: unknown }) {
@@ -17,6 +18,7 @@ export default function RichTextBlok({ blok }: { blok: unknown }) {
 				},
 				blokResolvers: {
 					['figure']: props => <FigureBlok {...(props as unknown as FigureBlokType)}></FigureBlok>,
+					['formula']: props => <FormulaBlok formula={props.formula as string} />,
 				},
 			})}
 		</>
