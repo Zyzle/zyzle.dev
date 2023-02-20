@@ -3,6 +3,16 @@ import RichTextBlok from '@zyzle-dev/components/RichTextBlok';
 import { getHomepage } from '@zyzle-dev/lib/api';
 import { HomeLinkType } from '@zyzle-dev/lib/types';
 
+export const metadata = {
+	description: `Personal site for Colin "Zyzle" McCulloch, a place to blog and gather random things I've worked on`,
+	twitter: {
+		card: 'summary',
+		description: `Personal site for Colin "Zyzle" McCulloch, a place to blog and gather random things I've worked on`,
+		creator: '@ZyzleDotDev',
+		type: 'website',
+	},
+};
+
 export default async function Home() {
 	const homepage = await getData();
 	const linkBlocks = homepage.blocks as unknown as HomeLinkType[];

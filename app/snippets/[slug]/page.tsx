@@ -35,3 +35,11 @@ export async function generateStaticParams() {
 
 	return params;
 }
+
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+	const res = await getSnippetBySlug(params.slug);
+
+	return {
+		title: `${res.content.heading}`,
+	};
+}

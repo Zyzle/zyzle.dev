@@ -42,3 +42,11 @@ export async function generateStaticParams() {
 
 	return params;
 }
+
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+	const res = await getBlogPostBySlug(params.slug);
+
+	return {
+		title: `${res.content.title}`,
+	};
+}

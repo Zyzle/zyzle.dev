@@ -3,6 +3,10 @@ import Link from 'next/link';
 import RichTextBlok from '@zyzle-dev/components/RichTextBlok';
 import { getPageBySlug } from '@zyzle-dev/lib/api';
 
+export const metadata = {
+	title: 'About',
+};
+
 export default async function About() {
 	const aboutPage = await getData();
 

@@ -2,10 +2,10 @@ import { Pacifico, Nunito, Fira_Code } from '@next/font/google';
 import Link from 'next/link';
 
 import Footer from '@zyzle-dev/components/Footer';
+import ScrollProgress from '@zyzle-dev/components/ScrollProgress';
 import classNames from '@zyzle-dev/lib/classNames';
 
 import './global.css';
-import ScrollProgress from '@zyzle-dev/components/ScrollProgress';
 
 const pacifico = Pacifico({
 	weight: '400',
@@ -22,13 +22,16 @@ const firaCode = Fira_Code({
 	subsets: ['latin'],
 });
 
+export const metadata = {
+	title: {
+		default: 'Zyzle.dev',
+		template: '%s | Zyzle.dev',
+	},
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en" className="h-full dark">
-			{/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
 			<head />
 			<body
 				className={classNames(
