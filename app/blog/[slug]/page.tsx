@@ -3,6 +3,8 @@ import Link from 'next/link';
 import RichTextBlok from '@zyzle-dev/components/RichTextBlok';
 import { getBlogPostBySlug, getBlogPostsDetails } from '@zyzle-dev/lib/api';
 import { formatRelativeDateString } from '@zyzle-dev/lib/formatRelativeDate';
+import Script from 'next/script';
+import Comments from '@zyzle-dev/components/Comments';
 
 export default async function BlogSlugPage({ params }: { params: { slug: string } }) {
 	const blogPost = await getData(params.slug);
@@ -25,6 +27,11 @@ export default async function BlogSlugPage({ params }: { params: { slug: string 
 				</div>
 				<RichTextBlok blok={blogPost.content.body} />
 			</article>
+			<section className="prose prose-invert prose-zyzle mx-auto mb-6">
+				<hr className="mb-3" />
+				<h3>Comments</h3>
+				<Comments discussionId={blogPost.content.ghDisc} />
+			</section>
 		</>
 	);
 }
