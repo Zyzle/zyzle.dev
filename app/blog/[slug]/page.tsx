@@ -20,8 +20,10 @@ export default async function BlogSlugPage({ params }: { params: { slug: string 
 				<div className=" text-zcyan">{firstPublished}</div>
 				<div className="text-zgold flex flex-wrap">
 					{blogPost.tag_list.map(tag => (
-						<span key={tag} className=" bg-zblock rounded-full px-2 whitespace-nowrap">
-							#{tag}
+						<span className="not-prose" key={tag}>
+							<Link href={`/tags/${tag}`}>
+								<span className="  bg-zblock rounded-full px-2 mb-1 whitespace-nowrap hover:underline">#{tag}</span>
+							</Link>
 						</span>
 					))}
 				</div>
