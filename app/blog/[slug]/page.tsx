@@ -1,10 +1,10 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
 
+import Comments from '@zyzle-dev/components/Comments';
 import RichTextBlok from '@zyzle-dev/components/RichTextBlok';
 import { getBlogPostBySlug, getBlogPostsDetails } from '@zyzle-dev/lib/api';
 import { formatRelativeDateString } from '@zyzle-dev/lib/formatRelativeDate';
-import Script from 'next/script';
-import Comments from '@zyzle-dev/components/Comments';
 
 export default async function BlogSlugPage({ params }: { params: { slug: string } }) {
 	const blogPost = await getData(params.slug);
@@ -16,7 +16,7 @@ export default async function BlogSlugPage({ params }: { params: { slug: string 
 				<Link href="/blog">« back to blogs</Link>
 			</nav>
 			<article className="prose prose-invert prose-zyzle mx-auto mb-6">
-				<h1 className="text-zlime">{blogPost.content.title}</h1>
+				<h1 className="text-zlime">{blogPost.content.heading}</h1>
 				<div className=" text-zcyan">{firstPublished}</div>
 				<div className="text-zgold flex flex-wrap">
 					{blogPost.tag_list.map(tag => (
@@ -50,10 +50,10 @@ export async function generateStaticParams() {
 	return params;
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
 	const res = await getBlogPostBySlug(params.slug);
 
 	return {
-		title: `${res.content.title}`,
+		title: `${res.content.heading}`,
 	};
 }

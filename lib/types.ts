@@ -34,7 +34,7 @@ export interface PostDetails {
 			title: string;
 			filename: string;
 		};
-		title: string;
+		heading: string;
 	};
 }
 
@@ -53,7 +53,7 @@ export interface Post {
 			name: string;
 			title: string;
 		};
-		title: string;
+		heading: string;
 	};
 }
 
@@ -80,5 +80,13 @@ export interface HomeLinkType {
 	extra_text: string;
 	link: {
 		cached_url: string;
+	};
+}
+
+export interface ContentNode {
+	full_slug: string;
+	tag_list: string[];
+	content: {
+		heading: string;
 	};
 }

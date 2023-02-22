@@ -20,9 +20,9 @@ export default function SnippetLink({ fullSlug, language, heading, firstPublishe
 				<span className=" text-zcyan flex-1">{formatRelativeDateString(firstPublishedAt)}</span>
 				<span className="text-zlime flex-1 flex flex-wrap">
 					{tagList?.map(tag => (
-						<span key={tag} className=" bg-zblock rounded-full px-2 mb-1 whitespace-nowrap">
-							#{tag}
-						</span>
+						<Link key={tag} href={`/tags/${tag}`}>
+							<span className=" bg-zblock rounded-full px-2 mb-1 whitespace-nowrap hover:underline">#{tag}</span>
+						</Link>
 					))}
 				</span>
 			</div>
