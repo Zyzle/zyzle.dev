@@ -7,6 +7,7 @@ import classNames from '@zyzle-dev/lib/classNames';
 
 import './global.css';
 import Breadcrumbs from '@zyzle-dev/components/Breadcrumbs';
+import Analytics from '@zyzle-dev/components/Analytics';
 
 const pacifico = Pacifico({
 	weight: '400',
@@ -63,6 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 					</div>
 				</main>
 				<Footer />
+				<Analytics />
 			</body>
 		</html>
 	);
