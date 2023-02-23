@@ -1,8 +1,10 @@
+name: 'Tagged Deplpoy'
+
 on:
  push:
   # Pattern matched against refs/tags
   tags:
-   - '*' # Push events to every tag not containing /
+   - v* # call hook for any v* tagged deploy on master
 
 jobs:
  build:
