@@ -1,23 +1,22 @@
 'use client';
 
-import Script from 'next/script';
+import Giscus from '@giscus/react';
 
 export default function Comments({ discussionId }: { discussionId: string }) {
 	return (
 		<>
-			<div className="giscus not-prose"></div>
-			<Script
-				strategy="lazyOnload"
-				src="https://giscus.app/client.js"
-				data-repo="Zyzle/zyzle.github.io"
-				data-repo-id="MDEwOlJlcG9zaXRvcnk0NzA2NjYzNw=="
-				data-mapping="number"
-				data-term={discussionId}
-				data-reactions-enabled="1"
-				data-emit-metadata="0"
-				data-input-position="bottom"
-				data-theme="transparent_dark"
-				data-lang="en"
+			<Giscus
+				id="comments"
+				repo="Zyzle/zyzle.github.io"
+				repoId="MDEwOlJlcG9zaXRvcnk0NzA2NjYzNw=="
+				mapping="number"
+				term={discussionId}
+				reactionsEnabled="1"
+				emitMetadata="0"
+				inputPosition="top"
+				theme="transparent_dark"
+				lang="en"
+				loading="lazy"
 			/>
 		</>
 	);
