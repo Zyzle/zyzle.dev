@@ -6,6 +6,7 @@ import ScrollProgress from '@zyzle-dev/components/ScrollProgress';
 import classNames from '@zyzle-dev/lib/classNames';
 
 import './global.css';
+import Breadcrumbs from '@zyzle-dev/components/Breadcrumbs';
 
 const pacifico = Pacifico({
 	weight: '400',
@@ -56,7 +57,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 				</header>
 				<ScrollProgress />
 				<main className="flex-1 relative xl:mt-20 px-4 ">
-					<div className="container mx-auto max-w-prose">{children}</div>
+					<div className="container mx-auto max-w-prose">
+						<Breadcrumbs />
+						{children}
+					</div>
 				</main>
 				<Footer />
 			</body>

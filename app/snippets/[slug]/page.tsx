@@ -11,9 +11,6 @@ export default async function SnippetSlugPage({ params }: { params: { slug: stri
 
 	return (
 		<>
-			<nav className="text-zpurple my-4">
-				<Link href="/snippets">« back to snippets</Link>
-			</nav>
 			<article className="prose prose-invert prose-zyzle mx-auto mb-6">
 				<h1 className="text-zlime">{snippet.content.heading}</h1>
 				<div className=" text-zcyan">{firstPublished}</div>

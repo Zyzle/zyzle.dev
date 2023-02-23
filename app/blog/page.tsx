@@ -8,9 +8,6 @@ export default async function BlogList() {
 	const blogPosts = await getData();
 	return (
 		<>
-			<nav className="text-zpurple my-4">
-				<Link href="/">« back to home</Link>
-			</nav>
 			<h1 className="text-zgold text-4xl font-bold my-4">Blog</h1>
 			{blogPosts.map(blogPost => (
 				<article key={blogPost.id} className="flex flex-col mb-6">

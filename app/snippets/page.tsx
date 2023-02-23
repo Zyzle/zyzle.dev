@@ -9,9 +9,6 @@ export default async function Snippets() {
 
 	return (
 		<>
-			<nav className="text-zpurple my-4">
-				<Link href="/">« back to home</Link>
-			</nav>
 			<h1 className="text-zgold text-4xl font-bold my-4">Snippets</h1>
 			<div className="flex flex-col gap-4 mb-6">
 				{snippets.map(snippet => (

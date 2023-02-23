@@ -8,9 +8,6 @@ export default async function TagList() {
 
 	return (
 		<>
-			<nav className="text-zpurple my-4">
-				<Link href="/">« back to home</Link>
-			</nav>
 			<h1 className="text-zgold text-4xl font-bold my-4">Tags</h1>
 			<TagCloud tags={tags} />
 		</>
