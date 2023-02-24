@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.1.0](https://github.com/Zyzle/zyzle.dev/compare/v1.0.0...v1.1.0) (2023-02-24)
+
+
+### Features
+
+* **analytics:** add vercel analytics ([23cbed1](https://github.com/Zyzle/zyzle.dev/commit/23cbed1e340e89cb6de7cc88853d54b2c3073b4d))
+* **sitemap:** add build time sitemap generator ([04246e2](https://github.com/Zyzle/zyzle.dev/commit/04246e23e22f2eedb97eb4e664cd1f077e664850)), closes [#21](https://github.com/Zyzle/zyzle.dev/issues/21)
+
+
+### Bug Fixes
+
+* **next:** pinning next versions until build error resolved ([b281a1b](https://github.com/Zyzle/zyzle.dev/commit/b281a1bec3469d6f95975ccf23c45aaa6d53131f))
+
 ## 1.0.0 (2023-02-23)
 
 
