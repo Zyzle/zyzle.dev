@@ -90,3 +90,8 @@ export interface ContentNode {
 		heading: string;
 	};
 }
+
+export interface SitemapNode {
+	full_slug: string;
+	published_at: string;
+}

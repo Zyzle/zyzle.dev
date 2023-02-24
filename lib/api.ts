@@ -1,4 +1,4 @@
-import { ContentNode, PageItem, Post, PostDetails, Snippet } from './types';
+import { ContentNode, PageItem, Post, PostDetails, SitemapNode, Snippet } from './types';
 
 async function fetchAPI(query: string, { variables }: { variables?: any } = {}) {
 	const res = await fetch(process.env.STORYBLOK_API!, {
@@ -222,4 +222,21 @@ export async function getContentNodesByTag(tag: string) {
 	);
 
 	return data.ContentNodes.items as ContentNode[];
+}
+
+export async function getSitemapNodes() {
+	const data = await fetchAPI(
+		`
+		query {
+			ContentNodes {
+				items {
+					full_slug
+					published_at
+				}
+			}
+		}
+		`
+	);
+
+	return data.ContentNodes.items as SitemapNode[];
 }
