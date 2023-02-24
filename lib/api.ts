@@ -1,3 +1,5 @@
+import { cache } from 'react';
+
 import { ContentNode, PageItem, Post, PostDetails, SitemapNode, Snippet } from './types';
 
 async function fetchAPI(query: string, { variables }: { variables?: any } = {}) {
@@ -13,6 +15,7 @@ async function fetchAPI(query: string, { variables }: { variables?: any } = {}) 
 			query,
 			variables,
 		}),
+		cache: 'no-cache',
 	});
 
 	const json = await res.json();
@@ -24,7 +27,7 @@ async function fetchAPI(query: string, { variables }: { variables?: any } = {}) 
 	return json.data;
 }
 
-export async function getHomepage() {
+export const getHomepage = cache(async () => {
 	const data = await fetchAPI(
 		`
 		query {
@@ -40,9 +43,9 @@ export async function getHomepage() {
 	`
 	);
 	return data.PageItem.content as PageItem;
-}
+});
 
-export async function getPageBySlug(slug: string) {
+export const getPageBySlug = cache(async (slug: string) => {
 	const data = await fetchAPI(
 		`
 		query PageBySlug($slug: ID!) {
@@ -64,9 +67,9 @@ export async function getPageBySlug(slug: string) {
 	);
 
 	return data.PageItem.content as PageItem;
-}
+});
 
-export async function getBlogPostsDetails() {
+export const getBlogPostsDetails = cache(async () => {
 	const data = await fetchAPI(
 		`
 		query {
@@ -95,9 +98,9 @@ export async function getBlogPostsDetails() {
 	`
 	);
 	return data.PostItems.items as PostDetails[];
-}
+});
 
-export async function getBlogPostBySlug(slug: string) {
+export const getBlogPostBySlug = cache(async (slug: string) => {
 	const data = await fetchAPI(
 		`
 		query PostBySlug($slug: ID!) {
@@ -129,9 +132,9 @@ export async function getBlogPostBySlug(slug: string) {
 	);
 
 	return data.PostItem as Post;
-}
+});
 
-export async function getSnippets() {
+export const getSnippets = cache(async () => {
 	const data = await fetchAPI(
 		`
 		query {
@@ -153,9 +156,9 @@ export async function getSnippets() {
 	`
 	);
 	return data.SnippetItems.items as Partial<Snippet>[];
-}
+});
 
-export async function getSnippetBySlug(slug: string) {
+export const getSnippetBySlug = cache(async (slug: string) => {
 	const data = await fetchAPI(
 		`
 		query SnippetBySlug($slug: ID!) {
@@ -182,9 +185,9 @@ export async function getSnippetBySlug(slug: string) {
 	);
 
 	return data.SnippetItem as Snippet;
-}
+});
 
-export async function getAllContentNodes() {
+export const getAllContentNodes = cache(async () => {
 	const data = await fetchAPI(
 		`
 		query {
@@ -199,9 +202,9 @@ export async function getAllContentNodes() {
 	);
 
 	return data.ContentNodes.items as ContentNode[];
-}
+});
 
-export async function getContentNodesByTag(tag: string) {
+export const getContentNodesByTag = cache(async (tag: string) => {
 	const data = await fetchAPI(
 		`
 		query ContentNodesByTag($tag: String!){
@@ -222,9 +225,9 @@ export async function getContentNodesByTag(tag: string) {
 	);
 
 	return data.ContentNodes.items as ContentNode[];
-}
+});
 
-export async function getSitemapNodes() {
+export const getSitemapNodes = cache(async () => {
 	const data = await fetchAPI(
 		`
 		query {
@@ -239,4 +242,4 @@ export async function getSitemapNodes() {
 	);
 
 	return data.ContentNodes.items as SitemapNode[];
-}
+});
