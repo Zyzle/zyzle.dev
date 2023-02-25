@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: zyzle.dev
+Token: d1b3900b39c03df42880db27129d2f3c2467b0cfbee47ccf5ce04a47887fee29
