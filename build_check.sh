@@ -4,7 +4,7 @@ echo "VERCEL_GIT_COMMIT_REF: $VERCEL_GIT_COMMIT_REF"
 
 if [[ "$VERCEL_GIT_COMMIT_REF" == "master"  ]] ; then
   # Dont build master, we trigger it only with releases
-  git describe --exact-match --tags HEAD 2> /dev/null
+  git show --oneline -s HEAD | grep 'release-please' 2> /dev/null
 
   if [ $? -eq 0 ]; then
     # Build if we have a tag
