@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/Zyzle/zyzle.dev/compare/v1.1.0...v1.1.1) (2023-02-25)
+
+
+### Bug Fixes
+
+* **sitemap:** minor fix and release ([1d556b1](https://github.com/Zyzle/zyzle.dev/commit/1d556b17134c4edc95b3e469f12ff038a5a9bae9))
+
 ## [1.1.0](https://github.com/Zyzle/zyzle.dev/compare/v1.0.0...v1.1.0) (2023-02-24)
 
 
