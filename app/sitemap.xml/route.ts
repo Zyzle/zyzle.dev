@@ -10,6 +10,7 @@ export async function GET() {
 <url>
 	<loc>${BASE_PATH}/${node.full_slug === 'home' ? '' : node.full_slug}</loc>
 	<lastmod>${node.published_at}</lastmod>
+	<changefreq>weekly</changefreq>
 </url>
 		`;
 		})
