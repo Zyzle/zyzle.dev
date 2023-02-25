@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.1.2](https://github.com/Zyzle/zyzle.dev/compare/v1.1.1...v1.1.2) (2023-02-25)
+
+
+### Bug Fixes
+
+* **cache:** change fetch request cacheing ([f29e419](https://github.com/Zyzle/zyzle.dev/commit/f29e41996813f2499262fdbdf94f805c5625efc2))
+* **meta:** readd .wellknow and bing verification files ([1a6a1bb](https://github.com/Zyzle/zyzle.dev/commit/1a6a1bb86b2dbba03111a5566601c45b7c3b1da9))
+* try again to fix build check ([646a9a4](https://github.com/Zyzle/zyzle.dev/commit/646a9a499854b0c4f55b86614f91ac9561031ed3))
+
 ## [1.1.1](https://github.com/Zyzle/zyzle.dev/compare/v1.1.0...v1.1.1) (2023-02-25)
 
 
