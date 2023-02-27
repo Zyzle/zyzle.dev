@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.3](https://github.com/Zyzle/zyzle.dev/compare/v1.1.2...v1.1.3) (2023-02-27)
+
+
+### Bug Fixes
+
+* **comments:** move comments over to zyzle.dev repo from zyzle.github.io ([1c67ce5](https://github.com/Zyzle/zyzle.dev/commit/1c67ce5dd50250f91f67e43da1cae173d69c7722)), closes [#28](https://github.com/Zyzle/zyzle.dev/issues/28)
+* move nextjs back to canary version which seems to handle GraphQL POSTs correctly ([1c67ce5](https://github.com/Zyzle/zyzle.dev/commit/1c67ce5dd50250f91f67e43da1cae173d69c7722))
+
 ## [1.1.2](https://github.com/Zyzle/zyzle.dev/compare/v1.1.1...v1.1.2) (2023-02-25)
 
 
