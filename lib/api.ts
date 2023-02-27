@@ -1,4 +1,4 @@
-import { ContentNode, PageItem, Post, PostDetails, SitemapNode, Snippet } from './types';
+import { ContentNode, PageItem, Post, PostDetails, Project, SitemapNode, Snippet } from './types';
 
 async function fetchAPI(query: string, { variables }: { variables?: any } = {}) {
 	const res = await fetch(process.env.STORYBLOK_API!, {
@@ -156,6 +156,32 @@ export const getSnippets = async () => {
 	return data.SnippetItems.items as Partial<Snippet>[];
 };
 
+export const getProjects = async () => {
+	const data = await fetchAPI(
+		`
+		query {
+			ProjectItems {
+				items {
+					slug
+					full_slug
+					tag_list
+					content {
+						heading
+						body
+						excerpt
+						mainImage {
+							alt
+							filename
+						}
+					}
+				}
+			}
+		}
+	`
+	);
+	return data.ProjectItems.items as Partial<Project>[];
+};
+
 export const getSnippetBySlug = async (slug: string) => {
 	const data = await fetchAPI(
 		`
@@ -183,6 +209,34 @@ export const getSnippetBySlug = async (slug: string) => {
 	);
 
 	return data.SnippetItem as Snippet;
+};
+
+export const getProjectBySlug = async (slug: string) => {
+	const data = await fetchAPI(
+		`
+		query ProjectBySlug($slug: ID!) {
+			ProjectItem(id: $slug) {
+				id
+				name
+		    tag_list
+				slug
+    		full_slug
+		    first_published_at
+				content {
+					heading
+					body
+				}
+			}
+		}
+		`,
+		{
+			variables: {
+				slug: `projects/${slug}`,
+			},
+		}
+	);
+
+	return data.ProjectItem as Project;
 };
 
 export const getAllContentNodes = async () => {

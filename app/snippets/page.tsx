@@ -1,7 +1,4 @@
-import Link from 'next/link';
-
 import { getSnippets } from '@zyzle-dev/lib/api';
-import { formatRelativeDateString } from '@zyzle-dev/lib/formatRelativeDate';
 import SnippetLink from '@zyzle-dev/components/SnippetLink';
 
 export default async function Snippets() {

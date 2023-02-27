@@ -18,6 +18,21 @@ export interface Snippet {
 	};
 }
 
+export interface Project {
+	full_slug: string;
+	slug: string;
+	tag_list: string[];
+	content: {
+		heading: string;
+		body: {};
+		excerpt: {};
+		mainImage: {
+			filename: string;
+			alt: string;
+		};
+	};
+}
+
 export interface PostDetails {
 	id: string;
 	full_slug: string;

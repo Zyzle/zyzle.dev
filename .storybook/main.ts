@@ -33,5 +33,14 @@ const config: StorybookConfig = {
 	docs: {
 		autodocs: 'tag',
 	},
+	webpackFinal: async config => {
+		// do mutation to the config
+		config.experiments = {
+			...config.experiments,
+			asyncWebAssembly: true,
+		};
+
+		return config;
+	},
 };
 export default config;

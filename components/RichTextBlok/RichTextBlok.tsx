@@ -1,4 +1,4 @@
-import { MARK_LINK, NODE_CODEBLOCK, render } from 'storyblok-rich-text-react-renderer';
+import { MARK_LINK, NODE_CODEBLOCK, render, RenderOptions } from 'storyblok-rich-text-react-renderer';
 
 import LinkMark from '@zyzle-dev/components/LinkMark';
 import CodeblockNode from '@zyzle-dev/components/CodeblockNode';
@@ -6,7 +6,11 @@ import FigureBlok from '@zyzle-dev/components/FigureBlok';
 import FormulaBlok from '@zyzle-dev/components/FormulaBlok';
 import { FigureBlokType } from '@zyzle-dev/lib/types';
 
-export default function RichTextBlok({ blok }: { blok: unknown }) {
+export type BlokResolvers = {
+	[key: string]: (props: unknown) => JSX.Element | null;
+};
+
+export default function RichTextBlok({ blok, blokResolvers }: { blok: unknown; blokResolvers?: BlokResolvers }) {
 	return (
 		<>
 			{render(blok, {
@@ -19,6 +23,11 @@ export default function RichTextBlok({ blok }: { blok: unknown }) {
 				blokResolvers: {
 					['figure']: props => <FigureBlok {...(props as unknown as FigureBlokType)}></FigureBlok>,
 					['formula']: props => <FormulaBlok formula={props.formula as string} />,
+					...blokResolvers,
+				},
+				defaultBlokResolver: (name: string, props: unknown) => {
+					console.warn('No blok resolver found for blok:', name, props);
+					return null;
 				},
 			})}
 		</>

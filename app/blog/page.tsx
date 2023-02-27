@@ -10,9 +10,9 @@ export default async function BlogList() {
 		<>
 			<h1 className="text-zgold text-4xl font-bold my-4">Blog</h1>
 			{blogPosts.map(blogPost => (
-				<article key={blogPost.id} className="flex flex-col mb-6">
+				<article key={blogPost.id} className="flex flex-col mb-8">
 					<Link href={`/${blogPost.full_slug}`}>
-						<h2 className="text-zlime text-2xl font-semibold">{blogPost.content.heading}</h2>
+						<h2 className="text-zlime text-2xl font-semibold hover:underline">{blogPost.content.heading}</h2>
 					</Link>
 					<div className="flex flex-row mb-3">
 						<span className="text-zcyan flex-1">{formatRelativeDateString(blogPost.first_published_at)}</span>
@@ -26,6 +26,7 @@ export default async function BlogList() {
 					</div>
 					<section className="prose prose-invert prose-zyzle mx-auto">
 						<RichTextBlok blok={blogPost.content.excerpt} />
+						<Link href={`/${blogPost.full_slug}`}>Continue reading...</Link>
 					</section>
 				</article>
 			))}
