@@ -7,8 +7,8 @@ export default function Comments({ discussionId }: { discussionId: string }) {
 		<>
 			<Giscus
 				id="comments"
-				repo="Zyzle/zyzle.github.io"
-				repoId="MDEwOlJlcG9zaXRvcnk0NzA2NjYzNw=="
+				repo="Zyzle/zyzle.dev"
+				repoId="R_kgDOI5nGbQ"
 				mapping="number"
 				term={discussionId}
 				reactionsEnabled="1"
