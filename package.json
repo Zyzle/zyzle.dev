@@ -12,7 +12,6 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
-		"proxy": "local-ssl-proxy --source 3010 --target 3000 --key ./localcerts/localhost-key.pem --cert ./localcerts/localhost.pem",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build"
 	},
