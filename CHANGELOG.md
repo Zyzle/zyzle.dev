@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.0](https://github.com/Zyzle/zyzle.dev/compare/v1.1.3...v1.2.0) (2023-03-03)
+
+
+### Features
+
+* **components:** add projects pages and first project ([ea85df2](https://github.com/Zyzle/zyzle.dev/commit/ea85df2e15724a692ea90439c95e50f10dd4fbf2)), closes [#11](https://github.com/Zyzle/zyzle.dev/issues/11)
+
+
+### Bug Fixes
+
+* **metadata:** fix some of the metadata issues for the site ([e0f0c6f](https://github.com/Zyzle/zyzle.dev/commit/e0f0c6fab4767e4d5739a5890d03a075e292ed16))
+
 ## [1.1.3](https://github.com/Zyzle/zyzle.dev/compare/v1.1.2...v1.1.3) (2023-02-27)
 
 
