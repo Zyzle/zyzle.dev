@@ -1,12 +1,20 @@
-import { getSnippets } from '@zyzle-dev/lib/api';
+import { Metadata } from 'next';
+import { render } from 'storyblok-rich-text-react-renderer';
+
+import { getPageBySlug, getSnippets } from '@zyzle-dev/lib/api';
 import SnippetLink from '@zyzle-dev/components/SnippetLink';
+import RichTextBlok from '@zyzle-dev/components/RichTextBlok';
+import stripResolver from '@zyzle-dev/lib/stripResolver';
 
 export default async function Snippets() {
-	const snippets = await getData();
+	const { page, snippets } = await getData();
 
 	return (
 		<>
-			<h1 className="text-zgold text-4xl font-bold my-4">Snippets</h1>
+			<h1 className="text-zgold text-4xl font-bold my-4">{page.heading}</h1>
+			<div className="prose prose-invert prose-zyzle mx-auto mb-6">
+				<RichTextBlok blok={page.body} />
+			</div>
 			<div className="flex flex-col gap-4 mb-6">
 				{snippets.map(snippet => (
 					<SnippetLink
@@ -23,7 +31,20 @@ export default async function Snippets() {
 	);
 }
 
+export async function generateMetadata(): Promise<Metadata> {
+	const page = await getPageBySlug('snippets/');
+	const stripped = (render(page.body, stripResolver) as Array<string>).flat().join('');
+	return {
+		title: `${page.heading}`,
+		description: stripped,
+	};
+}
+
 async function getData() {
-	const res = await getSnippets();
-	return res;
+	const page = await getPageBySlug('snippets/');
+	const snippets = await getSnippets();
+	return {
+		page,
+		snippets,
+	};
 }

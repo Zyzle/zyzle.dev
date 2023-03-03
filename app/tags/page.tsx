@@ -1,20 +1,36 @@
-import Link from 'next/link';
+import { Metadata } from 'next';
+import { render } from 'storyblok-rich-text-react-renderer';
 
-import { getAllContentNodes } from '@zyzle-dev/lib/api';
+import { getAllContentNodes, getPageBySlug } from '@zyzle-dev/lib/api';
+import RichTextBlok from '@zyzle-dev/components/RichTextBlok';
 import TagCloud from '@zyzle-dev/components/TagCloud';
+import stripResolver from '@zyzle-dev/lib/stripResolver';
 
 export default async function TagList() {
-	const tags = await getData();
+	const { tags, page } = await getData();
 
 	return (
 		<>
-			<h1 className="text-zgold text-4xl font-bold my-4">Tags</h1>
+			<h1 className="text-zgold text-4xl font-bold my-4">{page.heading}</h1>
+			<div className="prose prose-invert prose-zyzle mx-auto mb-6">
+				<RichTextBlok blok={page.body} />
+			</div>
 			<TagCloud tags={tags} />
 		</>
 	);
 }
 
+export async function generateMetadata(): Promise<Metadata> {
+	const page = await getPageBySlug('tags/');
+	const stripped = (render(page.body, stripResolver) as Array<string>).flat().join('');
+	return {
+		title: `${page.heading}`,
+		description: stripped,
+	};
+}
+
 async function getData() {
+	const page = await getPageBySlug('tags/');
 	let allTags: { [key: string]: string } = {};
 	const res = await getAllContentNodes();
 
@@ -28,10 +44,10 @@ async function getData() {
 		}, allTags);
 	});
 
-	const cloudTags = Object.keys(allTags).map(tag => ({
+	const tags = Object.keys(allTags).map(tag => ({
 		value: tag,
 		count: allTags[tag],
 	}));
 
-	return cloudTags;
+	return { page, tags };
 }

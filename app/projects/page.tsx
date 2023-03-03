@@ -1,14 +1,20 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
+import { render } from 'storyblok-rich-text-react-renderer';
 
-import { getProjects } from '@zyzle-dev/lib/api';
+import { getPageBySlug, getProjects } from '@zyzle-dev/lib/api';
 import RichTextBlok from '@zyzle-dev/components/RichTextBlok';
+import stripResolver from '@zyzle-dev/lib/stripResolver';
 
 export default async function Projects() {
-	const projects = await getData();
+	const { page, projects } = await getData();
 
 	return (
 		<>
-			<h1 className="text-zgold text-4xl font-bold my-4">Projects</h1>
+			<h1 className="text-zgold text-4xl font-bold my-4">{page.heading}</h1>
+			<div className="prose prose-invert prose-zyzle mx-auto mb-6">
+				<RichTextBlok blok={page.body} />
+			</div>
 			{projects.map((project, i) => (
 				<article key={i} className="flex flex-col mb-8">
 					<Link href={`/${project.full_slug}`}>
@@ -33,7 +39,20 @@ export default async function Projects() {
 	);
 }
 
+export async function generateMetadata(): Promise<Metadata> {
+	const page = await getPageBySlug('projects/');
+	const stripped = (render(page.body, stripResolver) as Array<[]>)[0].join('');
+	return {
+		title: `${page.heading}`,
+		description: stripped,
+	};
+}
+
 async function getData() {
-	const res = await getProjects();
-	return res;
+	const page = await getPageBySlug('projects/');
+	const projects = await getProjects();
+	return {
+		page,
+		projects,
+	};
 }

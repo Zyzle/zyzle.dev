@@ -1,4 +1,4 @@
-import { Pacifico, Nunito, Fira_Code } from "next/font/google";
+import { Pacifico, Nunito, Fira_Code } from 'next/font/google';
 import Link from 'next/link';
 
 import Footer from '@zyzle-dev/components/Footer';
@@ -47,7 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 						'px-4 py-5'
 					)}>
 					<Link href="/">
-						<h1 className={classNames('text-zpink text-3xl', pacifico.className)}>Zyzle.dev</h1>
+						<span className={classNames('text-zpink text-3xl', pacifico.className)}>Zyzle.dev</span>
 					</Link>
 					<nav className="text-zdefault hidden">
 						<Link href="/blog">Blog</Link>

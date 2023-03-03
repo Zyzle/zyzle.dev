@@ -1,8 +1,10 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { render } from 'storyblok-rich-text-react-renderer';
 
 import RichTextBlok from '@zyzle-dev/components/RichTextBlok';
 import { getProjectBySlug, getProjects } from '@zyzle-dev/lib/api';
+import stripResolver from '@zyzle-dev/lib/stripResolver';
 // import ImageKmeans from '@zyzle-dev/components/ImageKmeans';
 
 const arbitratyBlokResolvers = {
@@ -43,4 +45,14 @@ export async function generateStaticParams() {
 	}));
 
 	return params;
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+	const res = await getProjectBySlug(params.slug);
+	const stripped = (render(res.content.body, stripResolver) as Array<[]>)[0].join('').slice(0, 150) + '...';
+
+	return {
+		title: `${res.content.heading}`,
+		description: stripped,
+	};
 }

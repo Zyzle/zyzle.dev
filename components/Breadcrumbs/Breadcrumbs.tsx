@@ -1,7 +1,7 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function Breadcrumbs() {
 	const pathname = usePathname();
@@ -9,10 +9,14 @@ export default function Breadcrumbs() {
 
 	return (
 		<nav className="text-zpurple my-4" aria-label="breadcrumbs">
-			<span className="mr-2 hover:underline">
-				<Link href="/">home</Link>
-			</span>
-			{!!paths.length && <span>»</span>}
+			{!!paths.length && (
+				<>
+					<span className="mr-2 hover:underline">
+						<Link href="/">home</Link>
+					</span>
+					<span>»</span>
+				</>
+			)}
 			{paths.map((path, index) => {
 				const href = `/${paths.slice(0, index + 1).join('/')}`;
 				const isLast = index === paths.length - 1;

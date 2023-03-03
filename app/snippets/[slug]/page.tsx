@@ -1,9 +1,11 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
+import { render } from 'storyblok-rich-text-react-renderer';
 
 import RichTextBlok from '@zyzle-dev/components/RichTextBlok';
 import { getSnippetBySlug, getSnippets } from '@zyzle-dev/lib/api';
 import { formatRelativeDateString } from '@zyzle-dev/lib/formatRelativeDate';
-import { Metadata } from 'next';
+import stripResolver from '@zyzle-dev/lib/stripResolver';
 
 export default async function SnippetSlugPage({ params }: { params: { slug: string } }) {
 	const snippet = await getData(params.slug);
@@ -45,8 +47,10 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
 	const res = await getSnippetBySlug(params.slug);
+	const stripped = (render(res.content.body, stripResolver) as Array<[]>)[0].join('');
 
 	return {
 		title: `${res.content.heading}`,
+		description: stripped,
 	};
 }

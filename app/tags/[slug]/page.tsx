@@ -33,5 +33,6 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
 	return {
 		title: `${params.slug}`,
+		description: `A list of pages tagged with: ${params.slug}`,
 	};
 }

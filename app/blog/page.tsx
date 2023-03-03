@@ -1,14 +1,20 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
+import { render } from 'storyblok-rich-text-react-renderer';
 
 import RichTextBlok from '@zyzle-dev/components/RichTextBlok';
-import { getBlogPostsDetails } from '@zyzle-dev/lib/api';
+import { getBlogPostsDetails, getPageBySlug } from '@zyzle-dev/lib/api';
 import { formatRelativeDateString } from '@zyzle-dev/lib/formatRelativeDate';
+import stripResolver from '@zyzle-dev/lib/stripResolver';
 
 export default async function BlogList() {
-	const blogPosts = await getData();
+	const { page, blogPosts } = await getData();
 	return (
 		<>
-			<h1 className="text-zgold text-4xl font-bold my-4">Blog</h1>
+			<h1 className="text-zgold text-4xl font-bold my-4">{page.heading}</h1>
+			<div className="prose prose-invert prose-zyzle mx-auto mb-6">
+				<RichTextBlok blok={page.body} />
+			</div>
 			{blogPosts.map(blogPost => (
 				<article key={blogPost.id} className="flex flex-col mb-8">
 					<Link href={`/${blogPost.full_slug}`}>
@@ -34,7 +40,20 @@ export default async function BlogList() {
 	);
 }
 
+export async function generateMetadata(): Promise<Metadata> {
+	const page = await getPageBySlug('blog/');
+	const stripped = (render(page.body, stripResolver) as Array<string>).flat().join('');
+	return {
+		title: `${page.heading}`,
+		description: stripped,
+	};
+}
+
 async function getData() {
-	const res = await getBlogPostsDetails();
-	return res;
+	const page = await getPageBySlug('blog/');
+	const blogPosts = await getBlogPostsDetails();
+	return {
+		page,
+		blogPosts,
+	};
 }

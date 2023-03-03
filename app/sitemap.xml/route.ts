@@ -8,7 +8,7 @@ export async function GET() {
 		.map(node => {
 			return `
 <url>
-	<loc>${BASE_PATH}/${node.full_slug === 'home' ? '' : node.full_slug}</loc>
+	<loc>${BASE_PATH}/${node.full_slug === 'home' ? '' : node.full_slug.replace(/\/$/, '')}</loc>
 	<lastmod>${node.published_at}</lastmod>
 	<changefreq>weekly</changefreq>
 </url>

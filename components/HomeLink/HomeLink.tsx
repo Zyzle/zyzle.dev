@@ -12,7 +12,7 @@ export default function HomeLink({ homeLink }: HomeLinkProps) {
 		<Link href={`/${homeLink.link.cached_url}`} className="flex flex-row items-center gap-4 mb-4 group">
 			<Icon type={homeLink.image} alt={`${homeLink.image} icon`} />
 			<div>
-				<h2 className="text-zgold text-xl font-bold group-hover:underline">{homeLink.name}</h2>
+				<h2 className="text-zlime text-xl font-bold group-hover:underline">{homeLink.name}</h2>
 				<span className="text-zdefault">{homeLink.extra_text}</span>
 			</div>
 		</Link>

@@ -1,28 +1,22 @@
+import { Metadata } from 'next';
+import { render } from 'storyblok-rich-text-react-renderer';
+
 import HomeLink from '@zyzle-dev/components/HomeLink';
 import RichTextBlok from '@zyzle-dev/components/RichTextBlok';
 import TagCloud from '@zyzle-dev/components/TagCloud';
-import { getAllContentNodes, getHomepage } from '@zyzle-dev/lib/api';
+import { getAllContentNodes, getPageBySlug } from '@zyzle-dev/lib/api';
+import stripResolver from '@zyzle-dev/lib/stripResolver';
 import { HomeLinkType } from '@zyzle-dev/lib/types';
 
-export const metadata = {
-	description: `Personal site for Colin "Zyzle" McCulloch, a place to blog and gather random things I've worked on`,
-	twitter: {
-		card: 'summary',
-		description: `Personal site for Colin "Zyzle" McCulloch, a place to blog and gather random things I've worked on`,
-		creator: '@ZyzleDotDev',
-		type: 'website',
-	},
-};
-
 export default async function Home() {
-	const homepage = await getData();
-	const tags = await getTags();
-	const linkBlocks = homepage.blocks as unknown as HomeLinkType[];
+	const { page, tags } = await getData();
+	const linkBlocks = page.blocks as unknown as HomeLinkType[];
 
 	return (
 		<>
+			<h1 className="text-zgold text-4xl font-bold my-4">{page.heading}</h1>
 			<section className="prose prose-invert prose-zyzle mx-auto mt-4 mb-6">
-				<RichTextBlok blok={homepage.body} />
+				<RichTextBlok blok={page.body} />
 			</section>
 			<nav className="flex flex-1 flex-col lg:flex-row gap-6 mb-6">
 				<section className="flex-2">
@@ -39,12 +33,24 @@ export default async function Home() {
 	);
 }
 
-async function getData() {
-	const res = await getHomepage();
-	return res;
+export async function generateMetadata(): Promise<Metadata> {
+	const page = await getPageBySlug('home/');
+	const stripped = (render(page.body, stripResolver) as Array<string>).flat().join('');
+	return {
+		title: `${page.heading} | Zyzle.dev`,
+		description: stripped,
+		authors: [{ name: 'Colin McCulloch', url: 'https://zyzle.dev' }],
+		// twitter: {
+		// 		card: 'summary',
+		// 		description: `Personal site for Colin "Zyzle" McCulloch, a place to blog and gather random things I've worked on`,
+		// 		creator: '@ZyzleDotDev',
+		// 		type: 'website',
+		// 	},
+	};
 }
 
-async function getTags() {
+async function getData() {
+	const page = await getPageBySlug('home/');
 	let allTags: { [key: string]: string } = {};
 	const res = await getAllContentNodes();
 
@@ -58,10 +64,9 @@ async function getTags() {
 		}, allTags);
 	});
 
-	const cloudTags = Object.keys(allTags).map(tag => ({
+	const tags = Object.keys(allTags).map(tag => ({
 		value: tag,
 		count: allTags[tag],
 	}));
-
-	return cloudTags;
+	return { page, tags };
 }
