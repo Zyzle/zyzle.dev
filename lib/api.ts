@@ -25,24 +25,6 @@ async function fetchAPI(query: string, { variables }: { variables?: any } = {}) 
 	return json.data;
 }
 
-export const getHomepage = async () => {
-	const data = await fetchAPI(
-		`
-		query {
-			PageItem(id: "home") {
-				id
-				content {
-					heading
-					body
-					blocks
-				}
-			}
-		}
-	`
-	);
-	return data.PageItem.content as PageItem;
-};
-
 export const getPageBySlug = async (slug: string) => {
 	const data = await fetchAPI(
 		`

@@ -40,12 +40,6 @@ export async function generateMetadata(): Promise<Metadata> {
 		title: `${page.heading} | Zyzle.dev`,
 		description: stripped,
 		authors: [{ name: 'Colin McCulloch', url: 'https://zyzle.dev' }],
-		// twitter: {
-		// 		card: 'summary',
-		// 		description: `Personal site for Colin "Zyzle" McCulloch, a place to blog and gather random things I've worked on`,
-		// 		creator: '@ZyzleDotDev',
-		// 		type: 'website',
-		// 	},
 	};
 }
 
