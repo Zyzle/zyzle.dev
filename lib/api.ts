@@ -7,7 +7,7 @@ async function fetchAPI(query: string, { variables }: { variables?: any } = {}) 
 			'Content-Type': 'application/json',
 			Accept: 'application/json',
 			Token: process.env.STORYBLOK_API_KEY!,
-			Version: process.env.STORYBLOK_PREVIEW! ? 'draft' : 'published',
+			Version: process.env.STORYBLOK_VERSION!,
 		},
 		body: JSON.stringify({
 			query,

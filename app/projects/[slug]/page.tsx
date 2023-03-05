@@ -5,10 +5,18 @@ import { render } from 'storyblok-rich-text-react-renderer';
 import RichTextBlok from '@zyzle-dev/components/RichTextBlok';
 import { getProjectBySlug, getProjects } from '@zyzle-dev/lib/api';
 import stripResolver from '@zyzle-dev/lib/stripResolver';
-// import ImageKmeans from '@zyzle-dev/components/ImageKmeans';
+import MemeText from '@zyzle-dev/components/MemeText';
 
 const arbitratyBlokResolvers = {
-	// ['arbitrary_blok']: (blok: any) => <ImageKmeans />,
+	['arbitrary_blok']: (props: unknown) => {
+		const { blok_component } = props as { blok_component: string };
+		switch (blok_component) {
+			case 'meme-text':
+				return <MemeText />;
+			default:
+				return null;
+		}
+	},
 };
 
 export default async function ProjectSlugPage({ params }: { params: { slug: string } }) {
