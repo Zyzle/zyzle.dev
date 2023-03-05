@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.3.0](https://github.com/Zyzle/zyzle.dev/compare/v1.2.0...v1.3.0) (2023-03-05)
+
+
+### Features
+
+* **components:** add MemeText component ([3eb65c9](https://github.com/Zyzle/zyzle.dev/commit/3eb65c92b9f0e90acb3085153d8e498eda2740b5))
+
+
+### Miscellaneous
+
+* minor cleanup ([debbbc0](https://github.com/Zyzle/zyzle.dev/commit/debbbc055c8e637813bf5b34954206053362b5a7))
+
 ## [1.2.0](https://github.com/Zyzle/zyzle.dev/compare/v1.1.3...v1.2.0) (2023-03-03)
 
 
