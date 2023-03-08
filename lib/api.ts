@@ -244,6 +244,8 @@ export const getContentNodesByTag = async (tag: string) => {
 		query ContentNodesByTag($tag: String!){
 			ContentNodes(with_tag: $tag) {
 				items {
+					id
+					first_published_at
 					full_slug
 					tag_list
 					content

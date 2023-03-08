@@ -5,7 +5,7 @@ export interface PageItem {
 }
 
 export interface Snippet {
-	id: string;
+	id: number;
 	full_slug: string;
 	tag_list: string[];
 	first_published_at: string;
@@ -19,6 +19,7 @@ export interface Snippet {
 }
 
 export interface Project {
+	id: number;
 	full_slug: string;
 	slug: string;
 	tag_list: string[];
@@ -34,7 +35,7 @@ export interface Project {
 }
 
 export interface PostDetails {
-	id: string;
+	id: number;
 	full_slug: string;
 	slug: string;
 	name: string;
@@ -54,6 +55,7 @@ export interface PostDetails {
 }
 
 export interface Post {
+	id: number;
 	first_published_at: string;
 	tag_list: string[];
 	content: {
@@ -99,10 +101,14 @@ export interface HomeLinkType {
 }
 
 export interface ContentNode {
+	id: number;
+	first_published_at: string;
 	full_slug: string;
 	tag_list: string[];
 	content: {
 		heading: string;
+		body: {};
+		excerpt?: {};
 	};
 }
 
