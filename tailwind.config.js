@@ -53,5 +53,24 @@ module.exports = {
 			}),
 		},
 	},
-	plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')],
+	plugins: [
+		require('@tailwindcss/typography'),
+		require('@tailwindcss/forms'),
+		function ({ addBase, theme }) {
+			function extractColorVars(colors) {
+				return Object.entries(colors).reduce((acc, [key, value]) => {
+					if (typeof value === 'string') {
+						acc[`--color-${key}`] = value;
+					} else {
+						acc[`--color-${key}`] = value['DEFAULT'];
+					}
+					return acc;
+				}, {});
+			}
+
+			addBase({
+				':root': extractColorVars(theme('colors')),
+			});
+		},
+	],
 };
