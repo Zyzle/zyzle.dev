@@ -32,12 +32,18 @@ export default function CodeblockNode({ children, ...props }: CodeblockNodeProps
 		<Highlight Prism={Prism} code={code as string} language={language as Language} theme={theme}>
 			{({ className, style, tokens, getLineProps, getTokenProps }) => (
 				<pre
-					className={classNames(className, 'rounded-2xl overflow-auto border border-dashed border-zdefault')}
-					style={style}>
+					className={classNames(
+						className,
+						'rounded-2xl overflow-auto border border-dashed border-zdefault',
+						language === 'plaintext' ? '' : 'px-0 py-4'
+					)}
+					style={style}
+					data-line-numbers
+					data-lang={language}>
 					{tokens.map((line, i) => {
 						const { key: lineKey, ...lineRest } = getLineProps({ line, key: i });
 						return (
-							<div key={lineKey} {...lineRest}>
+							<div key={lineKey} {...lineRest} data-line-number={i + 1}>
 								{line.map((token, key) => {
 									const { key: tokenKey, ...tokenRest } = getTokenProps({ token, key });
 									return <span key={tokenKey} {...tokenRest} />;
