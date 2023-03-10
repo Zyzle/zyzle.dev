@@ -1257,9 +1257,9 @@
     giscus "^1.2.8"
 
 "@headlessui/react@^1.7.10":
-  version "1.7.12"
-  resolved "https://registry.yarnpkg.com/@headlessui/react/-/react-1.7.12.tgz#9ab2baa3c4f632782631e00937f9531a34033619"
-  integrity sha512-FhSx5V+Qp0GvbTpaxyS+ymGDDNntCacClWsk/d8Upbr19g3AsPbjfPk4+m2CgJGcuCB5Dz7LpUIOAbvQTyjL2g==
+  version "1.7.13"
+  resolved "https://registry.yarnpkg.com/@headlessui/react/-/react-1.7.13.tgz#fd150b394954e9f1d86ed2340cffd1217d6e7628"
+  integrity sha512-9n+EQKRtD9266xIHXdY5MfiXPDfYwl7zBM7KOx2Ae3Gdgxy8QML1FkCMjq6AsOf0l6N9uvI4HcFtuFlenaldKg==
   dependencies:
     client-only "^0.0.1"
 
@@ -1453,9 +1453,9 @@
   integrity sha512-4sergLt7xp9+mZuKME/xM4tLlHGTcmL7naCq0qCTcAlof6NnttshYgiLOdhSiy0NcI+/yM3BjvdEk++O96UzTg==
 
 "@next/font@^13.2.2-canary.1":
-  version "13.2.2-canary.1"
-  resolved "https://registry.yarnpkg.com/@next/font/-/font-13.2.2-canary.1.tgz#96eeae335ff9324509eae3ae626b8429c90c5380"
-  integrity sha512-uHWQY+bUA7qGa8or+nwI3y770V9EVWA4HeUrd7LjFqEDpI5YxHrzyNQtyILt0VDPyXXlTX7VYw3dzSR3zcrD6g==
+  version "13.2.3"
+  resolved "https://registry.yarnpkg.com/@next/font/-/font-13.2.3.tgz#96d8a1b431425b47e01f3620118d570e2148e312"
+  integrity sha512-7EHzk0f7FVYICLUZTpyPk93IfcTUao++Xt1Sgb+Zk5dVOCYHabqLtlF5ywSoXIqyFlo0qlshEBxsrzHAGTWkDw==
 
 "@next/swc-android-arm-eabi@13.2.3":
   version "13.2.3"
