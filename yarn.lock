@@ -2984,13 +2984,6 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-tagcloud@^1.1.7":
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/@types/react-tagcloud/-/react-tagcloud-1.1.7.tgz#dde198193bc3dc5c610bbd76d4f442230c4f0655"
-  integrity sha512-dbfJSKointDfjJm4jibuSDDCPjHGlCmBWavKMRmdD2S/xFQ0PIwMScYkbqs58ioty6OMm0Grha0xzRLUMm2OhQ==
-  dependencies:
-    "@types/react" "*"
-
 "@types/react@*", "@types/react@18.0.27":
   version "18.0.27"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.27.tgz#d9425abe187a00f8a5ec182b010d4fd9da703b71"
@@ -9033,7 +9026,7 @@ prompts@^2.4.0:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -9154,11 +9147,6 @@ randombytes@^2.1.0:
   dependencies:
     safe-buffer "^5.1.0"
 
-randomcolor@^0.6.2:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/randomcolor/-/randomcolor-0.6.2.tgz#7a57362ae1a1278439aeed2c15e5deb8ea33f56d"
-  integrity sha512-Mn6TbyYpFgwFuQ8KJKqf3bqqY9O1y37/0jgSK/61PUxV4QfIMv0+K2ioq8DfOjkBslcjwSzRfIDEXfzA9aCx7A==
-
 range-parser@^1.2.1, range-parser@~1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
@@ -9251,16 +9239,6 @@ react-refresh@^0.11.0:
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.11.0.tgz#77198b944733f0f1f1a90e791de4541f9f074046"
   integrity sha512-F27qZr8uUqwhWZboondsPx8tnC3Ct3SxZA3V5WyEvujRyyNv0VYPhoBg1gZ8/MV5tubQp76Trw8lTv9hzRBa+A==
-
-react-tagcloud@^2.3.1:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/react-tagcloud/-/react-tagcloud-2.3.1.tgz#4e03aa862bca17983b8e9e3690e3ef4a6e00bbaf"
-  integrity sha512-vWnPzx1bmR2ya7WEeqCbZGO8q/x0agOjxnXQGD9jg5OAyLqaKWAfArKypaoUVXYDyjABcZg5BDu8qLC9JRGDbg==
-  dependencies:
-    prop-types "^15.6.2"
-    randomcolor "^0.6.2"
-    seedrandom "^3.0.5"
-    shuffle-array "^1.0.1"
 
 react@18.2.0:
   version "18.2.0"
@@ -9702,11 +9680,6 @@ schema-utils@^4.0.0:
     ajv-formats "^2.1.1"
     ajv-keywords "^5.0.0"
 
-seedrandom@^3.0.5:
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/seedrandom/-/seedrandom-3.0.5.tgz#54edc85c95222525b0c7a6f6b3543d8e0b3aa0a7"
-  integrity sha512-8OwmbklUNzwezjGInmZ+2clQmExQPvomqjL7LFqOYqtmuxRgQYqOD3mHaU+MvZn5FLUeVxVfQjwLZW/n/JFuqg==
-
 "semver@2 || 3 || 4 || 5", semver@^5.6.0:
   version "5.7.1"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.7.1.tgz#a954f931aeba508d307bbf069eff0c01c96116f7"
@@ -9827,11 +9800,6 @@ shelljs@^0.8.5:
     glob "^7.0.0"
     interpret "^1.0.0"
     rechoir "^0.6.2"
-
-shuffle-array@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/shuffle-array/-/shuffle-array-1.0.1.tgz#c4ff3cfe74d16f93730592301b25e6577b12898b"
-  integrity sha512-0TFRU8zVQaLatWKr0/czo19VyPNgb/a3sBc1GAjVfivfzEGaS54vueNgtAu/8/pW7EM/VF5fwq9zgpLdGyRmVw==
 
 side-channel@^1.0.4:
   version "1.0.4"

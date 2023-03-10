@@ -31,7 +31,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 async function getData() {
 	const page = await getPageBySlug('tags/');
-	let allTags: { [key: string]: string } = {};
+	let allTags: { [key: string]: number } = {};
 	const res = await getAllContentNodes();
 
 	res.forEach(node => {
