@@ -14,6 +14,9 @@ async function fetchAPI(query: string, { variables }: { variables?: any } = {}) 
 			variables,
 		}),
 		cache: 'force-cache',
+		next: {
+			revalidate: 86400,
+		},
 	});
 
 	const json = await res.json();
