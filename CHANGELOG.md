@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.4.0](https://github.com/Zyzle/zyzle.dev/compare/v1.3.0...v1.4.0) (2023-03-13)
+
+
+### Features
+
+* **components:** add custom TagCloud component ([ecedcd1](https://github.com/Zyzle/zyzle.dev/commit/ecedcd18144f04c5be2f4ac9d6783b3c2d64745e))
+* **components:** add extended tags page ([8850d3f](https://github.com/Zyzle/zyzle.dev/commit/8850d3f3f578226bf3811f5b6c566bd53df1cbef)), closes [#34](https://github.com/Zyzle/zyzle.dev/issues/34)
+* **components:** add line numbers to non plaintext CodeblokNodes ([70c11d6](https://github.com/Zyzle/zyzle.dev/commit/70c11d63a325f6b320e10e39c27175f1b51b4495)), closes [#36](https://github.com/Zyzle/zyzle.dev/issues/36)
+* **css:** add function to tailwind to add theme colours to css vars ([a06a060](https://github.com/Zyzle/zyzle.dev/commit/a06a06060df9e0927ca045d994f44f1158d28f94))
+* **feed:** add atom.xml feed ([acd0b04](https://github.com/Zyzle/zyzle.dev/commit/acd0b0414ce1e74f2a697bd8fc18ed83507aefb8))
+
+
+### Bug Fixes
+
+* **cache:** first attempt to fix revalidation issues ([4343f93](https://github.com/Zyzle/zyzle.dev/commit/4343f932476152383e24e57bfd5fc7383574f872))
+
 ## [1.3.0](https://github.com/Zyzle/zyzle.dev/compare/v1.2.0...v1.3.0) (2023-03-05)
 
 
