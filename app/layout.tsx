@@ -49,12 +49,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 					<Link href="/">
 						<span className={classNames('text-zpink text-3xl', pacifico.className)}>Zyzle.dev</span>
 					</Link>
-					<nav className="text-zdefault hidden">
-						<Link href="/blog">Blog</Link>
-						<Link href="/projects">Projects</Link>
-						<Link href="/snippets">Snippets</Link>
-						<Link href="/about">About</Link>
-					</nav>
 				</header>
 				<ScrollProgress />
 				<main className="flex-1 relative xl:mt-20 px-4 ">

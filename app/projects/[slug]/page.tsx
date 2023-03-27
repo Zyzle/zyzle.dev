@@ -6,6 +6,7 @@ import RichTextBlok from '@zyzle-dev/components/RichTextBlok';
 import { getProjectBySlug, getProjects } from '@zyzle-dev/lib/api';
 import stripResolver from '@zyzle-dev/lib/stripResolver';
 import MemeText from '@zyzle-dev/components/MemeText';
+import ListicleGpt from '@zyzle-dev/components/ListicleGpt';
 
 const arbitratyBlokResolvers = {
 	['arbitrary_blok']: (props: unknown) => {
@@ -13,6 +14,8 @@ const arbitratyBlokResolvers = {
 		switch (blok_component) {
 			case 'meme-text':
 				return <MemeText />;
+			case 'listicle-gpt':
+				return <ListicleGpt />;
 			default:
 				return null;
 		}
