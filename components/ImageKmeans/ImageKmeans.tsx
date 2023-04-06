@@ -59,8 +59,8 @@ export default function ImageKmeansComponent() {
 			runType: 'Fixed Ks',
 			panel: (
 				<Tab.Panel>
-					<div className="flex flex-col space-y-2 gap-4">
-						<button onClick={doFixedRun} className="">
+					<div className="flex flex-col space-y-2 gap-4 items-center">
+						<button onClick={doFixedRun} className="rounded-full bg-zgold text-zblock px-2">
 							Run with fixed K number
 						</button>
 						<div className="flex flex-wrap gap-4">
@@ -81,8 +81,8 @@ export default function ImageKmeansComponent() {
 			runType: 'Derived Ks',
 			panel: (
 				<Tab.Panel>
-					<div className="flex flex-col space-y-2">
-						<button onClick={doDerivedRun} className="">
+					<div className="flex flex-col space-y-2 gap-4 items-center">
+						<button onClick={doDerivedRun} className="rounded-full bg-zgold text-zblock px-2">
 							Run with derived K number
 						</button>
 						<div className="flex flex-wrap gap-4">
@@ -105,7 +105,7 @@ export default function ImageKmeansComponent() {
 		<div className="flex flex-col gap-4">
 			<Dropzone droppedFile={handleDroppedFile} />
 			<Tab.Group>
-				<Tab.List className="flex space-x-1 rounded-xl p-1">
+				<Tab.List className="flex space-x-1 rounded-xl p-1 bg-zblock">
 					{tabs.map(({ runType }, i) => (
 						<Tab
 							key={i}
@@ -113,7 +113,7 @@ export default function ImageKmeansComponent() {
 								classNames(
 									'w-full rounded-lg py-2.5 text-md font-medium leading-5 ',
 									'ring-opacity-60 ring-offset-2 focus:outline-none focus:ring-2',
-									selected ? 'shadow' : ' '
+									selected ? 'shadow bg-zcaret text-zblock' : ' '
 								)
 							}>
 							{runType}
