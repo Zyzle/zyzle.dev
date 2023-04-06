@@ -7,6 +7,7 @@ import { getProjectBySlug, getProjects } from '@zyzle-dev/lib/api';
 import stripResolver from '@zyzle-dev/lib/stripResolver';
 import MemeText from '@zyzle-dev/components/MemeText';
 import ListicleGpt from '@zyzle-dev/components/ListicleGpt';
+import ImageKmeans from '@zyzle-dev/components/ImageKmeans';
 
 const arbitratyBlokResolvers = {
 	['arbitrary_blok']: (props: unknown) => {
@@ -16,6 +17,8 @@ const arbitratyBlokResolvers = {
 				return <MemeText />;
 			case 'listicle-gpt':
 				return <ListicleGpt />;
+			case 'image-kmeans':
+				return <ImageKmeans />;
 			default:
 				return null;
 		}

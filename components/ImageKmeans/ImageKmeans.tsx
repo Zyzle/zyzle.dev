@@ -13,36 +13,39 @@ export default function ImageKmeansComponent() {
 	const [derivedKResults, setDerivedKResults] = useState<RunResult | null>(null);
 
 	const handleDroppedFile = useCallback(
-		(ibm: ImageBitmap) => {
+		async (ibm: ImageBitmap) => {
 			const canvas = new OffscreenCanvas(ibm.width, ibm.height);
 			const ctx = canvas.getContext('2d')! as unknown as CanvasRenderingContext2D;
 			ctx.canvas.height = ibm.height;
 			ctx.canvas.width = ibm.width;
 			ctx.drawImage(ibm, 0, 0);
-			const wasmInstance = new ImageKmeans(ctx, ibm.width, ibm.height);
-			// setWasmInstance(wasmInstance);
+			// not sure why the below is necessary, seems to be a nextjs specific issue
+			// with wasm-pack created wasm modules
+			const ikm = await (await import('@zyzle/image-kmeans')).ImageKmeans;
+			const wasmInstance = new ikm(ctx, ibm.width, ibm.height);
+			setWasmInstance(wasmInstance);
 		},
 		[setWasmInstance]
 	);
 
 	const doFixedRun = useCallback(() => {
-		// const doAsyncRun = async () => {
-		// 	if (wasmInstance) {
-		// 		const fixedKResults = await wasmInstance.with_fixed_k_number(8);
-		// 		setFixedKResults(fixedKResults);
-		// 	}
-		// };
-		// doAsyncRun();
+		const doAsyncRun = async () => {
+			if (wasmInstance) {
+				const fixedKResults = await wasmInstance.with_fixed_k_number(8);
+				setFixedKResults(fixedKResults);
+			}
+		};
+		doAsyncRun();
 	}, [wasmInstance, setFixedKResults]);
 
 	const doDerivedRun = useCallback(() => {
-		// const doAsyncRun = async () => {
-		// 	if (wasmInstance) {
-		// 		const derivedKResults = await wasmInstance.with_derived_k_number();
-		// 		setDerivedKResults(derivedKResults);
-		// 	}
-		// };
-		// doAsyncRun();
+		const doAsyncRun = async () => {
+			if (wasmInstance) {
+				const derivedKResults = await wasmInstance.with_derived_k_number();
+				setDerivedKResults(derivedKResults);
+			}
+		};
+		doAsyncRun();
 	}, [wasmInstance, setDerivedKResults]);
 
 	const colorToHex = (color: Color): string => {
