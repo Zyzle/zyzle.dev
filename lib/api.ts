@@ -13,7 +13,7 @@ async function fetchAPI(query: string, { variables }: { variables?: any } = {}) 
 			query,
 			variables,
 		}),
-		cache: 'force-cache',
+		// cache: 'force-cache',
 		next: {
 			revalidate: 86400,
 		},

@@ -13,6 +13,11 @@ const meta: Meta<typeof SnippetLink> = {
 			</div>
 		),
 	],
+	parameters: {
+		nextjs: {
+			appDirectory: true,
+		},
+	},
 };
 
 export default meta;
