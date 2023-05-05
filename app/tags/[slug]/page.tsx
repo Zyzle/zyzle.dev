@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 
+import { RichTextBlok } from '@zyzle-dev/components/RichTextBlok';
 import { getAllContentNodes, getContentNodesByTag } from '@zyzle-dev/lib/api';
 import { formatRelativeDateString } from '@zyzle-dev/lib/formatRelativeDate';
-import RichTextBlok from '@zyzle-dev/components/RichTextBlok';
 
 export default async function TagsSlugPage({ params }: { params: { slug: string } }) {
 	const data = await getData(params.slug);

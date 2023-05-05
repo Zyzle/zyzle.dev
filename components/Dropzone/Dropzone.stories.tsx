@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Dropzone from './Dropzone';
+import { Dropzone } from './Dropzone';
 
 const meta: Meta<typeof Dropzone> = {
 	title: 'Components/Dropzone',

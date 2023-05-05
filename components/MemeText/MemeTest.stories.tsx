@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import MemeText from './MemeText';
+import { MemeText } from './MemeText';
 
 const meta: Meta<typeof MemeText> = {
 	title: 'Components/MemeText',

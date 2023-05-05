@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
 import { render } from 'storyblok-rich-text-react-renderer';
 
-import HomeLink from '@zyzle-dev/components/HomeLink';
-import RichTextBlok from '@zyzle-dev/components/RichTextBlok';
-import TagCloud from '@zyzle-dev/components/TagCloud';
+import { HomeLink } from '@zyzle-dev/components/HomeLink';
+import { RichTextBlok } from '@zyzle-dev/components/RichTextBlok';
+import { TagCloud } from '@zyzle-dev/components/TagCloud';
 import { getAllContentNodes, getPageBySlug } from '@zyzle-dev/lib/api';
-import stripResolver from '@zyzle-dev/lib/stripResolver';
+import { stripResolver } from '@zyzle-dev/lib/stripResolver';
 import { HomeLinkType } from '@zyzle-dev/lib/types';
 
 export default async function Home() {

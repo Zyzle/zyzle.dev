@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
 import { render } from 'storyblok-rich-text-react-renderer';
 
-import RichTextBlok from '@zyzle-dev/components/RichTextBlok';
+import { RichTextBlok } from '@zyzle-dev/components/RichTextBlok';
 import { getPageBySlug } from '@zyzle-dev/lib/api';
-import stripResolver from '@zyzle-dev/lib/stripResolver';
+import { stripResolver } from '@zyzle-dev/lib/stripResolver';
 
 export default async function About() {
 	const aboutPage = await getData();

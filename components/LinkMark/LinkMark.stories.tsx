@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import LinkMark from './LinkMark';
+import { LinkMark } from './LinkMark';
 
 const meta: Meta<typeof LinkMark> = {
 	title: 'Blok Resolvers/LinkMark',

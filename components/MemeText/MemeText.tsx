@@ -1,10 +1,11 @@
 'use client';
 import { useState } from 'react';
-import { spongebob, curse } from '@zyzle/meme-text';
 import { Tab } from '@headlessui/react';
+import { spongebob, curse } from '@zyzle/meme-text';
+
 import classNames from '@zyzle-dev/lib/classNames';
 
-export default function MemeText() {
+export function MemeText() {
 	const [memeText, setMemeText] = useState('');
 
 	const tabs = [

@@ -6,7 +6,7 @@ function weightedRandomBetween(min: number, max: number, fontMin: number, fontMa
 
 const COLORS = ['#98c379', '#c678dd', '#e06c75', '#d19a66', '#e5c07b', '#528bff', '#61afef', '#56b6c2'];
 
-export default function TagCloud({ tags }: { tags: { value: string; count: number }[] }) {
+export function TagCloud({ tags }: { tags: { value: string; count: number }[] }) {
 	const max = Math.max(...tags.map(tag => tag.count));
 	const min = Math.min(...tags.map(tag => tag.count));
 

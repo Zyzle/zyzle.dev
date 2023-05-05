@@ -6,11 +6,11 @@ import { Disclosure, Transition } from '@headlessui/react';
 import { ChevronUpIcon } from '@heroicons/react/20/solid';
 import classNames from '@zyzle-dev/lib/classNames';
 
-export interface DropzoneProps {
+export type DropzoneProps = {
 	droppedFile: (ibm: ImageBitmap) => void;
-}
+};
 
-export default function Dropzone(props: DropzoneProps) {
+export function Dropzone(props: DropzoneProps) {
 	const { droppedFile } = props;
 	const imgRef = useRef<HTMLImageElement>(null);
 	const [file, setFile] = useState<File | null>(null);

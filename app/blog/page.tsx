@@ -2,10 +2,10 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { render } from 'storyblok-rich-text-react-renderer';
 
-import RichTextBlok from '@zyzle-dev/components/RichTextBlok';
+import { RichTextBlok } from '@zyzle-dev/components/RichTextBlok';
 import { getBlogPostsDetails, getPageBySlug } from '@zyzle-dev/lib/api';
 import { formatRelativeDateString } from '@zyzle-dev/lib/formatRelativeDate';
-import stripResolver from '@zyzle-dev/lib/stripResolver';
+import { stripResolver } from '@zyzle-dev/lib/stripResolver';
 
 export default async function BlogList() {
 	const { page, blogPosts } = await getData();

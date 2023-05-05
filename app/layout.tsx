@@ -1,13 +1,13 @@
 import { Pacifico, Nunito, Fira_Code } from 'next/font/google';
 import Link from 'next/link';
 
-import Footer from '@zyzle-dev/components/Footer';
-import ScrollProgress from '@zyzle-dev/components/ScrollProgress';
+import { Analytics } from '@zyzle-dev/components/Analytics';
+import { Breadcrumbs } from '@zyzle-dev/components/Breadcrumbs';
+import { Footer } from '@zyzle-dev/components/Footer';
+import { ScrollProgress } from '@zyzle-dev/components/ScrollProgress';
 import classNames from '@zyzle-dev/lib/classNames';
 
 import './global.css';
-import Breadcrumbs from '@zyzle-dev/components/Breadcrumbs';
-import Analytics from '@zyzle-dev/components/Analytics';
 
 const pacifico = Pacifico({
 	weight: '400',

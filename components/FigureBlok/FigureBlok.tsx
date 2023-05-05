@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 import { FigureBlokType } from '@zyzle-dev/lib/types';
 
-export default function FigureBlok(props: FigureBlokType) {
+export function FigureBlok(props: FigureBlokType) {
 	return (
 		<figure className="rounded-2xl overflow-hidden bg-zblock flex flex-col border border-dashed">
 			<Image

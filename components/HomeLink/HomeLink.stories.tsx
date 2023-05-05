@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import HomeLink from './HomeLink';
+import { HomeLink } from './HomeLink';
 
 const meta: Meta<typeof HomeLink> = {
 	title: 'Components/HomeLink',

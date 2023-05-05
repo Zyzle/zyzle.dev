@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import FormulaBlok from './FormulaBlok';
+import { FormulaBlok } from './FormulaBlok';
 
 const meta: Meta<typeof FormulaBlok> = {
 	title: 'Blok Resolvers/FormulaBlok',

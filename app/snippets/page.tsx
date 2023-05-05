@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
 import { render } from 'storyblok-rich-text-react-renderer';
 
+import { SnippetLink } from '@zyzle-dev/components/SnippetLink';
+import { RichTextBlok } from '@zyzle-dev/components/RichTextBlok';
 import { getPageBySlug, getSnippets } from '@zyzle-dev/lib/api';
-import SnippetLink from '@zyzle-dev/components/SnippetLink';
-import RichTextBlok from '@zyzle-dev/components/RichTextBlok';
-import stripResolver from '@zyzle-dev/lib/stripResolver';
+import { stripResolver } from '@zyzle-dev/lib/stripResolver';
 
 export default async function Snippets() {
 	const { page, snippets } = await getData();

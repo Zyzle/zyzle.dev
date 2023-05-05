@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import TagCloud from './TagCloud';
+import { TagCloud } from './TagCloud';
 
 const meta: Meta<typeof TagCloud> = {
 	title: 'Components/TagCloud',

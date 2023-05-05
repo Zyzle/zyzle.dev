@@ -2,12 +2,12 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { render } from 'storyblok-rich-text-react-renderer';
 
-import RichTextBlok from '@zyzle-dev/components/RichTextBlok';
+import { ListicleGpt } from '@zyzle-dev/components/ListicleGpt';
+import { ImageKmeansComponent } from '@zyzle-dev/components/ImageKmeans';
+import { MemeText } from '@zyzle-dev/components/MemeText';
+import { RichTextBlok } from '@zyzle-dev/components/RichTextBlok';
 import { getProjectBySlug, getProjects } from '@zyzle-dev/lib/api';
-import stripResolver from '@zyzle-dev/lib/stripResolver';
-import MemeText from '@zyzle-dev/components/MemeText';
-import ListicleGpt from '@zyzle-dev/components/ListicleGpt';
-import ImageKmeans from '@zyzle-dev/components/ImageKmeans';
+import { stripResolver } from '@zyzle-dev/lib/stripResolver';
 
 const arbitratyBlokResolvers = {
 	['arbitrary_blok']: (props: unknown) => {
@@ -18,7 +18,7 @@ const arbitratyBlokResolvers = {
 			case 'listicle-gpt':
 				return <ListicleGpt />;
 			case 'image-kmeans':
-				return <ImageKmeans />;
+				return <ImageKmeansComponent />;
 			default:
 				return null;
 		}

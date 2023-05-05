@@ -1,8 +1,8 @@
 import { Feed } from 'feed';
+import { render } from 'storyblok-rich-text-react-renderer';
 
 import { getBlogPostsDetails } from '@zyzle-dev/lib/api';
-import stripResolver from '@zyzle-dev/lib/stripResolver';
-import { render } from 'storyblok-rich-text-react-renderer';
+import { stripResolver } from '@zyzle-dev/lib/stripResolver';
 
 const BASE_PATH = 'https://zyzle.dev';
 

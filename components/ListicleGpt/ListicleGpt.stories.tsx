@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import ListicleGtp from './ListicleGtp';
+import { ListicleGpt } from './ListicleGpt';
 
-const meta: Meta<typeof ListicleGtp> = {
+const meta: Meta<typeof ListicleGpt> = {
 	title: 'Components/ListicleGtp',
-	component: ListicleGtp,
+	component: ListicleGpt,
 	tags: ['autodocs'],
 };
 

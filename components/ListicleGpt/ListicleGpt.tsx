@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Listbox } from '@headlessui/react';
 import { ChevronUpDownIcon } from '@heroicons/react/20/solid';
 
-import Portal from '@zyzle-dev/components/Portal';
+import { Portal } from '@zyzle-dev/components/Portal';
 import { usePopper } from '@zyzle-dev/hooks/usePopper';
 
 const getTop5 = async (subject: string, suffix: number) => {
@@ -26,7 +26,7 @@ const getTop5 = async (subject: string, suffix: number) => {
 	return data;
 };
 
-export default function ListicleGtp() {
+export function ListicleGpt() {
 	const [trigger, container] = usePopper({
 		placement: 'bottom',
 		strategy: 'fixed',

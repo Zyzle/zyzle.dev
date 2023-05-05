@@ -2,7 +2,7 @@
 
 import Giscus from '@giscus/react';
 
-export default function Comments({ discussionId }: { discussionId: string }) {
+export function Comments({ discussionId }: { discussionId: string }) {
 	return (
 		<>
 			<Giscus

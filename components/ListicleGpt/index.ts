@@ -1,2 +1,2 @@
-export * from './ListicleGtp';
-export { default } from './ListicleGtp';
+'use client';
+export * from './ListicleGpt';

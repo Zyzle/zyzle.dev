@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import ImageKmeans from './ImageKmeans';
+import { ImageKmeansComponent } from './ImageKmeans';
 
-const meta: Meta<typeof ImageKmeans> = {
+const meta: Meta<typeof ImageKmeansComponent> = {
 	title: 'Components/ImageKmeans',
-	component: ImageKmeans,
+	component: ImageKmeansComponent,
 	tags: ['autodocs'],
 };
 

@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { render } from 'storyblok-rich-text-react-renderer';
 
+import { RichTextBlok } from '@zyzle-dev/components/RichTextBlok';
 import { getPageBySlug, getProjects } from '@zyzle-dev/lib/api';
-import RichTextBlok from '@zyzle-dev/components/RichTextBlok';
-import stripResolver from '@zyzle-dev/lib/stripResolver';
+import { stripResolver } from '@zyzle-dev/lib/stripResolver';
 
 export default async function Projects() {
 	const { page, projects } = await getData();

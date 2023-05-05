@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
-import Icon from '@zyzle-dev/components/Icon';
+import { Icon } from '@zyzle-dev/components/Icon';
 
-export default function Footer() {
+export function Footer() {
 	return (
 		<footer className="w-full border-t border-zcaret">
 			<div className="flex flex-row justify-between mt-5 prose prose-invert prose-zyzle mx-auto px-4">

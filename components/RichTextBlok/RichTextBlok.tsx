@@ -1,16 +1,16 @@
 import { MARK_LINK, NODE_CODEBLOCK, render, RenderOptions } from 'storyblok-rich-text-react-renderer';
 
-import LinkMark from '@zyzle-dev/components/LinkMark';
-import CodeblockNode from '@zyzle-dev/components/CodeblockNode';
-import FigureBlok from '@zyzle-dev/components/FigureBlok';
-import FormulaBlok from '@zyzle-dev/components/FormulaBlok';
+import { LinkMark } from '@zyzle-dev/components/LinkMark';
+import { CodeblockNode } from '@zyzle-dev/components/CodeblockNode';
+import { FigureBlok } from '@zyzle-dev/components/FigureBlok';
+import { FormulaBlok } from '@zyzle-dev/components/FormulaBlok';
 import { FigureBlokType } from '@zyzle-dev/lib/types';
 
 export type BlokResolvers = {
 	[key: string]: (props: unknown) => JSX.Element | null;
 };
 
-export default function RichTextBlok({ blok, blokResolvers }: { blok: unknown; blokResolvers?: BlokResolvers }) {
+export function RichTextBlok({ blok, blokResolvers }: { blok: unknown; blokResolvers?: BlokResolvers }) {
 	return (
 		<>
 			{render(blok, {

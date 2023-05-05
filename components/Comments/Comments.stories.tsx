@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Comments from './Comments';
+import { Comments } from './Comments';
 
 const meta: Meta<typeof Comments> = {
 	title: 'Components/Comments',

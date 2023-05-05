@@ -12,15 +12,15 @@ import classNames from '@zyzle-dev/lib/classNames';
 
 import { theme } from './theme';
 
-export interface CodeblockNodeProps {
+export type CodeblockNodeProps = {
 	/**
 	 * The children of the codeblock, usually its internal text
 	 */
 	children: ReactNode | string[];
 	class: string;
-}
+};
 
-export default function CodeblockNode({ children, ...props }: CodeblockNodeProps) {
+export function CodeblockNode({ children, ...props }: CodeblockNodeProps) {
 	let code = Array.isArray(children) ? (children! as string[]).join('') : children;
 	let language = 'plain';
 

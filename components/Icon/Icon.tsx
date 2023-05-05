@@ -1,5 +1,6 @@
-import classNames from '@zyzle-dev/lib/classNames';
 import Image from 'next/image';
+
+import classNames from '@zyzle-dev/lib/classNames';
 
 import AboutSVG from '../../public/about.svg';
 import BashSVG from '../../public/bash.svg';
@@ -34,16 +35,6 @@ export const IconType: { [key: string]: any } = {
 	typescript: TypeScriptSVG,
 };
 
-export default function Icon({
-	type,
-	alt,
-	width,
-	height,
-}: {
-	type: string;
-	alt: string;
-	width?: number;
-	height?: number;
-}) {
+export function Icon({ type, alt, width, height }: { type: string; alt: string; width?: number; height?: number }) {
 	return <Image src={IconType[type]} alt={alt} width={width} height={height} />;
 }

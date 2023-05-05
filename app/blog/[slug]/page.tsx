@@ -2,11 +2,11 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { render } from 'storyblok-rich-text-react-renderer';
 
-import Comments from '@zyzle-dev/components/Comments';
-import RichTextBlok from '@zyzle-dev/components/RichTextBlok';
+import { Comments } from '@zyzle-dev/components/Comments';
+import { RichTextBlok } from '@zyzle-dev/components/RichTextBlok';
 import { getBlogPostBySlug, getBlogPostsDetails } from '@zyzle-dev/lib/api';
 import { formatRelativeDateString } from '@zyzle-dev/lib/formatRelativeDate';
-import stripResolver from '@zyzle-dev/lib/stripResolver';
+import { stripResolver } from '@zyzle-dev/lib/stripResolver';
 
 export default async function BlogSlugPage({ params }: { params: { slug: string } }) {
 	const blogPost = await getData(params.slug);

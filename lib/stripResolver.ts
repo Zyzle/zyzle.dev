@@ -12,7 +12,7 @@ import {
 /**
  * This resolver is used to strip all formatting from the text.
  */
-const stripResolver = {
+export const stripResolver = {
 	markResolvers: {
 		[MARK_BOLD]: (children: any) => children,
 		[MARK_ITALIC]: (children: any) => children,
@@ -26,5 +26,3 @@ const stripResolver = {
 		[NODE_PARAGRAPH]: (children: any) => children,
 	},
 };
-
-export default stripResolver;

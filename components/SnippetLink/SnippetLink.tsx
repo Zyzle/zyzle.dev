@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-import Icon from '@zyzle-dev/components/Icon';
+import { Icon } from '@zyzle-dev/components/Icon';
 import { formatRelativeDateString } from '@zyzle-dev/lib/formatRelativeDate';
 
 export type SnippetLinkProps = {
@@ -13,7 +13,7 @@ export type SnippetLinkProps = {
 	language: string;
 };
 
-export default function SnippetLink({ fullSlug, language, heading, firstPublishedAt, tagList }: SnippetLinkProps) {
+export function SnippetLink({ fullSlug, language, heading, firstPublishedAt, tagList }: SnippetLinkProps) {
 	const router = useRouter();
 
 	const handleTagClick = (tag: string) => {

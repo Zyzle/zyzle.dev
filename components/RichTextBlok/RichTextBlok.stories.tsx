@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import RichTextBlok from './RichTextBlok';
+import { RichTextBlok } from './RichTextBlok';
 
 const meta: Meta<typeof RichTextBlok> = {
 	title: 'Blok Resolvers/RichTextBlok',

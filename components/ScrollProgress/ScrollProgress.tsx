@@ -1,8 +1,7 @@
 'use client';
-
 import { useEffect, useState } from 'react';
 
-export default function ScrollProgress() {
+export function ScrollProgress() {
 	const [progress, setProgress] = useState(0);
 
 	useEffect(() => {

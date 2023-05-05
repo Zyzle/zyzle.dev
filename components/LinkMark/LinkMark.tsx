@@ -1,7 +1,7 @@
-import Link from 'next/link';
 import { ReactNode } from 'react';
+import Link from 'next/link';
 
-export interface LinkMarkProps {
+export type LinkMarkProps = {
 	/**
 	 * The children of the link, usually its internal text
 	 */
@@ -17,9 +17,9 @@ export interface LinkMarkProps {
 	target?: string;
 	uuid?: string;
 	anchor?: string;
-}
+};
 
-export default function LinkMark({ children, ...props }: LinkMarkProps) {
+export function LinkMark({ children, ...props }: LinkMarkProps) {
 	const { href = '', target, linktype } = props;
 	if (linktype === 'email') {
 		return <a href={`mailto:${href}`}>{children}</a>;

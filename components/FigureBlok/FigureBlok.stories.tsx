@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import FigureBlok from './FigureBlok';
+import { FigureBlok } from './FigureBlok';
 
 const meta: Meta<typeof FigureBlok> = {
 	title: 'Blok Resolvers/FigureBlok',

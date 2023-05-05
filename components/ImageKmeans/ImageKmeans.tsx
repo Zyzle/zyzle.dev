@@ -3,11 +3,11 @@ import { useCallback, useState } from 'react';
 
 import { Color, ImageKmeans, RunResult } from '@zyzle/image-kmeans';
 
-import Dropzone from '../Dropzone';
+import { Dropzone } from '@zyzle-dev/components/Dropzone';
 import { Tab } from '@headlessui/react';
 import classNames from '@zyzle-dev/lib/classNames';
 
-export default function ImageKmeansComponent() {
+export function ImageKmeansComponent() {
 	const [wasmInstance, setWasmInstance] = useState<ImageKmeans | null>(null);
 	const [fixedKResults, setFixedKResults] = useState<RunResult | null>(null);
 	const [derivedKResults, setDerivedKResults] = useState<RunResult | null>(null);

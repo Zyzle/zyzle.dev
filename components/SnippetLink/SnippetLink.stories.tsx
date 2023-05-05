@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import SnippetLink from './SnippetLink';
+import { SnippetLink } from './SnippetLink';
 
 const meta: Meta<typeof SnippetLink> = {
 	title: 'Components/SnippetLink',

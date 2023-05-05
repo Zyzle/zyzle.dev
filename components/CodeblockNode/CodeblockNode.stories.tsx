@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import CodeblockNode from './CodeblockNode';
+import { CodeblockNode } from './CodeblockNode';
 
 const meta: Meta<typeof CodeblockNode> = {
 	title: 'Blok Resolvers/CodeblockNode',

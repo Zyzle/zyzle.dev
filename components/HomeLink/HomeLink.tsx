@@ -1,13 +1,13 @@
 import Link from 'next/link';
 
-import Icon from '@zyzle-dev/components/Icon';
+import { Icon } from '@zyzle-dev/components/Icon';
 import { HomeLinkType } from '@zyzle-dev/lib/types';
 
 export type HomeLinkProps = {
 	homeLink: HomeLinkType;
 };
 
-export default function HomeLink({ homeLink }: HomeLinkProps) {
+export function HomeLink({ homeLink }: HomeLinkProps) {
 	return (
 		<Link href={`/${homeLink.link.cached_url}`} className="flex flex-row items-center gap-4 mb-4 group">
 			<Icon type={homeLink.image} alt={`${homeLink.image} icon`} />
