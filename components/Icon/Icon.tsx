@@ -11,6 +11,7 @@ import CharactersSVG from '../../public/characters.svg';
 import JavaSVG from '../../public/java.svg';
 import MoneySVG from '../../public/money.svg';
 import ProjectsSVG from '../../public/projects.svg';
+import Python from '../../public/python.svg';
 import SASVG from '../../public/sa.svg';
 import SearchSVG from '../../public/search.svg';
 import SnippetsSVG from '../../public/snippets.svg';
@@ -28,6 +29,7 @@ export const IconType: { [key: string]: any } = {
 	java: JavaSVG,
 	money: MoneySVG,
 	projects: ProjectsSVG,
+	python: Python,
 	sa: SASVG,
 	search: SearchSVG,
 	snippets: SnippetsSVG,
