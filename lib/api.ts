@@ -1,6 +1,6 @@
 import { ContentNode, PageItem, Post, PostDetails, Project, SitemapNode, Snippet } from './types';
 
-async function fetchAPI(query: string, { variables }: { variables?: any } = {}) {
+async function fetchAPI(query: string, { variables }: { variables?: any } = {}, tags: string[] = []) {
 	const res = await fetch(process.env.STORYBLOK_API!, {
 		method: 'POST',
 		headers: {
@@ -16,6 +16,7 @@ async function fetchAPI(query: string, { variables }: { variables?: any } = {}) 
 		// cache: 'force-cache',
 		next: {
 			revalidate: 86400,
+			tags,
 		},
 	});
 
@@ -46,7 +47,8 @@ export const getPageBySlug = async (slug: string) => {
 			variables: {
 				slug,
 			},
-		}
+		},
+		['page']
 	);
 
 	return data.PageItem.content as PageItem;
@@ -78,7 +80,9 @@ export const getBlogPostsDetails = async () => {
 				}
 			}
 		}
-	`
+	`,
+		{},
+		['blog']
 	);
 	return data.PostItems.items as PostDetails[];
 };
@@ -111,7 +115,8 @@ export const getBlogPostBySlug = async (slug: string) => {
 			variables: {
 				slug: `blog/${slug}`,
 			},
-		}
+		},
+		['blog']
 	);
 
 	return data.PostItem as Post;
@@ -136,7 +141,9 @@ export const getSnippets = async () => {
 				}
 			}
 		}
-	`
+	`,
+		{},
+		['snippets']
 	);
 	return data.SnippetItems.items as Partial<Snippet>[];
 };
@@ -162,7 +169,9 @@ export const getProjects = async () => {
 				}
 			}
 		}
-	`
+	`,
+		{},
+		['projects']
 	);
 	return data.ProjectItems.items as Partial<Project>[];
 };
@@ -190,7 +199,8 @@ export const getSnippetBySlug = async (slug: string) => {
 			variables: {
 				slug: `snippets/${slug}`,
 			},
-		}
+		},
+		['snippets']
 	);
 
 	return data.SnippetItem as Snippet;
@@ -218,7 +228,8 @@ export const getProjectBySlug = async (slug: string) => {
 			variables: {
 				slug: `projects/${slug}`,
 			},
-		}
+		},
+		['projects']
 	);
 
 	return data.ProjectItem as Project;
