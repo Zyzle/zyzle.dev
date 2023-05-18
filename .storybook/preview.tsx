@@ -1,5 +1,5 @@
 import React from 'react';
-import { Fira_Code, Nunito } from '@next/font/google';
+import { Fira_Code, Nunito } from "next/font/google";
 
 import classNames from '../lib/classNames';
 

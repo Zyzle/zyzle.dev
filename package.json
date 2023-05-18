@@ -40,7 +40,6 @@
 		"typescript": "4.9.4"
 	},
 	"devDependencies": {
-		"@next/font": "^13.2.2-canary.1",
 		"@storybook/addon-essentials": "7.0.8",
 		"@storybook/addon-interactions": "7.0.8",
 		"@storybook/addon-links": "7.0.8",
