@@ -35,11 +35,27 @@ export default async function Home() {
 
 export async function generateMetadata(): Promise<Metadata> {
 	const page = await getPageBySlug('home/');
-	const stripped = (render(page.body, stripResolver) as Array<string>).flat().join('');
+	const stripped = (render(page.body, stripResolver) as Array<string>).flat().join('').slice(0, 150) + '...';
+
+	const title = `${page.heading} | Zyzle.dev`;
+
 	return {
-		title: `${page.heading} | Zyzle.dev`,
+		title,
 		description: stripped,
 		authors: [{ name: 'Colin McCulloch', url: 'https://zyzle.dev' }],
+		openGraph: {
+			title,
+			description: stripped,
+			images: [`/og?title=${encodeURIComponent(title)}`],
+			url: 'https://zyzle.dev',
+		},
+		twitter: {
+			creator: '@ZyzleDotDev',
+			title,
+			description: stripped,
+			card: 'summary',
+			images: [`/og?title=${encodeURIComponent(title)}`],
+		},
 	};
 }
 

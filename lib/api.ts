@@ -191,6 +191,9 @@ export const getSnippetBySlug = async (slug: string) => {
 					heading
 					body
 					language
+					mainImage {
+						filename
+					}
 				}
 			}
 		}
