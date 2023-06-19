@@ -15,6 +15,9 @@ export interface Snippet {
 		heading: string;
 		body: {};
 		language: string;
+		mainImage: {
+			filename: string;
+		};
 	};
 }
 

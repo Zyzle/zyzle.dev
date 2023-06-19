@@ -54,8 +54,23 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
 	const res = await getBlogPostBySlug(params.slug);
 	const stripped = (render(res.content.body, stripResolver) as Array<[]>)[0].join('').slice(0, 150) + '...';
+	const title = `${res.content.heading} | Blog | Zyzle.dev`;
 	return {
-		title: `${res.content.heading}`,
+		title,
 		description: stripped,
+		authors: [{ name: 'Colin McCulloch', url: 'https://zyzle.dev' }],
+		openGraph: {
+			title,
+			description: stripped,
+			images: [`/og?title=${encodeURIComponent(title)}&img=${encodeURIComponent(res.content.mainImage.filename)}`],
+			url: `https://zyzle.dev/blog/${params.slug}`,
+		},
+		twitter: {
+			creator: '@ZyzleDotDev',
+			card: 'summary',
+			description: stripped,
+			title,
+			images: [`/og?title=${encodeURIComponent(title)}&img=${encodeURIComponent(res.content.mainImage.filename)}`],
+		},
 	};
 }

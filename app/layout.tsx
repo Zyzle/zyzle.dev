@@ -29,6 +29,18 @@ export const metadata = {
 		default: 'Zyzle.dev',
 		template: '%s | Zyzle.dev',
 	},
+	openGraph: {
+		title: {
+			default: 'Zyzle.dev',
+			template: '%s | Zyzle.dev',
+		},
+	},
+	twitter: {
+		title: {
+			default: 'Zyzle.dev',
+			template: '%s | Zyzle.dev',
+		},
+	},
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

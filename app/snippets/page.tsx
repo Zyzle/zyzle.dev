@@ -33,10 +33,25 @@ export default async function Snippets() {
 
 export async function generateMetadata(): Promise<Metadata> {
 	const page = await getPageBySlug('snippets/');
-	const stripped = (render(page.body, stripResolver) as Array<string>).flat().join('');
+	const stripped = (render(page.body, stripResolver) as Array<string>).flat().join('').slice(0, 150) + '...';
+	const title = `${page.heading} | Zyzle.dev`;
 	return {
-		title: `${page.heading}`,
+		title,
 		description: stripped,
+		authors: [{ name: 'Colin McCulloch', url: 'https://zyzle.dev' }],
+		openGraph: {
+			title,
+			description: stripped,
+			images: [`/og?title=${encodeURIComponent(title)}`],
+			url: 'https://zyzle.dev/snippets',
+		},
+		twitter: {
+			creator: '@ZyzleDotDev',
+			card: 'summary',
+			description: stripped,
+			title,
+			images: [`/og?title=${encodeURIComponent(title)}`],
+		},
 	};
 }
 
