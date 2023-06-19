@@ -25,6 +25,7 @@ const firaCode = Fira_Code({
 });
 
 export const metadata = {
+	metadataBase: new URL('https://zyzle.dev/'),
 	title: {
 		default: 'Zyzle.dev',
 		template: '%s | Zyzle.dev',

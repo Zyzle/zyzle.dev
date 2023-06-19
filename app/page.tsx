@@ -37,7 +37,7 @@ export async function generateMetadata(): Promise<Metadata> {
 	const page = await getPageBySlug('home/');
 	const stripped = (render(page.body, stripResolver) as Array<string>).flat().join('').slice(0, 150) + '...';
 
-	const title = `${page.heading} | Zyzle.dev`;
+	const title = `${page.heading}`;
 
 	return {
 		title,
@@ -46,7 +46,7 @@ export async function generateMetadata(): Promise<Metadata> {
 		openGraph: {
 			title,
 			description: stripped,
-			images: [`/og?title=${encodeURIComponent(title)}`],
+			images: [`/og?title=${encodeURIComponent(`${title} | Zyzle.dev`)}`],
 			url: 'https://zyzle.dev',
 		},
 		twitter: {
@@ -54,7 +54,7 @@ export async function generateMetadata(): Promise<Metadata> {
 			title,
 			description: stripped,
 			card: 'summary',
-			images: [`/og?title=${encodeURIComponent(title)}`],
+			images: [`/og?title=${encodeURIComponent(`${title} | Zyzle.dev`)}`],
 		},
 	};
 }
