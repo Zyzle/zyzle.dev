@@ -6,6 +6,7 @@ import { RichTextBlok } from '@zyzle-dev/components/RichTextBlok';
 import { getBlogPostsDetails, getPageBySlug } from '@zyzle-dev/lib/api';
 import { formatRelativeDateString } from '@zyzle-dev/lib/formatRelativeDate';
 import { stripResolver } from '@zyzle-dev/lib/stripResolver';
+import metadataGenerator from '@zyzle-dev/lib/metadataGenerator';
 
 export default async function BlogList() {
 	const { page, blogPosts } = await getData();
@@ -44,24 +45,9 @@ export async function generateMetadata(): Promise<Metadata> {
 	const page = await getPageBySlug('blog/');
 	const stripped = (render(page.body, stripResolver) as Array<string>).flat().join('').slice(0, 150) + '...';
 	const title = `${page.heading}`;
-	return {
-		title,
-		description: stripped,
-		authors: [{ name: 'Colin McCulloch', url: 'https://zyzle.dev' }],
-		openGraph: {
-			title,
-			description: stripped,
-			images: [`/og?title=${encodeURIComponent(`${title} | Zyzle.dev`)}`],
-			url: 'https://zyzle.dev/blog',
-		},
-		twitter: {
-			creator: '@ZyzleDotDev',
-			card: 'summary',
-			description: stripped,
-			title,
-			images: [`/og?title=${encodeURIComponent(`${title} | Zyzle.dev`)}`],
-		},
-	};
+	const url = 'https://zyzle.dev/blog';
+
+	return metadataGenerator(title, stripped, 'website', url);
 }
 
 async function getData() {

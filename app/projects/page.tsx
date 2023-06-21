@@ -5,6 +5,7 @@ import { render } from 'storyblok-rich-text-react-renderer';
 import { RichTextBlok } from '@zyzle-dev/components/RichTextBlok';
 import { getPageBySlug, getProjects } from '@zyzle-dev/lib/api';
 import { stripResolver } from '@zyzle-dev/lib/stripResolver';
+import metadataGenerator from '@zyzle-dev/lib/metadataGenerator';
 
 export default async function Projects() {
 	const { page, projects } = await getData();
@@ -42,10 +43,9 @@ export default async function Projects() {
 export async function generateMetadata(): Promise<Metadata> {
 	const page = await getPageBySlug('projects/');
 	const stripped = (render(page.body, stripResolver) as Array<[]>)[0].join('');
-	return {
-		title: `${page.heading}`,
-		description: stripped,
-	};
+	const title = `${page.heading}`;
+	const url = 'https://zyzle.dev/projects';
+	return metadataGenerator(title, stripped, 'website', url);
 }
 
 async function getData() {

@@ -7,6 +7,7 @@ import { TagCloud } from '@zyzle-dev/components/TagCloud';
 import { getAllContentNodes, getPageBySlug } from '@zyzle-dev/lib/api';
 import { stripResolver } from '@zyzle-dev/lib/stripResolver';
 import { HomeLinkType } from '@zyzle-dev/lib/types';
+import metadataGenerator from '@zyzle-dev/lib/metadataGenerator';
 
 export default async function Home() {
 	const { page, tags } = await getData();
@@ -36,27 +37,10 @@ export default async function Home() {
 export async function generateMetadata(): Promise<Metadata> {
 	const page = await getPageBySlug('home/');
 	const stripped = (render(page.body, stripResolver) as Array<string>).flat().join('').slice(0, 150) + '...';
-
 	const title = `${page.heading}`;
+	const url = 'https://zyzle.dev';
 
-	return {
-		title,
-		description: stripped,
-		authors: [{ name: 'Colin McCulloch', url: 'https://zyzle.dev' }],
-		openGraph: {
-			title,
-			description: stripped,
-			images: [`/og?title=${encodeURIComponent(`${title} | Zyzle.dev`)}`],
-			url: 'https://zyzle.dev',
-		},
-		twitter: {
-			creator: '@ZyzleDotDev',
-			title,
-			description: stripped,
-			card: 'summary',
-			images: [`/og?title=${encodeURIComponent(`${title} | Zyzle.dev`)}`],
-		},
-	};
+	return metadataGenerator(title, stripped, 'website', url);
 }
 
 async function getData() {

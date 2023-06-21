@@ -8,6 +8,7 @@ import { MemeText } from '@zyzle-dev/components/MemeText';
 import { RichTextBlok } from '@zyzle-dev/components/RichTextBlok';
 import { getProjectBySlug, getProjects } from '@zyzle-dev/lib/api';
 import { stripResolver } from '@zyzle-dev/lib/stripResolver';
+import metadataGenerator from '@zyzle-dev/lib/metadataGenerator';
 
 const arbitratyBlokResolvers = {
 	['arbitrary_blok']: (props: unknown) => {
@@ -64,9 +65,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
 	const res = await getProjectBySlug(params.slug);
 	const stripped = (render(res.content.body, stripResolver) as Array<[]>)[0].join('').slice(0, 150) + '...';
-
-	return {
-		title: `${res.content.heading}`,
-		description: stripped,
-	};
+	const title = `${res.content.heading} | Projects`;
+	const url = `https://zyzle.dev/projects/${params.slug}`;
+	return metadataGenerator(title, stripped, 'website', url);
 }

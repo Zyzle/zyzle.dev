@@ -4,6 +4,7 @@ import { render } from 'storyblok-rich-text-react-renderer';
 import { RichTextBlok } from '@zyzle-dev/components/RichTextBlok';
 import { getPageBySlug } from '@zyzle-dev/lib/api';
 import { stripResolver } from '@zyzle-dev/lib/stripResolver';
+import metadataGenerator from '@zyzle-dev/lib/metadataGenerator';
 
 export default async function About() {
 	const aboutPage = await getData();
@@ -19,10 +20,10 @@ export default async function About() {
 export async function generateMetadata(): Promise<Metadata> {
 	const page = await getPageBySlug('about/');
 	const stripped = (render(page.body, stripResolver) as Array<[]>)[0].join('');
-	return {
-		title: `${page.heading}`,
-		description: stripped,
-	};
+	const title = `${page.heading}`;
+	const url = 'https://zyzle.dev/about';
+
+	return metadataGenerator(title, stripped, 'profile', url);
 }
 
 async function getData() {

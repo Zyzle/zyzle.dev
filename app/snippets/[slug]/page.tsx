@@ -6,6 +6,7 @@ import { RichTextBlok } from '@zyzle-dev/components/RichTextBlok';
 import { getSnippetBySlug, getSnippets } from '@zyzle-dev/lib/api';
 import { formatRelativeDateString } from '@zyzle-dev/lib/formatRelativeDate';
 import { stripResolver } from '@zyzle-dev/lib/stripResolver';
+import metadataGenerator from '@zyzle-dev/lib/metadataGenerator';
 
 export default async function SnippetSlugPage({ params }: { params: { slug: string } }) {
 	const snippet = await getData(params.slug);
@@ -49,26 +50,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 	const res = await getSnippetBySlug(params.slug);
 	const stripped = (render(res.content.body, stripResolver) as Array<[]>)[0].join('').slice(0, 150) + '...';
 	const title = `${res.content.heading} | Snippets`;
-	return {
-		title,
-		description: stripped,
-		authors: [{ name: 'Colin McCulloch', url: 'https://zyzle.dev' }],
-		openGraph: {
-			title,
-			description: stripped,
-			images: [
-				`/og?title=${encodeURIComponent(`${title} | Zyzle.dev`)}&img=${encodeURIComponent(res.content.mainImage.filename)}`,
-			],
-			url: `https://zyzle.dev/snippets/${params.slug}`,
-		},
-		twitter: {
-			creator: '@ZyzleDotDev',
-			card: 'summary',
-			description: stripped,
-			title,
-			images: [
-				`/og?title=${encodeURIComponent(`${title} | Zyzle.dev`)}&img=${encodeURIComponent(res.content.mainImage.filename)}`,
-			],
-		},
-	};
+	const url = `https://zyzle.dev/snippets/${params.slug}`;
+
+	return metadataGenerator(title, stripped, 'article', url, res.content.mainImage.filename);
 }

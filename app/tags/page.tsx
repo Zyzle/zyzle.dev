@@ -5,6 +5,7 @@ import { RichTextBlok } from '@zyzle-dev/components/RichTextBlok';
 import { TagCloud } from '@zyzle-dev/components/TagCloud';
 import { getAllContentNodes, getPageBySlug } from '@zyzle-dev/lib/api';
 import { stripResolver } from '@zyzle-dev/lib/stripResolver';
+import metadataGenerator from '@zyzle-dev/lib/metadataGenerator';
 
 export default async function TagList() {
 	const { tags, page } = await getData();
@@ -23,10 +24,10 @@ export default async function TagList() {
 export async function generateMetadata(): Promise<Metadata> {
 	const page = await getPageBySlug('tags/');
 	const stripped = (render(page.body, stripResolver) as Array<string>).flat().join('');
-	return {
-		title: `${page.heading}`,
-		description: stripped,
-	};
+	const title = `${page.heading}`;
+	const url = 'https://zyzle.dev/tags';
+
+	return metadataGenerator(title, stripped, 'website', url);
 }
 
 async function getData() {

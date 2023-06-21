@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { RichTextBlok } from '@zyzle-dev/components/RichTextBlok';
 import { getAllContentNodes, getContentNodesByTag } from '@zyzle-dev/lib/api';
 import { formatRelativeDateString } from '@zyzle-dev/lib/formatRelativeDate';
+import metadataGenerator from '@zyzle-dev/lib/metadataGenerator';
 
 export default async function TagsSlugPage({ params }: { params: { slug: string } }) {
 	const data = await getData(params.slug);
@@ -53,8 +54,9 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-	return {
-		title: `${params.slug}`,
-		description: `A list of pages tagged with: ${params.slug}`,
-	};
+	const title = `${params.slug} | Tags`;
+	const description = `A list of pages tagged with: ${params.slug}`;
+	const url = `https://zyzle.dev/tags/${params.slug}`;
+
+	return metadataGenerator(title, description, 'website', url);
 }
