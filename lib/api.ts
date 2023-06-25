@@ -246,6 +246,7 @@ export const getAllContentNodes = async () => {
 				items {
 					full_slug
 					tag_list
+					content
 				}
 			}
 		}
