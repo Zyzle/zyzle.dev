@@ -249,7 +249,9 @@ export const getAllContentNodes = async () => {
 				}
 			}
 		}
-		`
+		`,
+		{},
+		['projects, snippets, blog']
 	);
 
 	return data.ContentNodes.items as ContentNode[];
@@ -274,7 +276,8 @@ export const getContentNodesByTag = async (tag: string) => {
 			variables: {
 				tag,
 			},
-		}
+		},
+		['projects, snippets, blog']
 	);
 
 	return data.ContentNodes.items as ContentNode[];
@@ -288,10 +291,13 @@ export const getSitemapNodes = async () => {
 				items {
 					full_slug
 					published_at
+					tag_list
 				}
 			}
 		}
-		`
+		`,
+		{},
+		['projects, snippets, blog']
 	);
 
 	return data.ContentNodes.items as SitemapNode[];
