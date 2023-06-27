@@ -118,4 +118,5 @@ export interface ContentNode {
 export interface SitemapNode {
 	full_slug: string;
 	published_at: string;
+	tag_list: string[];
 }
