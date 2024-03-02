@@ -13,6 +13,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Formula: Story = {
 	args: {
-		formula: 'x^2',
+		formula: 'E=mc^2',
 	},
 };

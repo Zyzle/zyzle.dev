@@ -1,6 +1,6 @@
 'use client';
 import { ReactNode } from 'react';
-import Highlight, { Language, Prism } from 'prism-react-renderer';
+import { Highlight, Language, Prism } from 'prism-react-renderer';
 // TODO: this works but feels wrong, should I try building a custom prism-react-renderer with just the langs I'll be using?
 // @ts-ignore-next-line
 (typeof global !== 'undefined' ? global : window).Prism = Prism;
@@ -29,7 +29,7 @@ export function CodeblockNode({ children, ...props }: CodeblockNodeProps) {
 	}
 
 	return (
-		<Highlight Prism={Prism} code={code as string} language={language as Language} theme={theme}>
+		<Highlight prism={Prism} code={code as string} language={language as Language} theme={theme}>
 			{({ className, style, tokens, getLineProps, getTokenProps }) => (
 				<pre
 					className={classNames(
@@ -41,12 +41,10 @@ export function CodeblockNode({ children, ...props }: CodeblockNodeProps) {
 					data-line-numbers
 					data-lang={language}>
 					{tokens.map((line, i) => {
-						const { key: lineKey, ...lineRest } = getLineProps({ line, key: i });
 						return (
-							<div key={lineKey} {...lineRest} data-line-number={i + 1}>
-								{line.map((token, key) => {
-									const { key: tokenKey, ...tokenRest } = getTokenProps({ token, key });
-									return <span key={tokenKey} {...tokenRest} />;
+							<div key={i} {...getLineProps({ line })} data-line-number={i + 1}>
+								{line.map((token, j) => {
+									return <span key={j} {...getTokenProps({ token })} />;
 								})}
 							</div>
 						);
