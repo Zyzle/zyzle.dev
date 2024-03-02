@@ -1,5 +1,41 @@
 # Changelog
 
+## [1.4.0](https://github.com/Zyzle/zyzle.dev/compare/v1.3.0...v1.4.0) (2024-03-02)
+
+
+### Features
+
+* **components:** add custom TagCloud component ([ecedcd1](https://github.com/Zyzle/zyzle.dev/commit/ecedcd18144f04c5be2f4ac9d6783b3c2d64745e))
+* **components:** add extended tags page ([8850d3f](https://github.com/Zyzle/zyzle.dev/commit/8850d3f3f578226bf3811f5b6c566bd53df1cbef)), closes [#34](https://github.com/Zyzle/zyzle.dev/issues/34)
+* **components:** add line numbers to non plaintext CodeblokNodes ([70c11d6](https://github.com/Zyzle/zyzle.dev/commit/70c11d63a325f6b320e10e39c27175f1b51b4495)), closes [#36](https://github.com/Zyzle/zyzle.dev/issues/36)
+* **components:** add listicle project component ([dfe4b0a](https://github.com/Zyzle/zyzle.dev/commit/dfe4b0ab1b892139ceaf736c632f69a3d523a7c0))
+* **css:** add function to tailwind to add theme colours to css vars ([a06a060](https://github.com/Zyzle/zyzle.dev/commit/a06a06060df9e0927ca045d994f44f1158d28f94))
+* **feed:** add atom.xml feed ([acd0b04](https://github.com/Zyzle/zyzle.dev/commit/acd0b0414ce1e74f2a697bd8fc18ed83507aefb8))
+* **manifest:** add basic webmanifest and images ([62d374a](https://github.com/Zyzle/zyzle.dev/commit/62d374aca70c87e2be40ae37c66956dd334b4db4))
+* **meta:** moved robots and sitemap to dedicated files ([62d374a](https://github.com/Zyzle/zyzle.dev/commit/62d374aca70c87e2be40ae37c66956dd334b4db4))
+* **og:** add og and twitter cards ([62d374a](https://github.com/Zyzle/zyzle.dev/commit/62d374aca70c87e2be40ae37c66956dd334b4db4))
+* **sitemap:** add generated tag pages to sitemap ([e02685f](https://github.com/Zyzle/zyzle.dev/commit/e02685f396edda199f70a12a86b1bc54a2bb0d16)), closes [#40](https://github.com/Zyzle/zyzle.dev/issues/40)
+* update next version and add speed insights package ([2b0368e](https://github.com/Zyzle/zyzle.dev/commit/2b0368eea93268b5c4890c8bd6099f98dfbd5eeb))
+
+
+### Bug Fixes
+
+* **cache:** first attempt to fix revalidation issues ([4343f93](https://github.com/Zyzle/zyzle.dev/commit/4343f932476152383e24e57bfd5fc7383574f872))
+* **cache:** once again trying to fix cache revalidation issue ([09cab56](https://github.com/Zyzle/zyzle.dev/commit/09cab56df2a4cf57ee33bd853488120f2d7f9352))
+* **components:** fix webassembly loading in ImageKmeans.tsx ([8835f4a](https://github.com/Zyzle/zyzle.dev/commit/8835f4a84e9bc1a57203902133b5abe0f73efb75))
+* **components:** improve styling if the ImageKmeans component ([d0d0042](https://github.com/Zyzle/zyzle.dev/commit/d0d0042a081464e2d48765172711bbc0471c47d2))
+* **meta:** move metadata generation to single function and make sure required properties are present ([536e3d5](https://github.com/Zyzle/zyzle.dev/commit/536e3d5f10a530c25b445eed7817c138893281f2)), closes [#35](https://github.com/Zyzle/zyzle.dev/issues/35)
+* **og:** fix metadata title duplication issue ([f2423ee](https://github.com/Zyzle/zyzle.dev/commit/f2423ee2f95f30e6367519b861be5e2de53e83fd))
+* **snippetlink:** fix issue with nested anchors in SnippetLink component ([2306e4c](https://github.com/Zyzle/zyzle.dev/commit/2306e4ca45be3abd14fb75f679e65d979145aaa4))
+* **styling:** attempting to resolve font issue ([11dc6e7](https://github.com/Zyzle/zyzle.dev/commit/11dc6e79cc60994c2bab0b845acf59a927adbe4f))
+
+
+### Miscellaneous
+
+* **deps:** update dependencies and rework imports to work with turbopack ([503944c](https://github.com/Zyzle/zyzle.dev/commit/503944c7b9db04e98a4c6fa387b8b4eb75510d25))
+* revalidate cache change ([15e474d](https://github.com/Zyzle/zyzle.dev/commit/15e474dcabec8d822e00b65a27937393ec7bbb6c))
+* **styling:** change theme to extend rather than replace tailwind ([54a1d2d](https://github.com/Zyzle/zyzle.dev/commit/54a1d2db7f98ef4abac52790851e8e2de704a56d))
+
 ## [1.3.0](https://github.com/Zyzle/zyzle.dev/compare/v1.2.0...v1.3.0) (2023-03-05)
 
 
