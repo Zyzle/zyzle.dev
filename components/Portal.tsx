@@ -12,6 +12,6 @@ export function Portal(props: PortalProps) {
 
 	useEffect(() => setMounted(true), []);
 
-	if (!mounted) return null;
+	if (!mounted) return <></>;
 	return createPortal(children, document.body);
 }
