@@ -1,0 +1,27 @@
+{
+  "name": "zyzle.dev",
+  "type": "module",
+  "version": "1.4.0",
+  "author": {
+    "name": "Colin McCulloch",
+    "email": "colin@zyzle.dev"
+  },
+  "scripts": {
+    "commit": "cz",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.13.3"
+  },
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
