@@ -1,0 +1,45 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  theme: {
+    extend: {
+      typography: () => ({
+        zyzle: {
+          css: {
+            "--tw-prose-invert-body": "var(--color-zdefault)",
+            "--tw-prose-invert-headings": "var(--color-zblue)",
+            "--tw-prose-invert-lead": "var(--color-red-400)",
+            "--tw-prose-invert-links": "var(--color-zpurple)",
+            "--tw-prose-invert-bold": "var(--color-zdefault)",
+            "--tw-prose-invert-counters": "var(--color-zgold)",
+            "--tw-prose-invert-bullets": "var(--color-zgold)",
+            "--tw-prose-invert-hr": "var(--color-zcaret)",
+            "--tw-prose-invert-quotes": "var(--color-zdefault)",
+            "--tw-prose-invert-quote-borders": "var(--color-zlime)",
+            "--tw-prose-invert-captions": "var(--color-pink-400)",
+            "--tw-prose-invert-code": "var(--color-white)",
+            "--tw-prose-invert-pre-code": "var(--color-zdefault)",
+            "--tw-prose-invert-pre-bg": "var(--color-zblock)",
+            "--tw-prose-invert-th-borders": "var(--color-pink-600)",
+            "--tw-prose-invert-td-borders": "var(--color-pink-700)",
+            // "--tw-prose-body": "var(--color-zdefault)",
+            // "--tw-prose-headings": "var(--color-zblue)",
+            // "--tw-prose-lead": "var(--color-red-400)",
+            // "--tw-prose-links": "var(--color-zpurple)",
+            // "--tw-prose-bold": "var(--color-zdefault)",
+            // "--tw-prose-counters": "var(--color-zgold)",
+            // "--tw-prose-bullets": "var(--color-zgold)",
+            // "--tw-prose-hr": "var(--color-zcaret)",
+            // "--tw-prose-quotes": "var(--color-zdefault)",
+            // "--tw-prose-quote-borders": "var(--color-zlime)",
+            // "--tw-prose-captions": "var(--color-pink-400)",
+            // "--tw-prose-code": "var(--color-white)",
+            // "--tw-prose-pre-code": "var(--color-zdefault)",
+            // "--tw-prose-pre-bg": "var(--color-zblock)",
+            // "--tw-prose-th-borders": "var(--color-pink-600)",
+            // "--tw-prose-td-borders": "var(--color-pink-700)",
+          },
+        },
+      }),
+    },
+  },
+};

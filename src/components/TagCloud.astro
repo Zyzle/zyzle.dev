@@ -1,0 +1,91 @@
+---
+import { getCollection } from "astro:content";
+
+const blogTags = (await getCollection("blogs")).flatMap(
+  (post) => post.data.tags
+);
+const snippetsTags = (await getCollection("snippets")).flatMap(
+  (post) => post.data.tags
+);
+
+const tagsWithCounts = [...blogTags, ...snippetsTags].reduce(
+  (acc, tag) => {
+    acc[tag!] = (acc[tag!] || 0) + 1;
+    return acc;
+  },
+  {} as Record<string, number>
+);
+
+const COLORS = [
+  "#98c379",
+  "#c678dd",
+  "#e06c75",
+  "#d19a66",
+  "#e5c07b",
+  "#528bff",
+  "#61afef",
+  "#56b6c2",
+];
+
+// Helper to shuffle array
+function shuffle(array: any[]) {
+  let arr = array.slice();
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+// Prepare tag data for rendering
+const tagEntries = shuffle(Object.entries(tagsWithCounts));
+const counts = tagEntries.map(([, c]) => c);
+const min = Math.min(...counts);
+const max = Math.max(...counts);
+
+const renderedTags = tagEntries.map(([tag, count]) => {
+  // Scale font size between 1em and 2.2em
+  const minFont = 1.0;
+  const maxFont = 2.2;
+  const fontSize =
+    min === max
+      ? `${(minFont + maxFont) / 2}em`
+      : `${minFont + ((count - min) / (max - min)) * (maxFont - minFont)}em`;
+  // Pick a random color from COLORS for each tag
+  const color = COLORS[Math.floor(Math.random() * COLORS.length)];
+  // Random margin and transform for organic look
+  const marginTop = Math.floor(Math.random() * 18) - 9; // -9px to +8px
+  const marginLeft = Math.floor(Math.random() * 18) - 9; // -9px to +8px
+  const rotate = Math.floor(Math.random() * 7) - 3; // -3deg to +3deg
+  return {
+    tag,
+    style: {
+      color,
+      fontSize,
+      fontWeight: 600,
+      textShadow: "0 1px 2px rgba(0,0,0,0.08)",
+      transition: "transform 0.1s",
+      display: "inline-block",
+      alignSelf: ["start", "center", "end"][Math.floor(Math.random() * 3)],
+      marginTop: `${marginTop}px`,
+      marginLeft: `${marginLeft}px`,
+      transform: `rotate(${rotate}deg)`,
+    },
+  };
+});
+---
+
+<div class="not-prose flex flex-wrap justify-center items-center">
+  {
+    renderedTags.map(({ tag, style }) => (
+      <a
+        href={`/tags/${tag}`}
+        title={`View posts tagged '${tag}'`}
+        style={style}
+        class="hover:scale-110 hover:underline rounded px-1"
+      >
+        #{tag}
+      </a>
+    ))
+  }
+</div>

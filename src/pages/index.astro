@@ -1,11 +1,69 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import HomeLink from "../components/HomeLink.astro";
+import TagCloud from "../components/TagCloud.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import BlogIcon from "../assets/blog.svg";
+import SnippetsIcon from "../assets/snippets.svg";
+import ProjectsIcon from "../assets/projects.svg";
+import AboutIcon from "../assets/about.svg";
+
+const title = "Home";
+
+const homeLinks = [
+  {
+    url: "/blog",
+    imageSrc: BlogIcon.src,
+    name: "Blog",
+    extraText:
+      "Blog posts I've written on various topics, usually tech related",
+  },
+  {
+    url: "/snippets",
+    imageSrc: SnippetsIcon.src,
+    name: "Snippets",
+    extraText:
+      "Various small code snippets I've found useful in the past but probably dont warrent an entire blog post",
+  },
+  {
+    url: "/projects",
+    imageSrc: ProjectsIcon.src,
+    name: "Projects",
+    extraText: "Current projects I'm working on, may or may not be interesting",
+  },
+  {
+    url: "/about",
+    imageSrc: AboutIcon.src,
+    name: "About",
+    extraText: "Info about me!",
+  },
+];
 ---
 
-<Layout>
-	<Welcome />
+<Layout title={title}>
+  <h1 class="text-zgold text-4xl font-bold my-4">Home</h1>
+  <section class="prose prose-invert prose-zyzle mx-auto mt-4 mb-6">
+    Welcome to Zyzle.dev a place for me, <a href="/about"
+      >Colin "Zyzle" McCulloch</a
+    > to blog, show off some projects and gather together random things I've been
+    working on.
+  </section>
+  <nav class="flex flex-1 flex-col lg:flex-row gap-6 mb-6">
+    <section class="flex-2">
+      {
+        homeLinks.map((link) => (
+          <HomeLink
+            url={link.url}
+            imageSrc={link.imageSrc}
+            name={link.name}
+            extraText={link.extraText}
+          />
+        ))
+      }
+    </section>
+    <section class="flex-1">
+      <h2 class="text-zgold text-xl font-bold">Article tags:</h2>
+      <TagCloud />
+    </section>
+  </nav>
 </Layout>

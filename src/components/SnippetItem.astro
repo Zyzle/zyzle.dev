@@ -1,0 +1,39 @@
+---
+import { formatRelativeDateString } from "../utils/dateUtils";
+import LangIcon from "./LangIcon.astro";
+
+const { id, title, pubDate, tags, language } = Astro.props;
+---
+
+<a
+  href={`/snippets/${id}`}
+  class="rounded-lg border-dashed border border-zdefault flex flex-row gap-6 group p-3"
+>
+  <LangIcon language={language} />
+  <div>
+    <h2 class="text-zgold text-xl font-bold group-hover:underline">
+      {title}
+    </h2>
+    <span class="text-zcyan flex-1">{formatRelativeDateString(pubDate)}</span>
+    <span class="text-zlime flex-1 flex flex-wrap">
+      {
+        tags?.map((tag: string) => (
+          <span class="clickable bg-zblock rounded-full px-2 mb-1 whitespace-nowrap hover:underline">
+            #{tag}
+          </span>
+        ))
+      }
+    </span>
+  </div>
+</a>
+
+<script>
+  const clickables = document.querySelectorAll("span.clickable");
+  clickables.forEach((span) => {
+    span.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      window.location.href = `/tags/${span.textContent.slice(2)}`;
+    });
+  });
+</script>

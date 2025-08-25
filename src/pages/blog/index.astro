@@ -1,0 +1,33 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import BlogExcerpt from "../../components/BlogExcerpt.astro";
+
+const title = "Blog";
+
+const posts = (await getCollection("blogs")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<Layout title={title}>
+  <h1 class="text-zgold text-4xl font-bold my-4">{title}</h1>
+  <div class="prose prose-invert prose-zyzle mx-auto mb-6">
+    <p>
+      A collection of blog posts written by me on various topics, usually tech
+      related.
+    </p>
+  </div>
+
+  {
+    posts.map((post) => (
+      <BlogExcerpt
+        id={post.id}
+        title={post.data.title}
+        pubDate={post.data.pubDate}
+        tags={post.data.tags}
+        description={post.data.description}
+      />
+    ))
+  }
+</Layout>

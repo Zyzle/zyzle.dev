@@ -1,0 +1,80 @@
+---
+layout: "../../layouts/BlogPostLayout.astro"
+title: "Markdown Tester Page"
+pubDate: 2022-03-26
+description: "This page is going to function as a test bed for the site's new styling, it's going to contain as many different markdown elements as possible in order to see whether or not we support them"
+author: "Colin McCulloch"
+ghDisc: 24
+tags: ["test", "markdown", "blog", "astro"]
+---
+
+import Figure from "../../components/Figure.astro";
+import RenovationImg from "../../assets/images/renovation-interior.jpg";
+
+This page is going to function as a test bed for the site's new styling, it's going to contain as many different markdown elements as possible in order to see whether or not we support them
+
+# Text
+
+Some text with **bold** _italic_ **_bold-italic_** `monospaced` [a link](https://zyzle.dev/) ~~strikethrough~~ 
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dui eros, sollicitudin a diam sit amet, tincidunt laoreet magna. Donec in sem non risus eleifend feugiat. Vestibulum quis imperdiet tellus, vitae sollicitudin dui. Nulla facilisi. Nunc posuere, lacus id tempus pharetra, lectus ex tempor turpis, molestie congue orci turpis et nisi. Vivamus sed maximus sem, id elementum metus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse potenti. Integer pretium vulputate quam venenatis tempus. Donec purus tellus, blandit aliquet auctor eget, vulputate non dui.
+
+---
+
+# Heading 1
+
+## Heading 2
+
+### Heading 3
+
+#### Heading 4
+
+##### Heading 5
+
+###### Heading 6
+
+---
+
+# Lists
+
+## Unordered List
+- Item 1
+- Item 2
+- Item 3
+
+## Ordered List
+1. Item 1
+2. Item 2
+3. Item 3
+
+---
+
+# Blocks
+
+> Some quoted text
+>
+> over multiple lines
+
+```js title="test.js" {"1":4}
+(() => {
+  const bar = document.querySelector("#progress-bar");
+  const post = document.querySelector("#docmain");
+  const html = document.documentElement;
+  const height = post.scrollHeight;
+
+  window.addEventListener("scroll", () => {
+    bar.style.width =
+      (html.scrollTop / (height - html.clientHeight)) * 100 + "%";
+  });
+})();
+```
+
+---
+
+# Images
+
+<Figure 
+  filename={RenovationImg} 
+  alt="black and white image of building rennovation" 
+  title="Interior of the Abbey, Monastery Endowment of the Holy Grave, Heiligengrabe, Brandenburg, Germany (2017)" 
+  caption="a caption for this image" />
