@@ -1,0 +1,30 @@
+---
+const { language } = Astro.props;
+
+import BashIcon from "../assets/bash.svg";
+import JavaIcon from "../assets/java.svg";
+import PythonIcon from "../assets/python.svg";
+import SnippetsIcon from "../assets/snippets.svg";
+import TypeScriptIcon from "../assets/typescript.svg";
+
+let icon;
+
+switch (language) {
+  case "bash":
+    icon = BashIcon;
+    break;
+  case "java":
+    icon = JavaIcon;
+    break;
+  case "python":
+    icon = PythonIcon;
+    break;
+  case "typescript":
+    icon = TypeScriptIcon;
+    break;
+  default:
+    icon = SnippetsIcon;
+}
+---
+
+<img src={icon.src} alt={`${language} icon`} height="64" width="64" />

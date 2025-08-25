@@ -1,0 +1,22 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@config "../../tailwind.config.js";
+
+@theme {
+  --font-sans: "Nunito Variable", sans-serif;
+  --font-mono: "Fira Code Variable", monospace;
+  --color-transparent: "transparent";
+  --color-current: "currentColor";
+  --color-zdefault: oklch(0.7621 0.0202 262.99);
+  --color-zbackground: oklch(0.2741 0.0368 283.71);
+  --color-zlime: oklch(0.7683 0.1103 133);
+  --color-zpurple: oklch(0.6936 0.1635 318.21);
+  --color-zpink: oklch(0.6709 0.1448 17);
+  --color-zbrown: oklch(0.7273 0.0949 63.82);
+  --color-zgold: oklch(0.8249 0.097 82.26);
+  --color-zcaret: oklch(0.6562 0.1826 262.74);
+  --color-zblue: oklch(0.7304 0.1213 245.3);
+  --color-zcyan: oklch(0.7231 0.0916 206.31);
+  --color-zcomment: oklch(0.4983 0.0225 262.91);
+  --color-zblock: oklch(0.2925 0.0157 264.3);
+}

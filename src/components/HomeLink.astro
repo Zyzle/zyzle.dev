@@ -1,0 +1,13 @@
+---
+const { url, imageSrc, name, extraText } = Astro.props;
+---
+
+<a href={url} class="flex flex-row items-center gap-4 mb-4 group">
+  <img src={imageSrc} alt={`${name} icon`} height="64" width="64" />
+  <div>
+    <h2 class="text-zlime text-xl font-bold group-hover:underline">
+      {name}
+    </h2>
+    <span class="text-zdefault">{extraText}</span>
+  </div>
+</a>

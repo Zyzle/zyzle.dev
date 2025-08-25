@@ -1,0 +1,48 @@
+---
+import By from "../assets/by.svg";
+import Cc from "../assets/cc.svg";
+import Sa from "../assets/sa.svg";
+---
+
+<footer class="w-full border-t border-zcaret">
+  <div
+    class="flex flex-row justify-between mt-5 prose prose-invert prose-zyzle mx-auto px-4"
+  >
+    <nav class="not-prose">
+      <ul>
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/blog">Blog</a>
+        </li>
+        <li>
+          <a href="/projects">Projects</a>
+        </li>
+        <li>
+          <a href="/snippets">Snippets</a>
+        </li>
+        <li>
+          <a href="/about">About</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="max-w-[200px] text-right">
+      <div class="flex flex-row justify-end gap-2 not-prose">
+        <img src={Cc.src} alt="creative commons" width="30" height="30" />
+        <img src={By.src} alt="attribution" width="30" height="30" />
+        <img src={Sa.src} alt="share alike" width="30" height="30" />
+      </div>
+      <p>
+        Licensed under{" "}
+        <a
+          href="https://creativecommons.org/licenses/by-sa/4.0/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Creative Commons Attribution-ShareAlike 4.0
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,76 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import BlogExcerpt from "../../components/BlogExcerpt.astro";
+import SnippetItem from "../../components/SnippetItem.astro";
+
+export async function getStaticPaths() {
+  const blogPosts = await getCollection("blogs");
+  const snippets = await getCollection("snippets");
+
+  const uniqueTags = [
+    ...new Set([
+      ...blogPosts.flatMap((post) => post.data.tags),
+      ...snippets.flatMap((post) => post.data.tags),
+    ]),
+  ];
+
+  return uniqueTags.map((tag) => ({
+    params: { tag },
+    props: {
+      blogPosts: blogPosts
+        .filter((post) => post.data.tags?.includes(tag!))
+        .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()),
+      snippets: snippets
+        .filter((post) => post.data.tags?.includes(tag!))
+        .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()),
+    },
+  }));
+}
+
+const { tag } = Astro.params;
+const { blogPosts, snippets } = Astro.props;
+---
+
+<Layout title={`#${tag}`}>
+  <h1 class="text-zgold text-4xl font-bold my-4">{`#${tag}`}</h1>
+  <div class="prose prose-invert prose-zyzle mx-auto mb-6">
+    <p>Below is a list of pages tagged with {tag}</p>
+  </div>
+
+  <h2 class="text-2xl font-bold my-4 text-zlime">Blog Posts</h2>
+  {
+    blogPosts.length > 0 ? (
+      blogPosts.map((post) => (
+        <BlogExcerpt
+          id={post.id}
+          title={post.data.title}
+          pubDate={post.data.pubDate}
+          tags={post.data.tags}
+          description={post.data.description}
+        />
+      ))
+    ) : (
+      <p class="prose prose-invert prose-zyzle">No blog posts found.</p>
+    )
+  }
+
+  <h2 class="text-2xl font-bold my-4 text-zlime">Snippets</h2>
+  <div class="flex flex-col gap-4 mb-6">
+    {
+      snippets.length > 0 ? (
+        snippets.map((snippet) => (
+          <SnippetItem
+            id={snippet.id}
+            title={snippet.data.title}
+            pubDate={snippet.data.pubDate}
+            tags={snippet.data.tags}
+            language={snippet.data.language}
+          />
+        ))
+      ) : (
+        <p class="prose prose-invert prose-zyzle">No snippets found.</p>
+      )
+    }
+  </div>
+</Layout>

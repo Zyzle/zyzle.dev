@@ -1,0 +1,65 @@
+---
+layout: '../../layouts/SnippetLayout.astro'
+title: "Override Hashcode and Equals"
+pubDate: 2023-02-18
+language: java
+author: "Colin McCulloch"
+tags: ["java", "snippet"]
+---
+
+The correct way to override equals and hashCode methods for Java classes, these should always be overriden together.
+
+> While this is a fun excercise and a good learning oportunity to implemnt this yourself
+> it might be better in practice to use a library like Apache Commons Lang, which provides a `EqualsBuilder` and `HashCodeBuilder` 
+> or Java 7+'s `Objects.hash` and `Objects.equals` to simplify the process.
+
+```java title="Stock.java"
+public class Stock {
+    private String symbol;
+    private String exchange;
+    private long lotSize;
+    private int tickSize;
+    private boolean isRestricted;
+    private Date settlementDate;
+    private BigDecimal price;
+        
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((exchange == null) ? 0 : exchange.hashCode());
+        result = prime * result + (isRestricted ? 1231 : 1237);
+        result = prime * result + (int) (lotSize ^ (lotSize >>> 32));
+        result = prime * result + ((price == null) ? 0 : price.hashCode());
+        result = prime * result + ((settlementDate == null) ? 0 : settlementDate.hashCode());
+        result = prime * result + ((symbol == null) ? 0 : symbol.hashCode());
+        result = prime * result + tickSize;
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || this.getClass() != obj.getClass()){
+            return false;
+        }
+        Stock other = (Stock) obj;
+        return
+            this.tickSize == other.tickSize &&
+            this.lotSize == other.lotSize &&
+            this.isRestricted == other.isRestricted &&
+            (this.symbol == other.symbol || (this.symbol != null && this.symbol.equals(other.symbol))) &&
+            (this.exchange == other.exchange|| (this.exchange != null && this.exchange.equals(other.exchange))) &&
+            (this.settlementDate == other.settlementDate|| (this.settlementDate != null && this.settlementDate.equals(other.settlementDate))) &&
+            (this.price == other.price|| (this.price != null && this.price.equals(other.price)));
+    }
+}
+```
+
+There are a few rules that the equals method must adhere to:
+
+1. **Reflexivity**: For any non-null reference value x, `x.equals(x)` should return true.
+2. **Symmetry**: For any non-null reference values x and y, `x.equals(y)` should return true if and only if `y.equals(x)` returns true.
+3. **Transitivity**: For any non-null reference values x, y, and z, if `x.equals(y)` returns true and `y.equals(z)` returns true, then `x.equals(z)` should return true.
+4. **Consistency**: For any non-null reference values x and y, multiple invocations of `x.equals(y)` should consistently return true or consistently return false, provided no information used in equals comparisons on the objects is modified.
+5. **Non-nullity**: For any non-null reference value x, `x.equals(null)` should return false.

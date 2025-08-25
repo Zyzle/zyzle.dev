@@ -1,0 +1,18 @@
+---
+const { discussionId } = Astro.props;
+---
+
+<script
+  src="https://giscus.app/client.js"
+  id="comments"
+  data-repo="Zyzle/zyzle.dev"
+  data-repo-id="R_kgDOI5nGbQ"
+  data-mapping="number"
+  data-term={discussionId}
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="top"
+  data-theme="transparent_dark"
+  data-lang="en"
+  crossorigin="anonymous"
+  async></script>

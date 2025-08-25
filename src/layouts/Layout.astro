@@ -1,22 +1,37 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import "@fontsource-variable/fira-code";
+import "@fontsource-variable/nunito";
+import "@fontsource/pacifico";
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+import "../styles/global.css";
+import Footer from "../components/Footer.astro";
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" href="/favicon-16x16.png" sizes="16x16" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} | Zyzle.dev</title>
+  </head>
+  <body class="w-full min-h-full flex flex-col bg-zbackground font-sans">
+    <header
+      class="relative backdrop-blur flex-none flex items-center xl:fixed xl:w-full xl:top-0 xl:left-0 xl:z-30 px-4 py-5"
+    >
+      <a href="/">
+        <span class="text-zpink text-3xl font-[Pacifico]">Zyzle.dev</span>
+      </a>
+    </header>
+    <main class="flex-1 relative xl:mt-20 px-4">
+      <div class="container mx-auto max-w-prose">
+        <slot />
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>

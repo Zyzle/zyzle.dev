@@ -1,0 +1,14 @@
+---
+import TagCloud from "../../components/TagCloud.astro";
+import Layout from "../../layouts/Layout.astro";
+
+const title = "Tags";
+---
+
+<Layout title={title}>
+  <h1 class="text-zgold text-4xl font-bold my-4">{title}</h1>
+  <div class="prose prose-invert prose-zyzle mx-auto mb-6">
+    <p>A collection of tags used in the articles on this site.</p>
+  </div>
+  <TagCloud />
+</Layout>
