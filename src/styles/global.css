@@ -20,3 +20,7 @@
   --color-zcomment: oklch(0.4983 0.0225 262.91);
   --color-zblock: oklch(0.2925 0.0157 264.3);
 }
+
+.c-breadcrumbs__link {
+  color: var(--color-zpurple);
+}
