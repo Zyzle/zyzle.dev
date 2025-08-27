@@ -1,19 +1,20 @@
 ---
 import { getCollection, render } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
-import { formatRelativeDateString } from "../../utils/dateUtils";
+import Layout from "../../../layouts/Layout.astro";
+import { formatRelativeDateString } from "../../../utils/dateUtils";
+import Comments from "../../../components/Comments.astro";
 
 export async function getStaticPaths() {
-  const snippets = await getCollection("snippets");
+  const blogs = await getCollection("blogs");
 
-  return snippets.map((entry) => ({
+  return blogs.map((entry) => ({
     params: { slug: entry.id },
     props: { entry },
   }));
 }
 
 const { entry } = Astro.props;
-const { Content } = await render(entry);
+const { Content, remarkPluginFrontmatter } = await render(entry);
 ---
 
 <Layout title={entry.data.title} showScroll={true}>
@@ -22,12 +23,15 @@ const { Content } = await render(entry);
     <div class="text-zcyan">
       {formatRelativeDateString(entry.data.pubDate)}
     </div>
+    <div class="text-zpink italic mb-6">
+      {remarkPluginFrontmatter.minutesRead}
+    </div>
     <div class="text-zgold flex flex-wrap">
       {
         entry.data.tags?.map((tag: string) => (
           <span class="not-prose">
             <a href={`/tags/${tag}`}>
-              <span class="  bg-zblock rounded-full px-2 mb-1 whitespace-nowrap hover:underline">
+              <span class="bg-zblock rounded-full px-2 mb-1 whitespace-nowrap hover:underline">
                 #{tag}
               </span>
             </a>
@@ -37,4 +41,9 @@ const { Content } = await render(entry);
     </div>
     <Content />
   </article>
+  <section class="prose prose-invert prose-zyzle mx-auto mb-6">
+    <hr class="mb-3" />
+    <h3 id="comments">Comments</h3>
+    <Comments discussionId={entry.data.ghDisc} />
+  </section>
 </Layout>

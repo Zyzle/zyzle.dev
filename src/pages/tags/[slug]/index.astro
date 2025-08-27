@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
-import BlogExcerpt from "../../components/BlogExcerpt.astro";
-import SnippetItem from "../../components/SnippetItem.astro";
+import Layout from "../../../layouts/Layout.astro";
+import BlogExcerpt from "../../../components/BlogExcerpt.astro";
+import SnippetItem from "../../../components/SnippetItem.astro";
 
 export async function getStaticPaths() {
   const blogPosts = await getCollection("blogs");
@@ -16,7 +16,7 @@ export async function getStaticPaths() {
   ];
 
   return uniqueTags.map((tag) => ({
-    params: { tag },
+    params: { slug: tag },
     props: {
       blogPosts: blogPosts
         .filter((post) => post.data.tags?.includes(tag!))
@@ -28,7 +28,7 @@ export async function getStaticPaths() {
   }));
 }
 
-const { tag } = Astro.params;
+const { slug: tag } = Astro.params;
 const { blogPosts, snippets } = Astro.props;
 ---
 
