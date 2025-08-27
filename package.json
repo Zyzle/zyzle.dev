@@ -24,6 +24,8 @@
     "astro-breadcrumbs": "^3.3.1",
     "astro-expressive-code": "^0.41.3",
     "date-fns": "^4.1.0",
+    "mdast-util-to-string": "^4.0.0",
+    "reading-time": "^1.5.0",
     "tailwindcss": "^4.1.12",
     "typescript": "^5.9.2"
   },
