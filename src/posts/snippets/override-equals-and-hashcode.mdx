@@ -1,5 +1,4 @@
 ---
-layout: '../../layouts/SnippetLayout.astro'
 title: "Override Hashcode and Equals"
 pubDate: 2023-02-18
 language: java
@@ -10,8 +9,11 @@ tags: ["java", "snippet"]
 The correct way to override equals and hashCode methods for Java classes, these should always be overriden together.
 
 > While this is a fun excercise and a good learning oportunity to implemnt this yourself
-> it might be better in practice to use a library like Apache Commons Lang, which provides a `EqualsBuilder` and `HashCodeBuilder` 
-> or Java 7+'s `Objects.hash` and `Objects.equals` to simplify the process.
+> it might be better in practice to use a library like Apache Commons Lang[^1], which provides a `EqualsBuilder` and `HashCodeBuilder` 
+> or Java 7+'s[^2] `Objects.hash` and `Objects.equals` to simplify the process.
+
+[^1]: Apache Commons Lang [javadoc](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/package-summary.html)
+[^2]: Java 7+ [javadoc](https://docs.oracle.com/javase/7/docs/api/java/util/Objects.html)
 
 ```java title="Stock.java"
 public class Stock {

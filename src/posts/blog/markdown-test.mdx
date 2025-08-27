@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/BlogPostLayout.astro"
 title: "Markdown Tester Page"
 pubDate: 2022-03-26
 description: "This page is going to function as a test bed for the site's new styling, it's going to contain as many different markdown elements as possible in order to see whether or not we support them"
@@ -16,6 +15,7 @@ This page is going to function as a test bed for the site's new styling, it's go
 # Text
 
 Some text with **bold** _italic_ **_bold-italic_** `monospaced` [a link](https://zyzle.dev/) ~~strikethrough~~ 
+
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dui eros, sollicitudin a diam sit amet, tincidunt laoreet magna. Donec in sem non risus eleifend feugiat. Vestibulum quis imperdiet tellus, vitae sollicitudin dui. Nulla facilisi. Nunc posuere, lacus id tempus pharetra, lectus ex tempor turpis, molestie congue orci turpis et nisi. Vivamus sed maximus sem, id elementum metus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse potenti. Integer pretium vulputate quam venenatis tempus. Donec purus tellus, blandit aliquet auctor eget, vulputate non dui.
 
@@ -55,9 +55,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dui eros, 
 >
 > over multiple lines
 
-```js title="test.js" {"1":4}
+```js title="test.js" wrap
 (() => {
   const bar = document.querySelector("#progress-bar");
+  const post = document.querySelector("#docman");
   const post = document.querySelector("#docmain");
   const html = document.documentElement;
   const height = post.scrollHeight;
@@ -67,6 +68,23 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dui eros, 
       (html.scrollTop / (height - html.clientHeight)) * 100 + "%";
   });
 })();
+```
+
+
+```jsx {"1":5} del={"2":7-8} ins={"3":10-12} wrap
+// labeled-line-markers.jsx
+<button
+  role="button"
+  {...props}
+  value={value}
+  className={buttonClassName}
+  disabled={disabled}
+  active={active}
+>
+  {children &&
+    !active &&
+    (typeof children === 'string' ? <span>{children}</span> : children)}
+</button>
 ```
 
 ---
