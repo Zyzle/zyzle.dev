@@ -5,7 +5,7 @@ import Layout from "./Layout.astro";
 const { frontmatter } = Astro.props;
 ---
 
-<Layout title={frontmatter.title}>
+<Layout title={frontmatter.title} showScroll={true}>
   <article class="prose prose-invert prose-zyzle mx-auto mb-6">
     <h1 class="text-zlime">{frontmatter.title}</h1>
     <div class="text-zcyan">

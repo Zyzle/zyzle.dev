@@ -1,0 +1,23 @@
+---
+let progress = 0;
+---
+
+<div
+  id="scroll-progress"
+  class="h-2 rounded-r-full bg-zcaret fixed z-50 lg:top-[76px]"
+  style="width: 0%"
+>
+</div>;
+
+<script>
+  function updateProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight =
+      document.documentElement.scrollHeight - window.innerHeight;
+    const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    document.getElementById("scroll-progress")!.style.width = percent + "%";
+  }
+  window.addEventListener("scroll", updateProgress, { passive: true });
+  window.addEventListener("resize", updateProgress);
+  updateProgress();
+</script>
