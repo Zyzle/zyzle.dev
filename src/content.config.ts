@@ -10,7 +10,10 @@ const blogs = defineCollection({
     title: z.string(),
     pubDate: z.coerce.date(),
     description: z.string(),
-    author: z.string(),
+    author: z.object({
+      name: z.string(),
+      email: z.string().email(),
+    }),
     ghDisc: z.number().optional(),
     tags: z.array(z.string()).optional(),
   }),
@@ -25,7 +28,10 @@ const snippets = defineCollection({
     title: z.string(),
     pubDate: z.coerce.date(),
     language: z.string(),
-    author: z.string(),
+    author: z.object({
+      name: z.string(),
+      email: z.string().email(),
+    }),
     tags: z.array(z.string()).optional(),
   }),
 });
