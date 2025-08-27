@@ -6,6 +6,8 @@ import fs from "node:fs";
 import mdx from "@astrojs/mdx";
 import { remarkReadingTime } from "./src/utils/remark-reading-time.mjs";
 
+import sitemap from "@astrojs/sitemap";
+
 const jsoncString = fs.readFileSync(
   new URL(`./zyzle-code.jsonc`, import.meta.url),
   "utf-8"
@@ -27,6 +29,14 @@ export default defineConfig({
       },
     }),
     mdx(),
+    sitemap({
+      i18n: {
+        defaultLocale: "en",
+        locales: {
+          en: "en-GB",
+        },
+      },
+    }),
   ],
 
   markdown: {
