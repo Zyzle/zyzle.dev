@@ -20,6 +20,12 @@ const { title, showScroll } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon-32x32.png" sizes="32x32" />
     <link rel="icon" href="/favicon-16x16.png" sizes="16x16" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Zyzle.dev"
+      href={new URL("feed.xml", Astro.site)}
+    />
     <meta name="generator" content={Astro.generator} />
     <title>{title} | Zyzle.dev</title>
   </head>
