@@ -8,14 +8,15 @@ import "@fontsource/pacifico";
 
 import "../styles/global.css";
 import Footer from "../components/Footer.astro";
+import ScrollProgress from "../components/ScrollProgress.astro";
 
-const { title } = Astro.props;
+const { title, showScroll } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en" class="h-full">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon-32x32.png" sizes="32x32" />
     <link rel="icon" href="/favicon-16x16.png" sizes="16x16" />
@@ -24,13 +25,14 @@ const { title } = Astro.props;
   </head>
   <body class="w-full min-h-full flex flex-col bg-zbackground font-sans">
     <header
-      class="relative backdrop-blur flex-none flex items-center xl:fixed xl:w-full xl:top-0 xl:left-0 xl:z-30 px-4 py-5"
+      class="relative backdrop-blur flex-none flex items-center lg:fixed lg:w-full lg:top-0 lg:left-0 lg:z-30 px-4 py-5"
     >
       <a href="/">
         <span class="text-zpink text-3xl font-[Pacifico]">Zyzle.dev</span>
       </a>
     </header>
-    <main class="flex-1 relative xl:mt-20 px-4">
+    {showScroll && <ScrollProgress />}
+    <main class="flex-1 relative lg:mt-20 px-4">
       <div class="container mx-auto max-w-prose">
         <div class="prose prose-invert prose-zyzle mb-4">
           <Breadcrumbs>
