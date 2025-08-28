@@ -1,0 +1,29 @@
+---
+title: "Generate a Version 4 UUID"
+pubDate: 2023-06-19
+language: typescript
+author:
+  name: "Colin McCulloch"
+  email: "colin@zyzle.dev"
+tags: ["typescript", "uuid", "algorithm"]
+description: "How to generate a version 4 UUID in TypeScript."
+---
+
+This typescript function generates a UUID using the RFC 4122 specification[^1].
+
+Version 4 UUIDs take the form `xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx` where `x` is any hex digit and `y` is in `[8, 9, a, b]`.
+
+Assuming these are generated with sufficient entropy, 1B UUIDs every second for 100 years would be ~50% chance of collision[^2]
+
+[^1]: Read the specification at [RFC 4122](https://datatracker.ietf.org/doc/html/rfc4122)
+[^2]: Learn more about UUIDs at [Wikipedia](https://en.wikipedia.org/wiki/Universally_unique_identifier)
+
+```typescript title="uuid.ts"
+function generateUUIDv4(): string {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+    const r = Math.random() * 16 | 0;
+    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+```

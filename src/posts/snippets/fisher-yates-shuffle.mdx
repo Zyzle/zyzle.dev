@@ -1,0 +1,38 @@
+---
+title: "Fisher-Yates Shuffle"
+pubDate: 2023-06-19
+language: typescript
+author:
+  name: "Colin McCulloch"
+  email: "colin@zyzle.dev"
+tags: ["typescript", "algorithm"]
+description: "An implementation of the Fisher-Yates shuffle algorithm in TypeScript."
+---
+
+The Fisher-Yates shuffle[^1] is an algorithm for generating a random permutation of an array.
+
+[^1]: Learn more on [Wikipedia](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle)
+
+The algorithm is defined as follows:
+
+```plaintext showLineNumbers=false
+-- To shuffle an array a of n elements (indices 0..n-1):
+for i from n−1 down to 1 do
+     j ← random integer such that 0 ≤ j ≤ i
+     exchange a[j] and a[i]
+```
+
+The typescript implementation of the algorithm I normally use is:
+
+```ts title="shuffle.ts"
+shuffle(cards: any[]) {
+  let m = cards.length;
+  let t, i = 0;
+  while(m) {
+    i = Math.floor(Math.random() * m--);
+    t = cards[m];
+    cards[m] = cards[i];
+    cards[i] = t;
+  }
+}
+```

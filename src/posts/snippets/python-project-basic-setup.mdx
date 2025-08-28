@@ -1,0 +1,29 @@
+---
+title: "Python Project Basic Setup"
+pubDate: 2023-06-19
+language: python
+author:
+  name: "Colin McCulloch"
+  email: "colin@zyzle.dev"
+tags: ["python", "config", "development"]
+description: "A guide to setting up a basic Python project environment."
+---
+
+Simple setup of `venv` for new Python projects, I would always use a local venv for developing in Python as it makes it easier to manage dependencies and work in the app across multiple locations.
+
+> The setup process of venv may have changed since this guide was written, check out the current docs for updates[^1]
+
+[^1]: [Python Documentation - venv](https://docs.python.org/3/library/venv.html)
+
+```bash showLineNumbers=false
+mkdir myproject
+cd !$
+python3 -m venv env
+. env/bin/activate
+; pip is almost always out of date so upgrade it
+python -m pip install --upgrade pip
+
+; git init and ignore env
+git init
+echo "env/" >> .gitignore
+```
