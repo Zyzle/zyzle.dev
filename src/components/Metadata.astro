@@ -1,0 +1,32 @@
+---
+const { title, author, description, published, keywords, type } = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+---
+
+<title>{title} | Zyzle.dev</title>
+<link rel="canonical" href={canonicalUrl} />
+
+<meta name="author" content={author} />
+<meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
+<link rel="author" href={Astro.site} />
+
+{published && <meta property="article:published_time" content={published} />}
+
+<meta property="og:title" content={`${title} | Zyzle.dev`} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalUrl} />
+<meta
+  property="og:image"
+  content={`${canonicalUrl.toString().replace(/\/$/, "")}/og.png`}
+/>
+<meta property="og:type" content={type} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={`${title} | Zyzle.dev`} />
+<meta property="twitter:description" content={description} />
+<meta
+  name="twitter:image"
+  content={`${canonicalUrl.toString().replace(/\/$/, "")}/og.png`}
+/>

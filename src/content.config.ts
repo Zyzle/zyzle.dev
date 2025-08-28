@@ -1,5 +1,5 @@
 import { defineCollection, z } from "astro:content";
-import { glob, file } from "astro/loaders";
+import { glob } from "astro/loaders";
 
 const blogs = defineCollection({
   loader: glob({
@@ -16,6 +16,7 @@ const blogs = defineCollection({
     }),
     ghDisc: z.number().optional(),
     tags: z.array(z.string()).optional(),
+    image: z.string(),
   }),
 });
 
@@ -33,6 +34,7 @@ const snippets = defineCollection({
       email: z.string().email(),
     }),
     tags: z.array(z.string()).optional(),
+    description: z.string(),
   }),
 });
 

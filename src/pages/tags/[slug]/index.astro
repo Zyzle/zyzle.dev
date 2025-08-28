@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Layout from "../../../layouts/Layout.astro";
 import BlogExcerpt from "../../../components/BlogExcerpt.astro";
 import SnippetItem from "../../../components/SnippetItem.astro";
+import Metadata from "../../../components/Metadata.astro";
 
 export async function getStaticPaths() {
   const blogPosts = await getCollection("blogs");
@@ -32,7 +33,15 @@ const { slug: tag } = Astro.params;
 const { blogPosts, snippets } = Astro.props;
 ---
 
-<Layout title={`#${tag}`}>
+<Metadata
+  title={`#${tag}`}
+  author="Colin McCulloch"
+  description={`A collection of blog posts and snippets tagged with #${tag}`}
+  keywords={[tag, "snippets", "blog posts"].join(", ")}
+  type="article"
+/>
+
+<Layout>
   <h1 class="text-zgold text-4xl font-bold my-4">{`#${tag}`}</h1>
   <div class="prose prose-invert prose-zyzle mx-auto mb-6">
     <p>Below is a list of pages tagged with {tag}</p>

@@ -1,0 +1,3 @@
+The font in this dir is used only for generation of the og images (it's more efficient to have a local copy rather than making repeated calls to an api) 
+
+Do not use it for pages instead use the fontsource package 

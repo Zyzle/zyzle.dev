@@ -7,6 +7,7 @@ import BlogIcon from "../assets/blog.svg";
 import SnippetsIcon from "../assets/snippets.svg";
 import ProjectsIcon from "../assets/projects.svg";
 import AboutIcon from "../assets/about.svg";
+import Metadata from "../components/Metadata.astro";
 
 const title = "Home";
 
@@ -40,7 +41,15 @@ const homeLinks = [
 ];
 ---
 
-<Layout title={title}>
+<Metadata
+  title={title}
+  author="Colin McCulloch"
+  description="Welcome to Zyzle.dev, personal website for Colin McCulloch"
+  keywords="Zyzle, Colin McCulloch, personal website, blog, personal projects"
+  type="website"
+/>
+
+<Layout>
   <h1 class="text-zgold text-4xl font-bold my-4">Home</h1>
   <section class="prose prose-invert prose-zyzle mx-auto mt-4 mb-6">
     Welcome to Zyzle.dev a place for me, <a href="/about"
