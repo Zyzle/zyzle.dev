@@ -10,7 +10,7 @@ import "../styles/global.css";
 import Footer from "../components/Footer.astro";
 import ScrollProgress from "../components/ScrollProgress.astro";
 
-const { title, showScroll } = Astro.props;
+const { showScroll } = Astro.props;
 ---
 
 <!doctype html>
@@ -28,7 +28,6 @@ const { title, showScroll } = Astro.props;
     />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title} | Zyzle.dev</title>
   </head>
   <body class="w-full min-h-full flex flex-col bg-zbackground font-sans">
     <header

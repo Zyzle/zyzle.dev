@@ -1,10 +1,19 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Metadata from "../../components/Metadata.astro";
+import Layout from "../../layouts/Layout.astro";
 
 const title = "About";
 ---
 
-<Layout title={title}>
+<Metadata
+  title={title}
+  author="Colin McCulloch"
+  description="About Colin McCulloch and Zyzle.dev"
+  keywords="Zyzle, Colin McCulloch, about"
+  type="website"
+/>
+
+<Layout>
   <article class="prose prose-invert prose-zyzle mx-auto mb-6">
     <h1 class="text-zgold">{title}</h1>
     <p>
@@ -19,50 +28,36 @@ const title = "About";
     <p>Other places to find me on the web:</p>
     <ul>
       <li>
-        <p>
-          <a href="https://www.linkedin.com/in/colinmcculloch" target="_blank"
-            >LinkedIn</a
-          >
-        </p>
+        <a href="https://www.linkedin.com/in/colinmcculloch" target="_blank"
+          >LinkedIn</a
+        >
       </li>
       <li>
-        <p>
-          <a href="https://www.instagram.com/zyzle2501/" target="_blank"
-            >Instagram</a
-          >
-        </p>
+        <a href="https://www.instagram.com/zyzle2501/" target="_blank"
+          >Instagram</a
+        >
       </li>
       <li>
-        <p>
-          <a href="https://flickr.com/photos/zyzle/" target="_blank">Flickr</a>
-        </p>
+        <a href="https://flickr.com/photos/zyzle/" target="_blank">Flickr</a>
       </li>
       <li>
-        <p>
-          <a href="https://linktr.ee/zyzle" target="_blank">LinkTree</a>
-        </p>
+        <a href="https://linktr.ee/zyzle" target="_blank">LinkTree</a>
       </li>
     </ul>
     <p>This website uses the following fonts:</p>
     <ul>
       <li>
-        <p>
-          <a href="https://github.com/tonsky/FiraCode" target="_blank"
-            >Fira Code</a
-          >
-        </p>
+        <a href="https://github.com/tonsky/FiraCode" target="_blank"
+          >Fira Code</a
+        >
       </li><li>
-        <p>
-          <a href="https://github.com/googlefonts/nunito" target="_blank"
-            >Nunito</a
-          >
-        </p>
+        <a href="https://github.com/googlefonts/nunito" target="_blank"
+          >Nunito</a
+        >
       </li><li>
-        <p>
-          <a href="https://github.com/googlefonts/Pacifico" target="_blank"
-            >Pacifico</a
-          >
-        </p>
+        <a href="https://github.com/googlefonts/Pacifico" target="_blank"
+          >Pacifico</a
+        >
       </li>
     </ul>
     <p>

@@ -1,10 +1,19 @@
 ---
+import Metadata from "../../components/Metadata.astro";
 import Layout from "../../layouts/Layout.astro";
 
 const title = "Projects";
 ---
 
-<Layout title={title}>
+<Metadata
+  title={title}
+  author="Colin McCulloch"
+  description="A collection of my projects"
+  keywords="projects, work, portfolio"
+  type="website"
+/>
+
+<Layout>
   <h1 class="text-3xl font-bold mb-6 text-zgold">{title}</h1>
   <div class="prose prose-invert prose-zyzle mx-auto mb-6">
     <p>

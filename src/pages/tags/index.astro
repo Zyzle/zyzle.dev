@@ -1,11 +1,20 @@
 ---
+import Metadata from "../../components/Metadata.astro";
 import TagCloud from "../../components/TagCloud.astro";
 import Layout from "../../layouts/Layout.astro";
 
 const title = "Tags";
 ---
 
-<Layout title={title}>
+<Metadata
+  title={title}
+  author="Colin McCulloch"
+  description="A collection of tags used in the articles on this site."
+  keywords="tags, articles"
+  type="website"
+/>
+
+<Layout>
   <h1 class="text-zgold text-4xl font-bold my-4">{title}</h1>
   <div class="prose prose-invert prose-zyzle mx-auto mb-6">
     <p>A collection of tags used in the articles on this site.</p>

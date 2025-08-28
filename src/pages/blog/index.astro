@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import BlogExcerpt from "../../components/BlogExcerpt.astro";
+import Metadata from "../../components/Metadata.astro";
 
 const title = "Blog";
 
@@ -10,7 +11,15 @@ const posts = (await getCollection("blogs")).sort(
 );
 ---
 
-<Layout title={title}>
+<Metadata
+  title={title}
+  author="Colin McCulloch"
+  description="A collection of blog posts written by me"
+  keywords="blog, posts, articles"
+  type="website"
+/>
+
+<Layout>
   <h1 class="text-zgold text-4xl font-bold my-4">{title}</h1>
   <div class="prose prose-invert prose-zyzle mx-auto mb-6">
     <p>

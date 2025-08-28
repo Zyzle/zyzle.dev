@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import SnippetItem from "../../components/SnippetItem.astro";
+import Metadata from "../../components/Metadata.astro";
 
 const title = "Snippets";
 
@@ -10,7 +11,15 @@ const snippets = (await getCollection("snippets")).sort(
 );
 ---
 
-<Layout title={title}>
+<Metadata
+  title={title}
+  author="Colin McCulloch"
+  description="A collection of code snippets written by me"
+  keywords="snippets, code, programming"
+  type="website"
+/>
+
+<Layout>
   <h1 class="text-zgold text-4xl font-bold my-4">{title}</h1>
   <div class="prose prose-invert prose-zyzle mx-auto mb-6">
     <p>
