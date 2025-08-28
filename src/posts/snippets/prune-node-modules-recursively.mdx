@@ -1,0 +1,18 @@
+---
+title: "Prune Node Modules Recursively"
+pubDate: 2023-06-19
+language: bash
+author:
+  name: "Colin McCulloch"
+  email: "colin@zyzle.dev"
+tags: ["node", "cleanup"]
+description: "A guide on how to recursively prune unused node modules from your projects."
+---
+
+I often find myself running out of space on my old Macbook and one of the simplest ways I've found to deal with this is to remove `node_modules` directories that I'm not needing at that exact moment in time.
+
+This code can remove all instances of `node_modules` beneath the directory it's run in, and can be changed to do the same for any other build dir that you might not need:
+
+```bash
+find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +
+```

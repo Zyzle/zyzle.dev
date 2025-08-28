@@ -1,0 +1,38 @@
+---
+title: "Singleton with Metaclass"
+pubDate: 2023-06-19
+language: python
+author:
+  name: "Colin McCulloch"
+  email: "colin@zyzle.dev"
+tags: ["python", "design-pattern"]
+description: "How to implement a singleton pattern using a metaclass in Python."
+---
+
+Singletons get a bad wrap but they can be effective when used properly. I came across this pattern for implementing them in Python a couple of years back, it worked well in 2.7 but may be out of date for 3.
+
+```python title="singleton.py"
+class Singleton(type):
+	def __init__(cls, name, bases, dict):
+		super(Singleton, cls).__init__(name, bases, dict)
+		cls._instance = None
+                              
+	def __call__(cls, *args, **kw):
+		if cls._instance is None:
+			cls._instance = super(Singleton, cls).__call__(*args, **kw)
+		return cls._instance
+```
+
+This can now be implemented in any class you wish to make a singleton like so:
+
+```python
+class SingleInstance():
+	__metaclass__ = Singleton
+
+	def __init__(self):
+		pass
+
+	def __str__(self):
+		return 'SingleInstance'
+
+```
