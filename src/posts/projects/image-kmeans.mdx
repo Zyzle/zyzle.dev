@@ -1,0 +1,19 @@
+---
+title: "@zyzle/image-kmeans"
+description: "Image Kmeans is a Webassembly module written in Rust that uses k-means clustering to determine the dominant colours in a provided image"
+pubDate: 2023-06-04
+author: 
+  name: "Colin McCulloch"
+  email: "colin@zyzle.dev"
+tags: ["npm", "rust", "webassembly", "web-dev"]
+---
+
+import { ImageKmeansComponent } from '../../components/ImageKmeans';
+
+Image Kmeans is a Webassembly module written in Rust that uses k-means clustering to determine the dominant colours in a provided image. Because it's a Webassembly module the code can be run directly in the client browser with no uploading of the images required. It's also super speedy compared to a pure Javascript implementation of the algorithm. The blog post series I wrote on the creation of this module can be found here: [Part 1](/blog/colour-finder-1), [Part 2](/blog/colour-finder-2), [Part 3](/blog/colour-finder-3)
+
+## Give it a try
+
+Drop an image into the box below and select either fixed or derived K number to see the results:
+
+<ImageKmeansComponent client:load />

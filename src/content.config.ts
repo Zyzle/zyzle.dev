@@ -54,7 +54,6 @@ const projects = defineCollection({
     }),
     tags: z.array(z.string()).optional(),
     description: z.string(),
-    image: z.string(),
     draft: z.boolean().optional(),
   }),
 });

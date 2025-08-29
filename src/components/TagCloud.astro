@@ -7,8 +7,11 @@ const blogTags = (await getCollection("blogs")).flatMap(
 const snippetsTags = (await getCollection("snippets")).flatMap(
   (post) => post.data.tags
 );
+const projectsTags = (await getCollection("projects")).flatMap(
+  (post) => post.data.tags
+);
 
-const tagsWithCounts = [...blogTags, ...snippetsTags].reduce(
+const tagsWithCounts = [...blogTags, ...snippetsTags, ...projectsTags].reduce(
   (acc, tag) => {
     acc[tag!] = (acc[tag!] || 0) + 1;
     return acc;

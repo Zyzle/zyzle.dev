@@ -1,0 +1,50 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../../layouts/Layout.astro";
+import { formatRelativeDateString } from "../../../utils/dateUtils";
+import Metadata from "../../../components/Metadata.astro";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+
+  return projects.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Metadata
+  title={entry.data.title}
+  author={entry.data.author.name}
+  description={entry.data.description}
+  keywords={entry.data.tags?.join(", ")}
+  published={entry.data.pubDate}
+  type="project"
+/>
+
+<Layout showScroll={true}>
+  <article class="prose prose-invert prose-zyzle mx-auto mb-6">
+    <h1 class="text-zlime">{entry.data.title}</h1>
+    <div class="text-zcyan">
+      {formatRelativeDateString(entry.data.pubDate)}
+    </div>
+    <div class="text-zgold flex flex-wrap">
+      {
+        entry.data.tags?.map((tag: string) => (
+          <span class="not-prose">
+            <a href={`/tags/${tag}`}>
+              <span class="bg-zblock rounded-full px-2 mb-1 whitespace-nowrap hover:underline">
+                #{tag}
+              </span>
+            </a>
+          </span>
+        ))
+      }
+    </div>
+    <Content />
+  </article>
+</Layout>
