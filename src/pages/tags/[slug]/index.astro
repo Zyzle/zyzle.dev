@@ -21,10 +21,10 @@ export async function getStaticPaths() {
     props: {
       blogPosts: blogPosts
         .filter((post) => post.data.tags?.includes(tag!))
-        .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()),
+        .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()),
       snippets: snippets
         .filter((post) => post.data.tags?.includes(tag!))
-        .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()),
+        .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()),
     },
   }));
 }

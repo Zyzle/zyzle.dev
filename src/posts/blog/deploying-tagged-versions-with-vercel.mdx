@@ -1,0 +1,82 @@
+---
+title: "Deploying only tagged versions to production with Vercel and release-please"
+pubDate: 2023-03-10
+description: "I created a way to deploy only tagged versions of my site to production using Vercel and the release-please bot. I used Vercel's ignored build step and a custom script to check for the presence of release-please commit messages. This ensures that only properly tagged versions are deployed to production."
+author:
+  name: "Colin McCulloch"
+  email: "colin@zyzle.dev"
+ghDisc: 38
+tags: ["blog", "vercel", "release-please", "github", "web-dev"]
+image: "src/assets/tag.png"
+---
+
+My rebuild of this site is the first time I've created a Vercel environment myself from scratch, I've found it very intuitive to get up and running quickly with some great features that help with the build and deployment of the site. There have however been a few snags along the way one of which I'll describe here and how I eventually resolved the issue.
+
+> It's worth pointing out before going any further: Although I liked this idea and still think it's worth while in some projects, particularly the inclusion of the release-please bot, I ultimately decided to go back to the continuous deploy model that Vercel uses by default. I'll leave this post here though as I still think it's a viable solution that some people might find useful.
+
+## The environment
+
+Vercel lets me quickly deploy my site from its GitHub repository whenever a new commit is pushed. The default behaviour is to build all commits to the master branch and publish them directly to the production environment, and all other branches are deployed to their own preview environments.
+
+This is great for most situations but I want to be more selective with which commits get built and deployed to my production environment.
+
+I've been using a great bot from google called [release-please](https://github.com/googleapis/release-please) this is one of my favourite actions bots for managing releases on GitHub, it automates a lot of the release creation pipeline including:
+
+1. Updating your changelog file (for example `CHANGELOG.md`), along with other language-specific files (for example `package.json`).
+2. Tagging commits with the version number, this number is incremented using [SemVer](https://semver.org/) rules
+3. Creating a GitHub Release based on the tag
+
+Ideally, I want to release only these tagged versions to my production environment rather than every commit to main.
+
+## The problem
+
+Looking around the web there didn't seem to be much information on how to achieve this, one thing I did find amongst the Vercel documentation was [this article](https://vercel.com/guides/can-you-deploy-based-on-tags-releases-on-vercel) which left me with more questions, it may just be my misreading but it seems to be implying that the only way to achieve this is to move your main branch off of “production” and create another type of environment for deploying your tagged versions?
+
+> I'm pretty new to Vercel's way of working so if anyone with more experience has a different interpretation of the article linked above I'd love to hear it in the comments below!
+
+So not wanting to move my main branch off of “production” and already having a strategy to automatically produce tagged releases I had a look to see how else I could achieve this.
+
+## Vercel's ignored build step
+
+Vercel provides a way to determine whether or not build and deploys should go ahead or not, the ignore build step
+
+> When a commit is pushed to the Git repository that is connected with your Project, its SHA will determine if a new Build has to be issued. If the SHA was deployed before, no new Build will be issued.
+> 
+> You can customize this behaviour with a command that exits with code 1 (new Build needed) or code 0.
+
+The script I created for this checks the `VERCEL_GIT_COMMIT_REF` environment variable which gives us the branch being built. If it's not our main branch we build it as usual using the Vercel preview environment. if it is our main branch we parse out the commit message to check for the `release-please` commit message and if it isn't present abort the build.
+
+```bash title="build_check.sh"
+!/bin/bash
+
+echo "VERCEL_GIT_COMMIT_REF: $VERCEL_GIT_COMMIT_REF"
+
+if [[ "$VERCEL_GIT_COMMIT_REF" == "master"  ]] ; then
+  # Don't build master, we trigger it only with releases
+  git show --oneline -s HEAD | grep 'release-please' 2> /dev/null
+
+  if [ $? -eq 0 ]; then
+    # Build if we have a tag
+    echo "✅ - Build can proceed"
+    exit 1;
+  fi
+
+  echo "🛑 - Master build, cancelled"
+  exit 0;
+
+else
+  # Build everything else
+	echo "✅ - Build can proceed"
+  exit 1;
+fi
+```
+
+This isn't perfect, as it will trigger for any commit message containing the `release-please` text, the way to fix this would be to expand this text and make it more specific to the release-please commits as they're in a well-defined format but this is good enough for now
+
+I saved this script as `build_check.sh` in the root of the project and under Git settings in my Vercel project added the following as the “Ignored Build Step” command
+
+```plain
+bash ./build_check.sh
+```
+
+Now every time a new commit is pushed to the repository this build check script will be run before a build and deploy is allowed to continue.

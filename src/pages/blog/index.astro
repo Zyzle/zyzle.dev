@@ -7,7 +7,7 @@ import Metadata from "../../components/Metadata.astro";
 const title = "Blog";
 
 const posts = (await getCollection("blogs")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
 );
 ---
 

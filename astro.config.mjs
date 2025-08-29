@@ -5,6 +5,8 @@ import expressiveCode, { ExpressiveCodeTheme } from "astro-expressive-code";
 import fs from "node:fs";
 import mdx from "@astrojs/mdx";
 import { remarkReadingTime } from "./src/utils/remark-reading-time.mjs";
+import rehypeKatex from "rehype-katex";
+import remarkMath from "remark-math";
 
 import sitemap from "@astrojs/sitemap";
 
@@ -40,6 +42,7 @@ export default defineConfig({
   ],
 
   markdown: {
-    remarkPlugins: [remarkReadingTime],
+    remarkPlugins: [remarkReadingTime, remarkMath],
+    rehypePlugins: [rehypeKatex],
   },
 });
