@@ -1,8 +1,14 @@
 ---
+import { getCollection } from "astro:content";
 import Metadata from "../../components/Metadata.astro";
 import Layout from "../../layouts/Layout.astro";
+import ProjectsExcerpt from "../../components/ProjectsExcerpt.astro";
 
 const title = "Projects";
+
+const projects = (await getCollection("projects")).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
 ---
 
 <Metadata
@@ -17,9 +23,21 @@ const title = "Projects";
   <h1 class="text-3xl font-bold mb-6 text-zgold">{title}</h1>
   <div class="prose prose-invert prose-zyzle mx-auto mb-6">
     <p>
-      Under construction, in the mean time checkout <a
-        href="https://github.com/Zyzle">my github profile</a
-      > for what I've been working on recently.
+      Here's a collection of some of the things I've been working on in my spare
+      time. You can also check out <a href="https://github.com/Zyzle"
+        >my github profile</a
+      > for more.
     </p>
   </div>
+  {
+    projects.map((project) => (
+      <ProjectsExcerpt
+        id={project.id}
+        title={project.data.title}
+        pubDate={project.data.pubDate}
+        tags={project.data.tags}
+        description={project.data.description}
+      />
+    ))
+  }
 </Layout>

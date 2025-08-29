@@ -3,16 +3,19 @@ import { getCollection } from "astro:content";
 import Layout from "../../../layouts/Layout.astro";
 import BlogExcerpt from "../../../components/BlogExcerpt.astro";
 import SnippetItem from "../../../components/SnippetItem.astro";
+import ProjectsExcerpt from "../../../components/ProjectsExcerpt.astro";
 import Metadata from "../../../components/Metadata.astro";
 
 export async function getStaticPaths() {
   const blogPosts = await getCollection("blogs");
   const snippets = await getCollection("snippets");
+  const projects = await getCollection("projects");
 
   const uniqueTags = [
     ...new Set([
       ...blogPosts.flatMap((post) => post.data.tags),
       ...snippets.flatMap((post) => post.data.tags),
+      ...projects.flatMap((post) => post.data.tags),
     ]),
   ];
 
@@ -25,12 +28,15 @@ export async function getStaticPaths() {
       snippets: snippets
         .filter((post) => post.data.tags?.includes(tag!))
         .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()),
+      projects: projects
+        .filter((post) => post.data.tags?.includes(tag!))
+        .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()),
     },
   }));
 }
 
 const { slug: tag } = Astro.params;
-const { blogPosts, snippets } = Astro.props;
+const { blogPosts, snippets, projects } = Astro.props;
 ---
 
 <Metadata
@@ -47,7 +53,7 @@ const { blogPosts, snippets } = Astro.props;
     <p>Below is a list of pages tagged with {tag}</p>
   </div>
 
-  <h2 class="text-2xl font-bold my-4 text-zlime">Blog Posts</h2>
+  <h2 class="text-3xl font-bold my-4 text-zblue">Blog Posts</h2>
   {
     blogPosts.length > 0 ? (
       blogPosts.map((post) => (
@@ -64,7 +70,7 @@ const { blogPosts, snippets } = Astro.props;
     )
   }
 
-  <h2 class="text-2xl font-bold my-4 text-zlime">Snippets</h2>
+  <h2 class="text-3xl font-bold my-4 text-zblue">Snippets</h2>
   <div class="flex flex-col gap-4 mb-6">
     {
       snippets.length > 0 ? (
@@ -79,6 +85,25 @@ const { blogPosts, snippets } = Astro.props;
         ))
       ) : (
         <p class="prose prose-invert prose-zyzle">No snippets found.</p>
+      )
+    }
+  </div>
+
+  <h2 class="text-3xl font-bold my-4 text-zblue">Projects</h2>
+  <div class="flex flex-col gap-4 mb-6">
+    {
+      projects.length > 0 ? (
+        projects.map((project) => (
+          <ProjectsExcerpt
+            id={project.id}
+            title={project.data.title}
+            pubDate={project.data.pubDate}
+            tags={project.data.tags}
+            description={project.data.description}
+          />
+        ))
+      ) : (
+        <p class="prose prose-invert prose-zyzle">No projects found.</p>
       )
     }
   </div>

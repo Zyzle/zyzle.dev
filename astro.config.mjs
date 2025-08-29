@@ -7,8 +7,11 @@ import mdx from "@astrojs/mdx";
 import { remarkReadingTime } from "./src/utils/remark-reading-time.mjs";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
+import wasm from "vite-plugin-wasm";
 
 import sitemap from "@astrojs/sitemap";
+
+import react from "@astrojs/react";
 
 const jsoncString = fs.readFileSync(
   new URL(`./zyzle-code.jsonc`, import.meta.url),
@@ -20,7 +23,7 @@ const zyzleCode = ExpressiveCodeTheme.fromJSONString(jsoncString);
 export default defineConfig({
   site: "https://zyzle.dev",
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [wasm(), tailwindcss()],
   },
 
   integrations: [
@@ -39,6 +42,7 @@ export default defineConfig({
         },
       },
     }),
+    react(),
   ],
 
   markdown: {

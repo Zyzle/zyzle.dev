@@ -15,20 +15,27 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.4",
+    "@astrojs/react": "^4.3.0",
     "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "^3.5.1",
     "@expressive-code/plugin-line-numbers": "^0.41.3",
     "@fontsource-variable/fira-code": "^5.2.6",
     "@fontsource-variable/nunito": "^5.2.6",
     "@fontsource/pacifico": "^5.2.6",
+    "@headlessui/react": "^2.2.7",
     "@tailwindcss/vite": "^4.1.12",
     "@vercel/og": "^0.8.5",
+    "@zyzle/image-kmeans": "^2.1.1",
+    "@zyzle/meme-text": "^1.0.0",
     "astro": "^5.13.3",
     "astro-breadcrumbs": "^3.3.1",
     "astro-expressive-code": "^0.41.3",
     "date-fns": "^4.1.0",
     "katex": "^0.16.22",
+    "lucide-react": "^0.542.0",
     "mdast-util-to-string": "^4.0.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
     "reading-time": "^1.5.0",
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",
@@ -36,9 +43,12 @@
     "typescript": "^5.9.2"
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/typography": "^0.5.16",
     "@types/react": "^19.1.12",
-    "cz-conventional-changelog": "^3.3.0"
+    "@types/react-dom": "^19.1.9",
+    "cz-conventional-changelog": "^3.3.0",
+    "vite-plugin-wasm": "^3.5.0"
   },
   "config": {
     "commitizen": {

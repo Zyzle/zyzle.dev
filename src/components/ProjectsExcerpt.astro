@@ -1,0 +1,33 @@
+---
+import { formatRelativeDateString } from "../utils/dateUtils";
+
+const { id, title, pubDate, tags, description } = Astro.props;
+---
+
+<article class="flex flex-col mb-8">
+  <a href={`/projects/${id}`}>
+    <h2 class="text-zlime text-2xl font-semibold hover:underline">
+      {title}
+    </h2>
+  </a>
+  <div class="flex flex-row mb-3">
+    <span class="text-zcyan flex-1">
+      {formatRelativeDateString(pubDate)}
+    </span>
+    <span class="text-zgold flex-1 flex flex-wrap justify-end">
+      {
+        tags?.map((tag: string) => (
+          <a href={`/tags/${tag}`}>
+            <span class="bg-zblock rounded-full px-2 mb-1 whitespace-nowrap hover:underline">
+              #{tag}
+            </span>
+          </a>
+        ))
+      }
+    </span>
+  </div>
+  <section class="prose prose-invert prose-zyzle mx-auto">
+    <p>{description}</p>
+    <a href={`/projects/${id}`}>learn more...</a>
+  </section>
+</article>
