@@ -1,5 +1,30 @@
 # Changelog
 
+## [2.0.0](https://github.com/Zyzle/zyzle.dev/compare/v1.4.0...v2.0.0) (2025-08-30)
+
+
+### Features
+
+* add breadcrumbs ([05bc660](https://github.com/Zyzle/zyzle.dev/commit/05bc660b8bfa3a3be25ed822200bda59e56d1ac4))
+* add generated sitemap ([b42b237](https://github.com/Zyzle/zyzle.dev/commit/b42b237ce12bb1f3fe889051c33fafb4061d14ab))
+* add og image generation using @vercel/og ([03f336a](https://github.com/Zyzle/zyzle.dev/commit/03f336a63a7be420068ede1b9fecc548af4e0f74))
+* add projects ([c2cca01](https://github.com/Zyzle/zyzle.dev/commit/c2cca01c174b1250b4e7c111ff6522f2af61f5da))
+* add rss feed ([0c4e3c0](https://github.com/Zyzle/zyzle.dev/commit/0c4e3c09ad5be578e7df605f76be9b4b4885ba9e))
+* add scroll progress ([77aca7b](https://github.com/Zyzle/zyzle.dev/commit/77aca7b75b2095543e83603dd6e19da3d96cfe59))
+* basic pages added ([c966c9d](https://github.com/Zyzle/zyzle.dev/commit/c966c9d86addd093ee62ffd05693c50b218fb367))
+* move posts to a dedicated dir for easier management ([a8c41fe](https://github.com/Zyzle/zyzle.dev/commit/a8c41fe02c5bfd8602a70179a2356128dfcbbdfe))
+
+
+### Miscellaneous
+
+* add initial astro site ([a8f342c](https://github.com/Zyzle/zyzle.dev/commit/a8f342cf165815db301443dcae1b7ed7fa912d36))
+* **build:** add vercel.json for branch specific framework ([798f54d](https://github.com/Zyzle/zyzle.dev/commit/798f54dad6d9abb1fb1cc6a2e5b7af3f9d9ec4bd))
+* cleanup old files ([579c0e2](https://github.com/Zyzle/zyzle.dev/commit/579c0e26fe2fab16ed154ff8c94d923c07020b9b))
+* move slug components into directory to prepare for og image generation ([f91b4fa](https://github.com/Zyzle/zyzle.dev/commit/f91b4fa45e3f0b02eab45a57345b620f35f0f614))
+* move some assets around ([06d5081](https://github.com/Zyzle/zyzle.dev/commit/06d50818d92a8837fa06b33ccebad5b66931b336))
+* re-add existing snippets from storyblok into mdx ([156f9fb](https://github.com/Zyzle/zyzle.dev/commit/156f9fb8057ab646276df81f50b28a7a29bf6250))
+* readd old blog content ([097740e](https://github.com/Zyzle/zyzle.dev/commit/097740e4c1de70419595eb4e952b11846939fe43))
+
 ## [1.4.0](https://github.com/Zyzle/zyzle.dev/compare/v1.3.0...v1.4.0) (2024-03-02)
 
 
