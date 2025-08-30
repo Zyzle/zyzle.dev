@@ -1,5 +1,5 @@
 ---
-import { formatRelativeDateString } from "../utils/dateUtils";
+import { formatDateString } from "../utils/dateUtils";
 import LangIcon from "./LangIcon.astro";
 
 const { id, title, pubDate, tags, language } = Astro.props;
@@ -14,7 +14,7 @@ const { id, title, pubDate, tags, language } = Astro.props;
     <h2 class="text-zgold text-xl font-bold group-hover:underline">
       {title}
     </h2>
-    <span class="text-zcyan flex-1">{formatRelativeDateString(pubDate)}</span>
+    <span class="text-zcyan flex-1">{formatDateString(pubDate)}</span>
     <span class="text-zlime flex-1 flex flex-wrap">
       {
         tags?.map((tag: string) => (

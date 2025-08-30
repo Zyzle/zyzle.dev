@@ -32,8 +32,8 @@ export async function GET({
 
   // @ts-ignore
   return new ImageResponse(html, {
-    width: 1066,
-    height: 600,
+    width: 1200,
+    height: 630,
     fonts: [
       {
         name: "Nunito",

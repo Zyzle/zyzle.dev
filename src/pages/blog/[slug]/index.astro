@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import Layout from "../../../layouts/Layout.astro";
-import { formatRelativeDateString } from "../../../utils/dateUtils";
+import { formatDateString } from "../../../utils/dateUtils";
 import Comments from "../../../components/Comments.astro";
 import Metadata from "../../../components/Metadata.astro";
 
@@ -31,7 +31,7 @@ const { Content, remarkPluginFrontmatter } = await render(entry);
   <article class="prose prose-invert prose-zyzle mx-auto mb-6 lg:text-lg">
     <h1 class="text-zlime">{entry.data.title}</h1>
     <div class="text-zcyan">
-      {formatRelativeDateString(entry.data.pubDate)}
+      {formatDateString(entry.data.pubDate)}
     </div>
     <div class="text-zpink italic mb-6">
       {remarkPluginFrontmatter.minutesRead}

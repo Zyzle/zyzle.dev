@@ -1,5 +1,5 @@
 ---
-import { formatRelativeDateString } from "../utils/dateUtils";
+import { formatDateString } from "../utils/dateUtils";
 
 const { id, title, pubDate, tags, description, hideTags } = Astro.props;
 ---
@@ -12,7 +12,7 @@ const { id, title, pubDate, tags, description, hideTags } = Astro.props;
   </a>
   <div class="flex flex-row mb-3">
     <span class="text-zcyan flex-1">
-      {formatRelativeDateString(pubDate)}
+      {formatDateString(pubDate)}
     </span>
     {
       !hideTags && (

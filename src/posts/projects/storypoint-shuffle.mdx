@@ -1,0 +1,51 @@
+---
+title: "Storypoint Shuffle"
+description: "A collaborative story point voting app built with Rust (Axum, Socketioxide) and React."
+pubDate: 2025-08-30
+author:
+  name: "Colin McCulloch"
+  email: "colin@zyzle.dev"
+tags: ["rust", "react", "collaboration", "typescript", "websockets"]
+---
+
+import { Image } from 'astro:assets'
+import Figure from '../../components/Figure.astro';
+import StorypointShuffleImg from '../../assets/images/storypoint-shuffle.png';
+import StorypointShuffleLogo from '../../assets/images/storypoint-shuffle-logo.svg';
+
+<Image src={StorypointShuffleLogo} alt="Storypoint Shuffle logo" class="mx-auto" />
+
+I created this app as a replacement for the online sprint planning tool my team was using after we ran out of our free trial period :D
+
+The app is deployed at https://storypoint-shuffle.zyzle.dev feel free to use it if you and your team need a similar tool!
+
+<Figure 
+  filename={StorypointShuffleImg} 
+  alt="Storypoint Shuffle main page" 
+  title="Storypoint Shuffle main page"
+  caption="The main room view of the app"
+/>
+
+## Key features
+
+- **Real Time collaboration**: The app uses WebSockets to enable real-time collaboration between team members during the planning session.
+- **Selectable Card Sets**: Choose between Fibonacci or T-Shirt sizing. (More coming soon!)
+- **Spectator Mode**: Allow users to join as room spectators without participating in the voting.
+
+## Development
+
+You can find the complete code for the project in its [GitHub repository](https://github.com/zyzle/storypoint-shuffle).
+
+The project uses the following tech:
+
+### Backend
+
+- [Axum](https://docs.rs/axum/latest/axum/): a web application framework for Rust.
+- [Socketioxide](https://docs.rs/socketioxide/latest/socketioxide/): a library for building WebSocket servers in Rust.
+
+### Frontend
+
+- [Socket.io](https://socket.io/): a library for real-time web applications.
+- Tanstack [React Router](https://tanstack.com/router/latest), [React Form](https://tanstack.com/form/latest): I really like the Tanstack libraries, these would be my goto for most personal web projects.
+- [Skeleton-React](https://www.skeleton.dev/): a lightweight CSS framework for building responsive UIs.
+- [Vite](https://vite.dev/): This was my first time using Vite in a project, really enjoyed working with this.

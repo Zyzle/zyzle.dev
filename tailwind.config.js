@@ -3,6 +3,13 @@ module.exports = {
   theme: {
     extend: {
       typography: () => ({
+        DEFAULT: {
+          css: {
+            strong: {
+              "font-weight": 800,
+            },
+          },
+        },
         zyzle: {
           css: {
             "--tw-prose-invert-body": "var(--color-zdefault)",
