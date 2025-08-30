@@ -28,7 +28,7 @@ const { Content, remarkPluginFrontmatter } = await render(entry);
 />
 
 <Layout showScroll={true}>
-  <article class="prose prose-invert prose-zyzle mx-auto mb-6">
+  <article class="prose prose-invert prose-zyzle mx-auto mb-6 lg:text-lg">
     <h1 class="text-zlime">{entry.data.title}</h1>
     <div class="text-zcyan">
       {formatRelativeDateString(entry.data.pubDate)}
@@ -40,7 +40,7 @@ const { Content, remarkPluginFrontmatter } = await render(entry);
       {
         entry.data.tags?.map((tag: string) => (
           <span class="not-prose">
-            <a href={`/tags/${tag}`}>
+            <a href={`/tags/${tag}/`}>
               <span class="bg-zblock rounded-full px-2 mb-1 whitespace-nowrap hover:underline">
                 #{tag}
               </span>
@@ -51,7 +51,7 @@ const { Content, remarkPluginFrontmatter } = await render(entry);
     </div>
     <Content />
   </article>
-  <section class="prose prose-invert prose-zyzle mx-auto mb-6">
+  <section class="prose prose-invert prose-zyzle mx-auto mb-6 lg:text-lg">
     <hr class="mb-3" />
     <h3 id="comments">Comments</h3>
     <Comments discussionId={entry.data.ghDisc} />

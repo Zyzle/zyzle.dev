@@ -1,6 +1,7 @@
 ---
 import Metadata from "../../components/Metadata.astro";
 import Layout from "../../layouts/Layout.astro";
+import ProfileImg from "../../assets/profile.png";
 
 const title = "About";
 ---
@@ -14,10 +15,19 @@ const title = "About";
 />
 
 <Layout>
-  <article class="prose prose-invert prose-zyzle mx-auto mb-6">
+  <article class="prose prose-invert prose-zyzle mx-auto mb-6 lg:text-lg">
+    <img
+      src={ProfileImg.src}
+      alt="Picture of Colin McCulloch"
+      class="w-80 h-80 mx-auto mb-4"
+    />
     <h1 class="text-zgold">{title}</h1>
     <p>
-      This site is maintained by me, Colin "Zyzle" McCulloch and licensed under <a
+      This site is maintained by me, Colin "Zyzle" McCulloch, it's a place for
+      me to try writing about topics that interest me, usually tech related.
+    </p>
+    <p>
+      The content on this blog is licensed under <a
         href="https://creativecommons.org/licenses/by-sa/4.0/"
         >Creative Commons Attribution-ShareAlike 4.0</a
       > the source for this site can be found in its <a

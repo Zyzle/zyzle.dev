@@ -6,7 +6,7 @@ import Sa from "../assets/sa.svg";
 
 <footer class="w-full border-t border-zcaret">
   <div
-    class="flex flex-row justify-between mt-5 prose prose-invert prose-zyzle mx-auto px-4"
+    class="flex flex-row justify-between mt-5 prose prose-invert prose-zyzle mx-auto px-4 lg:text-lg"
   >
     <nav class="not-prose">
       <ul>
@@ -14,13 +14,13 @@ import Sa from "../assets/sa.svg";
           <a href="/">Home</a>
         </li>
         <li>
-          <a href="/blog">Blog</a>
+          <a href="/blog/">Blog</a>
         </li>
         <li>
-          <a href="/projects">Projects</a>
+          <a href="/projects/">Projects</a>
         </li>
         <li>
-          <a href="/snippets">Snippets</a>
+          <a href="/snippets/">Snippets</a>
         </li>
         <li>
           <a href="/about">About</a>
@@ -29,9 +29,27 @@ import Sa from "../assets/sa.svg";
     </nav>
     <div class="max-w-[200px] text-right">
       <div class="flex flex-row justify-end gap-2 not-prose">
-        <img src={Cc.src} alt="creative commons" width="30" height="30" />
-        <img src={By.src} alt="attribution" width="30" height="30" />
-        <img src={Sa.src} alt="share alike" width="30" height="30" />
+        <img
+          src={Cc.src}
+          alt="creative commons"
+          width="30"
+          height="30"
+          loading="lazy"
+        />
+        <img
+          src={By.src}
+          alt="attribution"
+          width="30"
+          height="30"
+          loading="lazy"
+        />
+        <img
+          src={Sa.src}
+          alt="share alike"
+          width="30"
+          height="30"
+          loading="lazy"
+        />
       </div>
       <p>
         Licensed under{" "}

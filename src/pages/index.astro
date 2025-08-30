@@ -7,34 +7,41 @@ import BlogIcon from "../assets/blog.svg";
 import SnippetsIcon from "../assets/snippets.svg";
 import ProjectsIcon from "../assets/projects.svg";
 import AboutIcon from "../assets/about.svg";
+import ProfileIcon from "../assets/profile.png";
 import Metadata from "../components/Metadata.astro";
+import { getCollection } from "astro:content";
+import BlogExcerpt from "../components/BlogExcerpt.astro";
 
 const title = "Home";
 
+const recentPosts = (await getCollection("blogs"))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 3);
+
 const homeLinks = [
   {
-    url: "/blog",
+    url: "/blog/",
     imageSrc: BlogIcon.src,
     name: "Blog",
     extraText:
       "Blog posts I've written on various topics, usually tech related",
   },
   {
-    url: "/snippets",
+    url: "/snippets/",
     imageSrc: SnippetsIcon.src,
     name: "Snippets",
     extraText:
       "Various small code snippets I've found useful in the past but probably dont warrent an entire blog post",
   },
   {
-    url: "/projects",
+    url: "/projects/",
     imageSrc: ProjectsIcon.src,
     name: "Projects",
     extraText: "Current projects I'm working on, may or may not be interesting",
   },
   {
-    url: "/about",
-    imageSrc: AboutIcon.src,
+    url: "/about/",
+    imageSrc: ProfileIcon.src,
     name: "About",
     extraText: "Info about me!",
   },
@@ -51,8 +58,8 @@ const homeLinks = [
 
 <Layout>
   <h1 class="text-zgold text-4xl font-bold my-4">Home</h1>
-  <section class="prose prose-invert prose-zyzle mx-auto mt-4 mb-6">
-    Welcome to Zyzle.dev a place for me, <a href="/about"
+  <section class="prose prose-invert prose-zyzle mx-auto mt-4 mb-6 lg:text-lg">
+    Welcome to Zyzle.dev a place for me, <a href="/about/"
       >Colin "Zyzle" McCulloch</a
     > to blog, show off some projects and gather together random things I've been
     working on.
@@ -69,10 +76,25 @@ const homeLinks = [
           />
         ))
       }
+      <section class="mt-12">
+        <h2 class="text-zgold text-xl font-bold mt-6 mb-2">Latest articles:</h2>
+        {
+          recentPosts.map((post) => (
+            <BlogExcerpt
+              id={post.id}
+              title={post.data.title}
+              pubDate={post.data.pubDate}
+              tags={post.data.tags}
+              description={post.data.description}
+              hideTags={true}
+            />
+          ))
+        }
+      </section>
     </section>
-    <section class="flex-1">
+    <aside class="flex-1">
       <h2 class="text-zgold text-xl font-bold">Article tags:</h2>
       <TagCloud />
-    </section>
+    </aside>
   </nav>
 </Layout>

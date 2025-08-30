@@ -1,11 +1,11 @@
 ---
 import { formatRelativeDateString } from "../utils/dateUtils";
 
-const { id, title, pubDate, tags, description } = Astro.props;
+const { id, title, pubDate, tags, description, hideTags } = Astro.props;
 ---
 
 <article class="flex flex-col mb-8">
-  <a href={`/blog/${id}`}>
+  <a href={`/blog/${id}/`}>
     <h2 class="text-zlime text-2xl font-semibold hover:underline">
       {title}
     </h2>
@@ -14,20 +14,22 @@ const { id, title, pubDate, tags, description } = Astro.props;
     <span class="text-zcyan flex-1">
       {formatRelativeDateString(pubDate)}
     </span>
-    <span class="text-zgold flex-1 flex flex-wrap justify-end">
-      {
-        tags?.map((tag: string) => (
-          <a href={`/tags/${tag}`}>
-            <span class="bg-zblock rounded-full px-2 mb-1 whitespace-nowrap hover:underline">
-              #{tag}
-            </span>
-          </a>
-        ))
-      }
-    </span>
+    {
+      !hideTags && (
+        <span class="text-zgold flex-1 flex flex-wrap justify-end">
+          {tags?.map((tag: string) => (
+            <a href={`/tags/${tag}/`}>
+              <span class="bg-zblock rounded-full px-2 mb-1 whitespace-nowrap hover:underline">
+                #{tag}
+              </span>
+            </a>
+          ))}
+        </span>
+      )
+    }
   </div>
-  <section class="prose prose-invert prose-zyzle mx-auto">
+  <section class="prose prose-invert prose-zyzle mx-auto lg:text-lg">
     <p>{description}</p>
-    <a href={`/blog/${id}`}>Continue reading...</a>
+    <a href={`/blog/${id}/`}>Continue reading...</a>
   </section>
 </article>

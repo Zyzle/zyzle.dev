@@ -42,15 +42,15 @@ const { blogPosts, snippets, projects } = Astro.props;
 <Metadata
   title={`#${tag}`}
   author="Colin McCulloch"
-  description={`A collection of blog posts and snippets tagged with #${tag}`}
+  description={`A collection of blog posts, snippets, and projects tagged with #${tag} on Zyzle.dev`}
   keywords={[tag, "snippets", "blog posts"].join(", ")}
   type="article"
 />
 
 <Layout>
   <h1 class="text-zgold text-4xl font-bold my-4">{`#${tag}`}</h1>
-  <div class="prose prose-invert prose-zyzle mx-auto mb-6">
-    <p>Below is a list of pages tagged with {tag}</p>
+  <div class="prose prose-invert prose-zyzle mx-auto mb-6 lg:text-lg">
+    <p>Here's all blogs, snippets, and projects tagged with {tag}</p>
   </div>
 
   <h2 class="text-3xl font-bold my-4 text-zblue">Blog Posts</h2>
@@ -66,7 +66,9 @@ const { blogPosts, snippets, projects } = Astro.props;
         />
       ))
     ) : (
-      <p class="prose prose-invert prose-zyzle">No blog posts found.</p>
+      <p class="prose prose-invert prose-zyzle lg:text-lg">
+        No blog posts found.
+      </p>
     )
   }
 
@@ -84,7 +86,9 @@ const { blogPosts, snippets, projects } = Astro.props;
           />
         ))
       ) : (
-        <p class="prose prose-invert prose-zyzle">No snippets found.</p>
+        <p class="prose prose-invert prose-zyzle lg:text-lg">
+          No snippets found.
+        </p>
       )
     }
   </div>
@@ -103,7 +107,9 @@ const { blogPosts, snippets, projects } = Astro.props;
           />
         ))
       ) : (
-        <p class="prose prose-invert prose-zyzle">No projects found.</p>
+        <p class="prose prose-invert prose-zyzle lg:text-lg">
+          No projects found.
+        </p>
       )
     }
   </div>

@@ -4,7 +4,7 @@ import path from "node:path";
 import { constructOgHtml } from "../../utils/ogUtils";
 
 export async function GET() {
-  const image = fs.readFileSync(path.resolve("src/assets/about.png"));
+  const image = fs.readFileSync(path.resolve("src/assets/profile.png"));
   const nunito = fs.readFileSync(
     path.resolve("src/assets/font/Nunito-Regular.ttf")
   );

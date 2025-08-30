@@ -13,6 +13,8 @@ import sitemap from "@astrojs/sitemap";
 
 import react from "@astrojs/react";
 
+import pageInsight from "astro-page-insight";
+
 const jsoncString = fs.readFileSync(
   new URL(`./zyzle-code.jsonc`, import.meta.url),
   "utf-8"
@@ -43,6 +45,7 @@ export default defineConfig({
       },
     }),
     react(),
+    pageInsight(),
   ],
 
   markdown: {
