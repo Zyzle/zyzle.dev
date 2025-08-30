@@ -1,0 +1,27 @@
+---
+import Metadata from "../components/Metadata.astro";
+import Layout from "../layouts/Layout.astro";
+import NotFound from "../assets/404.png";
+
+const title = "404 - Page Not Found";
+---
+
+<Metadata
+  title={title}
+  author="Colin McCulloch"
+  description="404 - Page Not Found"
+  keywords="404, Not Found"
+  type="website"
+/>
+
+<Layout>
+  <h1 class="text-zgold text-4xl font-bold my-4">404 - Page Not Found</h1>
+  <section class="prose prose-invert prose-zyzle mx-auto mt-4 mb-6 lg:text-lg">
+    <p>
+      Sorry, the page you are looking for does not exist. You can return to the <a
+        href="/">home page</a
+      > or use the navigation to find what you're looking for.
+    </p>
+    <img src={NotFound.src} alt="404 - Not Found" width="70%" class="mx-auto" />
+  </section>
+</Layout>
