@@ -48,7 +48,12 @@
     "@tailwindcss/typography": "^0.5.16",
     "@types/react": "^19.1.12",
     "@types/react-dom": "^19.1.9",
+    "@types/stopword": "^2.0.3",
+    "algoliasearch": "^5.36.0",
+    "cheerio": "^1.1.2",
     "cz-conventional-changelog": "^3.3.0",
+    "glob": "^11.0.3",
+    "stopword": "^3.1.5",
     "vite-plugin-wasm": "^3.5.0"
   },
   "config": {
