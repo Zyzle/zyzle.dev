@@ -9,12 +9,13 @@ import "@fontsource/pacifico";
 import "../styles/global.css";
 import Footer from "../components/Footer.astro";
 import ScrollProgress from "../components/ScrollProgress.astro";
+import { Search } from "../components/Search";
 
 const { showScroll } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="h-full">
+<html lang="en" class="h-full" data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -31,11 +32,12 @@ const { showScroll } = Astro.props;
   </head>
   <body class="w-full min-h-full flex flex-col bg-zbackground font-sans">
     <header
-      class="relative backdrop-blur flex-none flex items-center lg:fixed lg:w-full lg:top-0 lg:left-0 lg:z-30 px-4 py-5"
+      class="relative backdrop-blur flex-none flex items-center lg:fixed lg:w-full lg:top-0 lg:left-0 lg:z-30 px-4 py-5 justify-between"
     >
       <a href="/">
         <span class="text-zpink text-3xl font-[Pacifico]">Zyzle.dev</span>
       </a>
+      <Search client:load />
     </header>
     {showScroll && <ScrollProgress />}
     <main class="flex-1 relative lg:mt-20 px-4 lg:text-lg">
@@ -95,3 +97,37 @@ const { showScroll } = Astro.props;
     <Footer />
   </body>
 </html>
+
+<style is:global>
+  .DocSearch-Button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+    height: 2.5rem;
+    font-size: var(--prose-text-xl);
+  }
+
+  .DocSearch-Button-Container svg {
+    color: var(--color-zdefault);
+  }
+
+  .DocSearch-Button-Placeholder {
+    color: var(--color-zdefault);
+  }
+
+  .DocSearch-Button-Key {
+    background: var(--color-zbackground);
+    color: var(--color-zgold);
+    font-weight: 800;
+    border: 1px solid var(--color-zcaret);
+  }
+
+  .DocSearch-Modal {
+    background: var(--color-zbackground);
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+  }
+</style>
