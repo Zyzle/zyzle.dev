@@ -8,13 +8,10 @@ import { remarkReadingTime } from "./src/utils/remark-reading-time.mjs";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 import wasm from "vite-plugin-wasm";
-import { loadEnv } from "vite";
 
 import sitemap from "@astrojs/sitemap";
 
 import react from "@astrojs/react";
-
-import algolia from "./src/utils/algolia-integration";
 
 const jsoncString = fs.readFileSync(
   new URL(`./zyzle-code.jsonc`, import.meta.url),
@@ -22,17 +19,14 @@ const jsoncString = fs.readFileSync(
 );
 const zyzleCode = ExpressiveCodeTheme.fromJSONString(jsoncString);
 
-const {
-  VITE_PUBLIC_ALGOLIA_APP_ID,
-  ALGOLIA_WRITE_API_KEY,
-  VITE_PUBLIC_ALGOLIA_INDEX_NAME,
-} = loadEnv("", process.cwd(), "");
-
 // https://astro.build/config
 export default defineConfig({
   site: "https://zyzle.dev",
   vite: {
     plugins: [wasm(), tailwindcss()],
+    ssr: {
+      noExternal: ["@docsearch/react"],
+    },
   },
 
   integrations: [
@@ -52,13 +46,6 @@ export default defineConfig({
       },
     }),
     react(),
-    algolia({
-      appId: VITE_PUBLIC_ALGOLIA_APP_ID,
-      apiKey: ALGOLIA_WRITE_API_KEY,
-      indexName: VITE_PUBLIC_ALGOLIA_INDEX_NAME,
-      baseUrl: "https://zyzle.dev/",
-      isProduction: process.env.NODE_ENV === "production",
-    }),
   ],
 
   markdown: {

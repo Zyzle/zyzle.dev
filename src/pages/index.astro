@@ -20,27 +20,27 @@ const recentPosts = (await getCollection("blogs"))
 const homeLinks = [
   {
     url: "/blog/",
-    imageSrc: BlogIcon.src,
+    imageSrc: BlogIcon,
     name: "Blog",
     extraText:
       "Blog posts I've written on various topics, usually tech related",
   },
   {
     url: "/snippets/",
-    imageSrc: SnippetsIcon.src,
+    imageSrc: SnippetsIcon,
     name: "Snippets",
     extraText:
       "Various small code snippets I've found useful in the past but probably dont warrent an entire blog post",
   },
   {
     url: "/projects/",
-    imageSrc: ProjectsIcon.src,
+    imageSrc: ProjectsIcon,
     name: "Projects",
     extraText: "Current projects I'm working on, may or may not be interesting",
   },
   {
     url: "/about/",
-    imageSrc: ProfileIcon.src,
+    imageSrc: ProfileIcon,
     name: "About",
     extraText: "Info about me!",
   },
