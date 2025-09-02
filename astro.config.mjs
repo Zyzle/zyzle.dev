@@ -22,6 +22,7 @@ const zyzleCode = ExpressiveCodeTheme.fromJSONString(jsoncString);
 // https://astro.build/config
 export default defineConfig({
   site: "https://zyzle.dev",
+  trailingSlash: "always",
   vite: {
     plugins: [wasm(), tailwindcss()],
     ssr: {
