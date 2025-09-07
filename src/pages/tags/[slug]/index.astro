@@ -45,6 +45,7 @@ const { blogPosts, snippets, projects } = Astro.props;
   description={`A collection of blog posts, snippets, and projects tagged with #${tag} on Zyzle.dev`}
   keywords={[tag, "snippets", "blog posts"].join(", ")}
   type="article"
+  slot="metadata"
 />
 
 <Layout>

@@ -25,6 +25,7 @@ const { Content, remarkPluginFrontmatter } = await render(entry);
   keywords={entry.data.tags?.join(", ")}
   published={entry.data.pubDate}
   type="article"
+  slot="metadata"
 />
 
 <Layout showScroll={true}>

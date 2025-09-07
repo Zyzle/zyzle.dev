@@ -24,6 +24,7 @@ const { Content } = await render(entry);
   published={entry.data.pubDate}
   keywords={entry.data.tags?.join(", ")}
   type="article"
+  slot="metadata"
 />
 
 <Layout showScroll={true}>

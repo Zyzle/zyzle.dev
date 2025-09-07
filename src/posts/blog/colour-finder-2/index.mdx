@@ -7,20 +7,20 @@ author:
   email: "colin@zyzle.dev"
 ghDisc: 26
 tags: ["problems", "fun", "web-dev", "maths"]
-image: "src/assets/images/redpanda.jpeg"
+image: "src/posts/blog/colour-finder-2/redpanda.jpeg"
 ---
 
-import Figure from "../../components/Figure.astro";
-import RedPandaImg from '../../assets/images/redpanda.jpeg'
-import ZoomImg from '../../assets/images/zoom.png';
-import TD1Img from '../../assets/images/3d-1.gif';
-import EuclideanImg from '../../assets/images/euclidean_distance.png';
-import WorkingImg from '../../assets/images/working.png';
-import DrawbacksImg from '../../assets/images/drawbacks.png';
+import Figure from "../../../components/Figure.astro";
+import RedPandaImg from './redpanda.jpeg'
+import ZoomImg from './zoom.png';
+import TD1Img from './3d-1.gif';
+import EuclideanImg from './euclidean_distance.png';
+import WorkingImg from './working.png';
+import DrawbacksImg from './drawbacks.png';
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous" />
 
-Ok in [part 1](/blog/colour-finder-1) we looked at finding dominant colours in an image, we got as far as showing the top 8 colours by pixel count, and showed that this isn't necessarily the best solution for real-world images as there are micro variations of colour within the image that aren't always immediately obvious to the naked eye.
+Ok in [part 1](/blog/colour-finder-1/) we looked at finding dominant colours in an image, we got as far as showing the top 8 colours by pixel count, and showed that this isn't necessarily the best solution for real-world images as there are micro variations of colour within the image that aren't always immediately obvious to the naked eye.
 
 Let's take a closer look at the first image we had trouble with the Panda:
 
@@ -336,4 +336,4 @@ Well, no. As mentioned earlier this code has some serious efficiency problems, t
 
 This shows some of the other drawbacks, the colours here look good but I would expect to see some deeper oranges, the brighter yellow, or even something closer to black. This is likely due to the random nature of the initial choice of clusters. Also, it took over 5 minutes for 6 iterations on this 4000x3000 pixel image.
 
-We'll look at addressing these issues in [Part 3](/blog/colour-finder-3) of this series. For now, though, the completed code for this part can be found in our [GitHub repository](https://github.com/Zyzle/image-colours/)
+We'll look at addressing these issues in [Part 3](/blog/colour-finder-3/) of this series. For now, though, the completed code for this part can be found in our [GitHub repository](https://github.com/Zyzle/image-colours/)

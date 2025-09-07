@@ -7,14 +7,14 @@ author:
   email: "colin@zyzle.dev"
 ghDisc: 27
 tags: ["problems", "fun", "webassembly", "rust"]
-image: 'src/assets/images/flower.jpg'
+image: 'src/posts/blog/colour-finder-3/flower.jpg'
 ---
 
-import Figure from '../../components/Figure.astro';
-import FlowerImg from '../../assets/images/flower.jpg';
-import FlyImg from '../../assets/images/fly.jpg';
+import Figure from '../../../components/Figure.astro';
+import FlowerImg from './flower.jpg';
+import FlyImg from './fly.jpg';
 
-We left off [part 2](/blog/colour-finder-2) with code that worked and gave good results but was disastrously inefficient, taking minutes to finish the algorithms run on higher-resolution images. In this post, we're going to try and move some of the more computationally heavy code into WebAssembly to try and fix this issue.
+We left off [part 2](/blog/colour-finder-2/) with code that worked and gave good results but was disastrously inefficient, taking minutes to finish the algorithms run on higher-resolution images. In this post, we're going to try and move some of the more computationally heavy code into WebAssembly to try and fix this issue.
 
 This was originally going to be 2 posts, one for optimizing the JS and a second for the WebAssembly application building. Given it's been 3 months since I last posted, probably best not to try and delay it any longer. So buckle up, this is going to be a long one.
 

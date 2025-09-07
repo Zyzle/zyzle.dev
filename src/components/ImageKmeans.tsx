@@ -11,8 +11,6 @@ import { Dropzone } from "./Dropzone";
 import { Tab, TabGroup, TabList, TabPanels, TabPanel } from "@headlessui/react";
 import { classNames } from "../utils/reactUtils";
 
-// TODO: There's an issue currently with this component where the wasm module
-// doesn't load correctly
 export function ImageKmeansComponent() {
   const [wasmInstance, setWasmInstance] = useState<ImageKmeans | null>(null);
   const [fixedKResults, setFixedKResults] = useState<RunResult | null>(null);

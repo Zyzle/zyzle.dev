@@ -1,0 +1,144 @@
+---
+title: Moving the blog to Astro
+pubDate: 2025-09-06
+description: "I recently moved my personal blog from Next.js to Astro as the framework to generate the site. In this post I'll share my experience with the transition, the benefits I've observed, and some challenges I encountered along the way."
+author:
+  name: "Colin McCulloch"
+  email: "colin@zyzle.dev"
+ghDisc: 49
+tags: ["blog", "astro", "web-dev", "static-site", "nextjs"]
+image: "src/posts/blog/moving-to-astro/astro.png"
+---
+
+So it's been over 2 years since I last updated this site, I've been looking to get back into blogging more regularly and thought it would be a good opportunity to refresh this site and the tech behind it.
+
+The original version of this site was something I rolled myself, that version didn't last very long as it was fairly clunky and awkward to maintain. I then moved to site to [Next.js](https://nextjs.org/) which I mostly liked, but I was never really happy with some aspects of it, which I'll talk about below. After looking around at some of the options available for static site generation I decided to give [Astro](https://astro.build/) a try, and I'm really happy with the decision.
+
+## Issues with Next.js
+
+> Before starting this section I want to say that most of the issues I had with the Next.js version of the site are likely of my own making and there are probably solutions to most if not all of them.
+>
+> The biggest issues for me were actually the fault of the headless CMS rather than Next.js itself, and I *could* have just moved the content to MDX but I wanted to try something new.
+
+### Overly complex design
+
+The way I had the site set up was to use Next.js to build pages that would be statically generated at build time based on content contained in [Storyblok](https://www.storyblok.com/)'s headless CMS. This is actually a great way to manage content that I've used before in commercial projects. This allows content to be managed by non-technical users and gives a lot of flexibility in how content is structured.
+
+Unfortunately This solution was a little over-engineered for my needs, and caused some problems when it came to actually writing content for the site. The biggest issue being that for each content block type I wanted to use in the site, I had to create a dedicated React component to render it. This meant that adding new content types or changing existing ones required a lot of boilerplate code and made the content creation process more cumbersome than it needed to be.
+
+For example, because Stroyblok by default uses a rich text editor for content blocks I had to create a custom renderer for this block that would allow me to parse out and render HTML for blocks that weren't standard text styling like the example below:
+
+```jsx title="RichTextBlok.tsx"
+export type BlokResolvers = {
+	[key: string]: (props: unknown) => JSX.Element | null;
+};
+
+export function RichTextBlok({ blok, blokResolvers }: { blok: unknown; blokResolvers?: BlokResolvers }) {
+	return (
+		<>
+			{render(blok, {
+				markResolvers: {
+					[MARK_LINK]: (children, props) => <LinkMark {...props}>{children}</LinkMark>,
+				},
+				nodeResolvers: {
+					[NODE_CODEBLOCK]: (children, props) => <CodeblockNode {...props}>{children}</CodeblockNode>,
+				},
+				blokResolvers: {
+					['figure']: props => <FigureBlok {...(props as unknown as FigureBlokType)}></FigureBlok>,
+					['formula']: props => <FormulaBlok formula={props.formula as string} />,
+					...blokResolvers,
+				},
+				defaultBlokResolver: (name: string, props: unknown) => {
+					console.warn('No blok resolver found for blok:', name, props);
+					return null;
+				},
+			})}
+		</>
+	);
+}
+```
+
+This is a lot of code to write and maintain just to render a simple rich text block, and it gets even more complicated when you want to add more custom blocks.
+
+### Content updating
+
+In theory this should have been a simple process, Next.js provides a way to revalidate static content at runtime using [Incremental Static Regeneration (ISR)](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration). This allows you to set a revalidation time on a per-page basis, so that when a page is requested after the revalidation time has passed, Next.js will regenerate the page in the background.
+
+Unfortunately I found this to be unreliable, and often had issues with pages not being updated when I expected them to be. This was likely due to my own misunderstanding of how ISR works, but it was still a frustrating experience. This more than anything was the biggest motivator for changing how the site works, doing away with the CMS and just having the contend exist inside the code repository itself.
+
+### Unpredictable API changes
+
+This one I can take most of the blame for. I originally started the site because I wanted to learn Next.js and work with the new (at the time) [App router](https://nextjs.org/docs/app) that was released as a beta feature in v13. I really like this way of constructing applications in Next.js, but as this feature was still in beta when I started working on the project, there were a lot of breaking changes introduced to the API of Next that made maintaining the site more difficult than it needed to be.
+
+### Build times
+
+This is probably the smallest issue I had with Next.js but the build times for the static content generation were significantly higher than those of Astro around 2m 30s for a Next.js build compared to around 40s for Astro.
+
+## Enter Astro
+
+Astro is a fairly new static site generator that was around when I originally built the site in Next.js but it was still in early stages of development and I didn't really consider it given I wanted to try out the new features of Next.js.
+
+Astro is designed to be a static-first site generator, it's standard `.astro` files are generally written using combination of HTML with frontmatter for metadata and Javascript/Typescript for any logic. Below is the code of the sites 404 page:
+
+```astro title="404.astro"
+---
+import Metadata from "../components/Metadata.astro";
+import Layout from "../layouts/Layout.astro";
+import NotFound from "../assets/404.png";
+
+const title = "404 - Page Not Found";
+---
+
+<Metadata
+  title={title}
+  author="Colin McCulloch"
+  description="404 - Page Not Found"
+  keywords="404, Not Found"
+  type="website"
+/>
+
+<Layout>
+  <h1 class="text-zgold text-4xl font-bold my-4">404 - Page Not Found</h1>
+  <section class="prose prose-invert prose-zyzle mx-auto mt-4 mb-6 lg:text-lg">
+    <p>
+      Sorry, the page you are looking for does not exist. You can return to the <a
+        href="/">home page</a
+      > or use the navigation to find what you're looking for.
+    </p>
+    <img src={NotFound.src} alt="404 - Not Found" width="70%" class="mx-auto" />
+  </section>
+</Layout>
+```
+
+The first couple of lines here between the `---` are the frontmatter, here we can import other components, define variables or fetch other data we might need to render the page. The rest is standard HTML with some syntax for formatting similar to JSX.
+
+For the blog post themselves Astro comes with support for MDX which allows us to write content in Markdown but also embed components from other frameworks like React, Svelte, or Vue. This is a really powerful feature as it allows us to write content in a simple and easy to read format, but also allows us to add interactivity and dynamic content when needed.
+
+The use of markdown parsing removes the problems of the Next.js version of the site, where individual content blocks all needed to be accounted for with custom React components. Now I can just write page content directly in markdown and only need to create custom components when I want to add some interactive feature to a post. Here's an example from the project page for my [image-kmeans](/projects/image-kmeans/) project:
+
+```mdx title="image-kmeans.mdx"
+import { ImageKmeansComponent } from '../../components/ImageKmeans';
+
+//...omitted for brevity...
+
+## Give it a try
+
+Drop an image into the box below and select either fixed or derived K number to see the results:
+
+<ImageKmeansComponent client:load />
+```
+
+In this example `ImageKmeansComponent` is a React component that provides an interactive demo of the project, the `client:load` directive tells Astro to only load this component on the client side when the page has loaded, this helps to keep the initial page load fast and only loads the necessary Javascript when needed.
+
+## Conclusions
+
+Overall I'm really happy with the decision to move the site to Astro, the main benefits for me have been:
+
+- **Simplicity**: The site is now much simpler to maintain, I can just write content in markdown and only need to create custom components when I want to add some interactivity.
+- **Performance**: The site is now much faster to build and load, Astro's static-first approach means that the site is optimized for performance out of the box.
+- **Flexibility**: The ability to use components from different frameworks means that I can choose the best tool for the job when it comes to adding interactivity to the site.
+- **Less dependencies**: By removing the headless CMS and the associated API calls, the site is now less dependent on external services and is easier to host and deploy.
+
+Some things I still want to work on:
+
+- **Code repetition**: There are a few places where I have to repeat very similar code, the main place being the generation of the pages open-graph images. Currently I have to add a generator file to each of the pages sub routes, but I believe astro has the concept of a catch-all route that potentially could be used to resolve this.
