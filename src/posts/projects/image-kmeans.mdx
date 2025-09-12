@@ -16,6 +16,12 @@ If you're interested in trying it out, the [npm package](https://www.npmjs.com/p
 
 ## Give it a try
 
-Drop an image into the box below and select either fixed or derived K number to see the results:
+Drop an image into the box below and set the following options to see how the k-means algorithm performs.
+
+- **Quantization**: This reduces the number of colours in the image before running the k-means algorithm. This can speed up the processing time, but may reduce the accuracy of the results. A value of 1 means no quantization, while a value of 16 means very high quantization.
+- **Top N**: This option will return only the top N colours from the results. A value of 0 means all colours are considered.
+- **Initialization Method**: This sets the method used to initialize the centroids for the k-means algorithm. The options are Random (randomly selects initial centroids) and K-means++ (selects initial centroids using the [k-means++ algorithm](https://en.wikipedia.org/wiki/K-means%2B%2B), which can lead to better results).
+
+Setting neither a quantization factor nor a top N will return the most accurate results, but will take the longest to process. Increasing the quantization factor and/or setting a top N will speed up the processing time, but may reduce the accuracy of the results.
 
 <ImageKmeansComponent client:load />
