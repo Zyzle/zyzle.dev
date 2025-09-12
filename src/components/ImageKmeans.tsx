@@ -112,7 +112,6 @@ export function ImageKmeansComponent() {
           className="ig-select"
           value={quantizeFactor}
           onChange={(e) => {
-            console.log(e.target.value);
             setQuantizeFactor(parseInt(e.target.value, 10));
           }}
         >
