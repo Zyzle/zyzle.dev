@@ -23,11 +23,12 @@
     "@fontsource-variable/fira-code": "^5.2.6",
     "@fontsource-variable/nunito": "^5.2.6",
     "@fontsource/pacifico": "^5.2.6",
-    "@headlessui/react": "^2.2.7",
+    "@skeletonlabs/skeleton-react": "^1.4.0",
     "@tailwindcss/vite": "^4.1.12",
     "@vercel/analytics": "^1.5.0",
     "@vercel/og": "^0.8.5",
-    "@zyzle/image-kmeans": "^2.1.1",
+    "@vercel/speed-insights": "^1.2.0",
+    "@zyzle/image-kmeans": "^3.0.0",
     "@zyzle/meme-text": "^1.0.0",
     "astro": "^5.13.3",
     "astro-breadcrumbs": "^3.3.1",
@@ -45,6 +46,7 @@
     "typescript": "^5.9.2"
   },
   "devDependencies": {
+    "@skeletonlabs/skeleton": "^3.2.0",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/typography": "^0.5.16",
     "@types/react": "^19.1.12",

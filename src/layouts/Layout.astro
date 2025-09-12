@@ -7,6 +7,7 @@ import "@fontsource-variable/nunito";
 import "@fontsource/pacifico";
 
 import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 
 import "../styles/global.css";
 import Footer from "../components/Footer.astro";
@@ -17,7 +18,7 @@ const { showScroll } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="h-full" data-theme="dark">
+<html lang="en" class="h-full" data-theme="cerberus">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon-32x32.png" sizes="32x32" />
@@ -97,6 +98,7 @@ const { showScroll } = Astro.props;
       </div>
     </main>
     <Footer />
+    <SpeedInsights />
   </body>
 </html>
 

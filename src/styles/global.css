@@ -3,6 +3,11 @@
 @plugin '@tailwindcss/forms';
 @config "../../tailwind.config.js";
 
+@import "@skeletonlabs/skeleton";
+@import "@skeletonlabs/skeleton/optional/presets";
+@source '../../node_modules/@skeletonlabs/skeleton-react/dist';
+@import "@skeletonlabs/skeleton/themes/cerberus";
+
 @theme {
   --font-sans: "Nunito Variable", sans-serif;
   --font-mono: "Fira Code Variable", monospace;
