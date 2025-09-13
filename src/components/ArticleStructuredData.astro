@@ -1,0 +1,34 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+type Props =  CollectionEntry<"blogs">["data"] & { wordCount: number };
+
+const pageUrl = new URL(Astro.url.pathname, Astro.site);
+
+const { title, description, pubDate, author, tags, wordCount } = Astro.props as Props;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: title,
+  description,
+  datePublished: pubDate.toISOString(),
+  url: pageUrl,
+  keywords: tags?.join(", "),
+	wordCount,
+	license: "https://creativecommons.org/licenses/by-sa/4.0/",
+  thumbnailUrl: new URL("og.png", pageUrl).href,
+  image: {
+    "@type": "ImageObject",
+    url: new URL("og.png", pageUrl).href,
+  },
+  author: {
+    "@type": "Person",
+    name: author.name,
+    url: new URL("/about/", Astro.site).href,
+  },
+};
+
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />

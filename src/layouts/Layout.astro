@@ -6,8 +6,8 @@ import "@fontsource-variable/fira-code";
 import "@fontsource-variable/nunito";
 import "@fontsource/pacifico";
 
-import Analytics from '@vercel/analytics/astro';
-import SpeedInsights from '@vercel/speed-insights/astro';
+import Analytics from "@vercel/analytics/astro";
+import SpeedInsights from "@vercel/speed-insights/astro";
 
 import "../styles/global.css";
 import Footer from "../components/Footer.astro";
@@ -31,6 +31,7 @@ const { showScroll } = Astro.props;
     />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="generator" content={Astro.generator} />
+    <slot name="structured-data" />
     <Analytics />
   </head>
   <body class="w-full min-h-full flex flex-col bg-zbackground font-sans">

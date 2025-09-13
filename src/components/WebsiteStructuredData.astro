@@ -1,0 +1,20 @@
+---
+const { title, description, keywords, url, author } = Astro.props;
+const pageUrl = new URL(Astro.url.pathname, Astro.site);
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  url,
+  name: title,
+	description,
+	keywords,
+	author: {
+		"@type": "Person",
+		name: author,
+		url: new URL("/about/", Astro.site).href
+	}
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />

@@ -10,6 +10,7 @@ import ProfileIcon from "../assets/profile.png";
 import Metadata from "../components/Metadata.astro";
 import { getCollection } from "astro:content";
 import BlogExcerpt from "../components/BlogExcerpt.astro";
+import WebsiteStructuredData from "../components/WebsiteStructuredData.astro";
 
 const title = "Home";
 
@@ -45,16 +46,25 @@ const homeLinks = [
     extraText: "Info about me!",
   },
 ];
+
+const description =
+  "Welcome to Zyzle.dev, personal website for Colin McCulloch";
+const keywords =
+  "Zyzle, Colin McCulloch, personal website, blog, personal projects";
+const url = new URL("/", Astro.site).href;
+const author = "Colin McCulloch";
 ---
 
 <Metadata
   title={title}
-  author="Colin McCulloch"
-  description="Welcome to Zyzle.dev, personal website for Colin McCulloch"
-  keywords="Zyzle, Colin McCulloch, personal website, blog, personal projects"
+  author={author}
+  description={description}
+  keywords={keywords}
   type="website"
   slot="metadata"
 />
+
+<WebsiteStructuredData slot="structured-data" title={title} description={description} keywords={keywords} url={url} author={author} />
 
 <Layout>
   <h1 class="text-zgold text-4xl font-bold my-4">Home</h1>

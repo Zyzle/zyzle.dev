@@ -55,6 +55,9 @@ const projects = defineCollection({
     tags: z.array(z.string()).optional(),
     description: z.string(),
     draft: z.boolean().optional(),
+    repository: z.string().url(),
+    language: z.string(),
+    license: z.string().url(),
   }),
 });
 

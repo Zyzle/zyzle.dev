@@ -24,5 +24,5 @@ Some git aliases I find useful and add to most of my development environments:
   
   lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
   
-  sweep = "!f() { git branch --merged | grep -Ev '(*|master|develop)' | xargs -n 1 git branch -d; }; f"
+  sweep = "!f() { git branch -vv | awk '/: gone]/{print $1}' | xargs -r git branch -D; }; f"
 ```

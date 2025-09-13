@@ -3,6 +3,7 @@ import { getCollection, render } from "astro:content";
 import Layout from "../../../layouts/Layout.astro";
 import { formatDateString } from "../../../utils/dateUtils";
 import Metadata from "../../../components/Metadata.astro";
+import CodeStructuredData from "../../../components/CodeStructuredData.astro";
 
 export async function getStaticPaths() {
   const snippets = await getCollection("snippets");
@@ -26,6 +27,8 @@ const { Content } = await render(entry);
   type="article"
   slot="metadata"
 />
+
+<CodeStructuredData slot="structured-data" {...entry.data} />
 
 <Layout showScroll={true}>
   <article class="prose prose-invert prose-zyzle mx-auto mb-6 lg:text-lg">

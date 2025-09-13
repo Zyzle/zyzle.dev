@@ -1,0 +1,31 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+type Props = CollectionEntry<"snippets">["data"] &
+	CollectionEntry<"projects">["data"];
+
+const pageUrl = new URL(Astro.url.pathname, Astro.site);
+
+const { repository, language, license, title, description, author, tags } =
+  Astro.props as Props;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  codeRepository: repository,
+  codeSampleType: repository ? "full (compile ready)" : "snippet",
+  programmingLanguage: language,
+  license,
+  name: title,
+  description: description,
+	keywords: tags?.join(", "),
+  thumbnailUrl: new URL("og.png", pageUrl).href,
+  author: {
+    "@type": "Person",
+    name: author.name,
+    url: new URL("/about/", Astro.site).href,
+  },
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
