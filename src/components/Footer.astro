@@ -2,63 +2,129 @@
 import By from "../assets/by.svg";
 import Cc from "../assets/cc.svg";
 import Sa from "../assets/sa.svg";
+import github from "../assets/github.svg";
+import instagram from "../assets/instagram.svg";
+import linkedin from "../assets/linkedin.svg";
+import stackoverflow from "../assets/stackoverflow.svg";
+import x from "../assets/x.svg";
 ---
 
 <footer class="w-full border-t border-zcaret">
   <div
     class="flex flex-row justify-between mt-5 prose prose-invert prose-zyzle mx-auto px-4 lg:text-lg"
   >
-    <nav class="not-prose">
+    <nav class="not-prose text-(--color-zpurple)">
       <ul>
         <li>
-          <a href="/">Home</a>
+          <a href="/" class="hover:underline">Home</a>
         </li>
         <li>
-          <a href="/blog/">Blog</a>
+          <a href="/blog/" class="hover:underline">Blog</a>
         </li>
         <li>
-          <a href="/projects/">Projects</a>
+          <a href="/projects/" class="hover:underline">Projects</a>
         </li>
         <li>
-          <a href="/snippets/">Snippets</a>
+          <a href="/snippets/" class="hover:underline">Snippets</a>
         </li>
         <li>
-          <a href="/about/">About</a>
+          <a href="/about/" class="hover:underline">About</a>
         </li>
       </ul>
     </nav>
     <div class="max-w-[200px] text-right">
-      <div class="flex flex-row justify-end gap-2 not-prose">
-        <img
-          src={Cc.src}
-          alt="creative commons"
-          width="30"
-          height="30"
-          loading="lazy"
-        />
-        <img
-          src={By.src}
-          alt="attribution"
-          width="30"
-          height="30"
-          loading="lazy"
-        />
-        <img
-          src={Sa.src}
-          alt="share alike"
-          width="30"
-          height="30"
-          loading="lazy"
-        />
+      <div class="flex flex-row justify-end gap-2 not-prose mb-4">
+        <a
+          href="https://github.com/Zyzle"
+          target="_blank"
+          title="My Github profile"
+        >
+          <img
+            src={github.src}
+            alt="GitHub"
+            width="30"
+            height="30"
+            loading="lazy"
+          />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/colinmcculloch/"
+          target="_blank"
+          title="My LinkedIn profile"
+        >
+          <img
+            src={linkedin.src}
+            alt="LinkedIn"
+            width="30"
+            height="30"
+            loading="lazy"
+          />
+        </a>
+        <a
+          href="https://stackoverflow.com/users/2216725/zyzle?tab=profile"
+          target="_blank"
+          title="Find me on Stack Overflow"
+        >
+          <img
+            src={stackoverflow.src}
+            alt="Stack Overflow"
+            width="30"
+            height="30"
+            loading="lazy"
+          />
+        </a>
+        <a
+          href="https://www.instagram.com/zyzle2501/"
+          target="_blank"
+          title="My Instagram"
+        >
+          <img
+            src={instagram.src}
+            alt="Instagram"
+            width="30"
+            height="30"
+            loading="lazy"
+          />
+        </a>
+        <a
+          href="https://x.com/ZyzleDotDev"
+          target="_blank"
+          title="My X profile"
+        >
+          <img src={x.src} alt="X" width="30" height="30" loading="lazy" />
+        </a>
       </div>
-      <p>
-        Licensed under{" "}
+
+      <p class="text-sm">
+        Content licensed under{" "}
         <a
           href="https://creativecommons.org/licenses/by-sa/4.0/"
           target="_blank"
           rel="noreferrer"
+          title="Creative Commons Attribution-ShareAlike 4.0 License"
+          class="inline-flex flex-row gap-2 not-prose"
         >
-          Creative Commons Attribution-ShareAlike 4.0
+          <img
+            src={Cc.src}
+            alt="creative commons"
+            width="25"
+            height="25"
+            loading="lazy"
+          />
+          <img
+            src={By.src}
+            alt="attribution"
+            width="25"
+            height="25"
+            loading="lazy"
+          />
+          <img
+            src={Sa.src}
+            alt="share alike"
+            width="25"
+            height="25"
+            loading="lazy"
+          />
         </a>
       </p>
     </div>
