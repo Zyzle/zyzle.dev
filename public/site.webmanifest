@@ -1,10 +1,37 @@
 {
-	"name": "Zyzle.dev",
-	"icons": [
-		{ "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
-		{ "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
-	],
-	"theme_color": "#252539",
-	"background_color": "#252539",
-	"display": "standalone"
+  "name": "Zyzle.dev",
+  "id": "dev.zyzle",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#252539",
+  "background_color": "#252539",
+  "display": "minimal-ui",
+  "description": "Colin McCulloch's personal website and blog.",
+  "orientation": "portrait-primary",
+  "start_url": "/",
+  "screenshots": [
+    {
+      "src": "zyzle.dev_wide.png",
+      "sizes": "2560x1440",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Browser homescreen of Zyzle.dev"
+    },
+    {
+      "src": "zyzle.dev_mobile.png",
+      "sizes": "850x1440",
+      "type": "image/png",
+      "label": "Mobile homescreen of Zyzle.dev"
+    }
+  ]
 }
