@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content, remarkPluginFrontmatter } = await render(entry);
+const { Content, remarkPluginFrontmatter, ...others } = await render(entry);
 ---
 
 <Metadata
@@ -29,7 +29,11 @@ const { Content, remarkPluginFrontmatter } = await render(entry);
   slot="metadata"
 />
 
-<ArticleStructuredData slot="structured-data" {...entry.data} wordCount={remarkPluginFrontmatter.wordCount} />
+<ArticleStructuredData
+  slot="structured-data"
+  {...entry.data}
+  wordCount={remarkPluginFrontmatter.wordCount}
+/>
 
 <Layout showScroll={true}>
   <article class="prose prose-invert prose-zyzle mx-auto mb-6 lg:text-lg">

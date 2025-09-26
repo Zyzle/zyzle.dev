@@ -1,0 +1,101 @@
+---
+title: "Storypoint Shuffle: First 30 days of analytics"
+pubDate: 2025-09-25
+description: "After 30 days of adding analytics to Storypoint Shuffle, I wanted to take a look at the data and get some insights into how people are using the app and if there were any key takeaways."
+tags: ["analytics", "storypoint shuffle", "data-analysis", "microanalytics", "user-engagement", "static-site", "astro", "fun", "personal", "blog", "web-dev"]
+author:
+  name: "Colin McCulloch"
+  email: "colin@zyzle.dev"
+ghDisc: 51
+image: "src/posts/blog/storypoint-shuffle-first-30/countries.png"
+---
+
+import Figure from '../../../components/Figure.astro';
+import Countries from './countries.png';
+import Os from './os.png';
+import Rooms from './rooms.png';
+import Screens from './screens.png';
+import Usage from './usage.png';
+
+Storypoint Shuffle is a simple free web app that I built for my team to use in our sprint planning sessions after we found current tools to be either lacking functionality or too expensive to justify the cost. I built the tool using a React front end and a Rust backend, if you're interested in the code you can find it in [GitHub](https://github.com/Zyzle/storypoint-shuffle).
+
+After we had used it for a few weeks I decided to open it up to the public and let people know it was available, for the last month I've added some basic analytics to track user behaviour and through reviewing this would make for interesting reading.
+
+## Adding analytics
+
+I wanted to keep the analytics on the page as lightweight and privacy focused as possible, this ruled out many of the more popular tools such as Google Analytics and Mixpanel. I opted instead for a tool called [Microanalytics](https://microanalytics.io/), this tool is a simple cookieless tool that allows me to obtain data on things like page views, referrers, and countries, but without the need for any user tracking cookies. This makes the tool compliant for GDPR and CCPA, and from a personal point of view I've never been keen on the current state of web surveillance.
+
+The tool is simple to set up (small JavaScript snippet on the page) and has a free tier that allows for up to 1000 page views per month, which I assume will be more than enough for the foreseeable future.
+
+## The data
+
+<Figure
+  filename={Usage}
+  alt="Graph showing page views and unique visitors over the last 30 days"
+  title="Page views and unique visitors over the last 30 days"
+  caption="Page views (blue) and unique visitors (orange) over the last 30 days"
+/>
+
+I never expected to see a huge amount of traffic on the site but it's nice to see that people are using the app I've made. The users spike around the 10th to 13th of the month was likely due to me posting about the app on LinkedIn[^1] this got a few likes from friends but I can see from the data that a lot of people followed the post to come and check out the app.  The largest traffic day around the 24th seems to be from a team actively using the app!
+
+[^1]: [LinkedIn Post](https://www.linkedin.com/posts/colinmcculloch_storypoint-shuffle-activity-7372206912253210624-jKsH)
+
+## App usage
+
+Outside of my own team I didn't expect anyone to use the app regularly so I was presently surprised when I noticed the number of rooms active over the month.
+
+<Figure
+  filename={Rooms}
+  alt="Table showing number of players in rooms"
+  title=""
+  caption="Table showing some of the highest player count rooms"
+/>
+
+Again I'm really surprised at some of these numbers, I really didn't expect to see this many rooms being created and players using the app. This does make me wonder if I should look at adding an extended layout for larger player numbers though, I never expected to see rooms with more than half a dozen players let alone 20+ at a time. 
+
+Speaking of UI updates...
+
+
+## Devices and screen sizes
+
+I noticed mid way through the month that a few users were accessing the site from mobile devices, at first I assumed this was just people following the link from LinkedIn on their phones, but looking closer at the data I noticed a few of these users were also actively taking part in rooms. 
+
+<Figure
+  filename={Screens}
+  alt="Table showing screen sizes used to access the app over the last 30 days"
+  title=""
+  caption="Table showing distribution of users on Desktop vs Mobile"
+
+/>
+
+<Figure
+  filename={Os}
+  alt="Table showing operating systems used to access the app over the last 30 days"
+  title=""
+  caption="Table showing operating systems used to access the app"
+/>
+
+When I noticed this I decided to implement a more mobile and tablet friendly layout in the app to support this. It's still not perfect but making the site usable for people on smaller screens will hopefully open the app up to a wider audience. I plan in improving this with future releases so check back soon to see how things are progressing.
+
+## Geography
+
+This was the part I found most interesting, I expected users of the app to be mainly based in the UK given my team is located here and my LinkedIn network consists almost entirely of UK based contacts. 
+
+<Figure
+  filename={Countries}
+  alt="Map showing the distribution of users around the world"
+  title=""
+  caption="Geographical distribution of users around the world, darker blue indicates more users."
+/>
+
+As you can see from the map, the bulk of the sites users are coming from the UK and USA, but there are also significant numbers of users from Hong Kong, Australia, and other parts of Europe and Asia.
+
+## Final thoughts
+
+I'm really pleased to see people taking an active interest in the app, it's always good as a developer to know people are actively using something you've built.
+
+I plan on continuing to monitor the data and make more improvements to the app based on feedback from my team in the coming weeks.
+
+If you're using the app and are enjoying it, please consider sharing it with your team.  If you have any feedback share it in the comments below. Any bug reports can be opened up in the [GitHub issues](https://github.com/Zyzle/storypoint-shuffle/issues/new?template=bug_report.md) and I'll do my best to address them and keep improving things.
+
+Thanks to everyone who's used the app so far and I hope you continue to find it useful!
