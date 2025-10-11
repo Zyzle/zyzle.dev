@@ -8,7 +8,8 @@ const title = "About";
 const structuredData = {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
-    dateCreated: "2025-09-13",
+    dateCreated: "2025-09-13T00:00:00Z",
+    dateModified: "2025-10-11T11:39:18Z",
     mainEntity: {
       "@type": "Person",
       name: "Colin McCulloch",
@@ -16,6 +17,13 @@ const structuredData = {
       description: "Colin McCulloch, also known as Zyzle, is a software developer and tech enthusiast who maintains the personal website zyzle.dev.",
       image: new URL(ProfileImg.src, Astro.site).href,
       url: new URL("/about/", Astro.site).href,
+      sameAs: [
+        "https://github.com/Zyzle",
+        "https://www.linkedin.com/in/colinmcculloch/",
+        "https://stackoverflow.com/users/2216725/zyzle?tab=profile",
+        "https://www.instagram.com/zyzle2501/",
+        "https://x.com/ZyzleDotDev"
+      ]
     }
   };
 ---
