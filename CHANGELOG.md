@@ -1,5 +1,33 @@
 # Changelog
 
+## [2.1.0](https://github.com/Zyzle/zyzle.dev/compare/v2.0.0...v2.1.0) (2025-10-19)
+
+
+### Features
+
+* add custom 404 page ([5f6658e](https://github.com/Zyzle/zyzle.dev/commit/5f6658e7bfd249beec3299ffee31c0437f4c6b74))
+* add docsearch to site ([eaab858](https://github.com/Zyzle/zyzle.dev/commit/eaab858e197b91260d6655d3c68585a6528b7b51)), closes [#6](https://github.com/Zyzle/zyzle.dev/issues/6)
+* add search functionality with algolia ([fde32b7](https://github.com/Zyzle/zyzle.dev/commit/fde32b7afb2374098fe136a33266ca2203333a49)), closes [#6](https://github.com/Zyzle/zyzle.dev/issues/6)
+* add search insignts and preload for performance ([4c41ad9](https://github.com/Zyzle/zyzle.dev/commit/4c41ad9d377f3c4263415363ddd1cfb3f3e2c4d2))
+* add structured data to site ([185ac63](https://github.com/Zyzle/zyzle.dev/commit/185ac6381d3ad772628b4f79458d5452908c0ed6))
+* **analytics:** add vercel analytics ([6ff4a1f](https://github.com/Zyzle/zyzle.dev/commit/6ff4a1f25c59741432671e19e270f3a1ea406b8d))
+* new post on storypoint shuffle analytics results ([6379619](https://github.com/Zyzle/zyzle.dev/commit/6379619df00ccd6c3ab8e48d6309324f223b37df))
+* reorganise content and add new article ([4c812ed](https://github.com/Zyzle/zyzle.dev/commit/4c812edf01cddba71b238f2d536163f0f2ddb02a))
+* various site updates ([#50](https://github.com/Zyzle/zyzle.dev/issues/50)) ([a04749d](https://github.com/Zyzle/zyzle.dev/commit/a04749d438eaeb8742ac8659973e1ff43f534d35))
+
+
+### Bug Fixes
+
+* correct link to webmanifest file and add screenshots ([a1d05ed](https://github.com/Zyzle/zyzle.dev/commit/a1d05ed7a5d83f8263226669b5be90556457fe6f))
+
+
+### Miscellaneous
+
+* add storypoint-shuffle project page ([f5228bd](https://github.com/Zyzle/zyzle.dev/commit/f5228bd97fba84e7688917ea74ccb65b8d1e497c))
+* add trailing slash config ([fd165e4](https://github.com/Zyzle/zyzle.dev/commit/fd165e4c7cfe863867d0ef9cc026a110bb13b574))
+* basic tidy up chores ([2484ce7](https://github.com/Zyzle/zyzle.dev/commit/2484ce74a375fc25a554db78004af90c5743f2c9))
+* update styling for search box, add social media links ([4da0447](https://github.com/Zyzle/zyzle.dev/commit/4da044788e4eea4c2efb92a96534a41a47f7c9d1))
+
 ## [2.0.0](https://github.com/Zyzle/zyzle.dev/compare/v1.4.0...v2.0.0) (2025-08-30)
 
 
