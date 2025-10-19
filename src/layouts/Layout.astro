@@ -31,6 +31,11 @@ const { showScroll } = Astro.props;
       href={new URL("feed.xml", Astro.site)}
     />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <link
+      rel="preconnect"
+      href="https://Z2SXNYX68T-dsn.algolia.net"
+      crossorigin
+    />
     <meta name="generator" content={Astro.generator} />
     <slot name="structured-data" />
     <Analytics />
